@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :collection do
-    title { "MyString" }
-    description { "MyString" }
-    user_id { "MyString" }
+    title { Faker::Lorem.sentence }
+    description { Faker::Lorem.paragraph }
+    association :user
   end
 end

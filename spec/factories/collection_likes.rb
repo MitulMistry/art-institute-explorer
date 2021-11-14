@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :collection_like do
-    user_id { "MyString" }
-    collection_id { "MyString" }
+    association :user
+    association :collection
   end
 end
