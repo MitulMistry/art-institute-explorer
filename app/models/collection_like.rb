@@ -1,0 +1,2 @@
+class CollectionLike < ApplicationRecord
+end

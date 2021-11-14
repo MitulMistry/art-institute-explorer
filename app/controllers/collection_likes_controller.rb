@@ -1,0 +1,2 @@
+class CollectionLikesController < ApplicationController
+end

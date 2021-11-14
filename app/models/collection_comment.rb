@@ -1,0 +1,2 @@
+class CollectionComment < ApplicationRecord
+end
