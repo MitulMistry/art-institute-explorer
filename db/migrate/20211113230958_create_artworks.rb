@@ -4,7 +4,7 @@ class CreateArtworks < ActiveRecord::Migration[6.1]
       t.string :title
       t.string :alt_text
       t.string :artist_title
-      t.string :image_url
+      t.string :image_url, null: false
 
       t.timestamps
     end
