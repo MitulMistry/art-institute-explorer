@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SavedArtwork, type: :model do
+RSpec.describe ArtworkSave, type: :model do
   describe "associations" do
     # Using shoulda-matchers
     it { should belong_to(:user) }

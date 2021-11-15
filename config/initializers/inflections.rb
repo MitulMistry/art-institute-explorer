@@ -14,3 +14,10 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  # Custom rule to pluralize artwork_save to artwork_saves and vice versa.
+  # Without this, the Inflector singularizes artwork_saves to artwork_safe,
+  # which leads to an error.
+  inflect.irregular 'save', 'saves'
+end

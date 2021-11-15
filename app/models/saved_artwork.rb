@@ -1,2 +1,0 @@
-class SavedArtwork < ApplicationRecord
-end

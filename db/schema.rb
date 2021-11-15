@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 2021_11_14_002223) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "artwork_saves", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "artwork_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artwork_id"], name: "index_artwork_saves_on_artwork_id"
+    t.index ["user_id"], name: "index_artwork_saves_on_user_id"
+  end
+
   create_table "artworks", force: :cascade do |t|
     t.string "title"
     t.string "alt_text"
@@ -59,15 +68,6 @@ ActiveRecord::Schema.define(version: 2021_11_14_002223) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_collections_on_user_id"
-  end
-
-  create_table "saved_artworks", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "artwork_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["artwork_id"], name: "index_saved_artworks_on_artwork_id"
-    t.index ["user_id"], name: "index_saved_artworks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

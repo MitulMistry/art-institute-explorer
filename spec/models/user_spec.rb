@@ -8,9 +8,10 @@ RSpec.describe User, type: :model do
 
   describe "associations" do
     # Using shoulda-matchers
+    it { should have_many(:artwork_saves) }
     it { should have_many(:saved_artworks) }
     it { should have_many(:collections) }
-    it { should have_many(:likes) }
+    it { should have_many(:collection_likes) }
     it { should have_many(:liked_collections) }
   end
 

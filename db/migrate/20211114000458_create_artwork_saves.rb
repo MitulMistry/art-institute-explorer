@@ -1,6 +1,6 @@
-class CreateSavedArtworks < ActiveRecord::Migration[6.1]
+class CreateArtworkSaves < ActiveRecord::Migration[6.1]
   def change
-    create_table :saved_artworks do |t|
+    create_table :artwork_saves do |t|
       t.integer :user_id, null: false
       t.integer :artwork_id, null: false
 
