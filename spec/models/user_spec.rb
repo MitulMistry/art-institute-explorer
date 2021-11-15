@@ -19,6 +19,11 @@ RSpec.describe User, type: :model do
     context "required validations" do
       it { should validate_presence_of(:username) }
       it { should validate_length_of(:username).is_at_least(3).is_at_most(40) }
+
+      # validate_uniqueness_of matcher throws an error with database validations (in
+      # migrations). Define a valid object to be tested (with FactoryBot) to fix this:
+      # https://www.rubydoc.info/gems/shoulda-matchers/Shoulda%2FMatchers%2FActiveRecord%3Avalidate_uniqueness_of
+      subject { FactoryBot.build(:user) }
       it { should validate_uniqueness_of(:username) }
 
       it "has an alphanumeric username" do
