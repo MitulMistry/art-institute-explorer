@@ -1,8 +1,19 @@
-Rails.application.routes.draw do
-  resources :collection_comments
-  resources :collection_likes
-  resources :collections
-  resources :artworks
-  resources :users
+Rails.application.routes.draw do  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :api do
+    namespace :v1 do
+      resources :users
+
+      resources :sessions, only: [:create]
+      delete '/sessions', to: 'sessions#destroy'
+      
+      resources :artworks, only: [:index, :show]
+      resources :saved_artworks, only: [:index, :create, :destroy]
+      resources :collections
+      resources :collection_likes, only: [:create, :destroy]
+      resources :collection_comments, only: [:create, :update, :destroy]
+    end
+  end
+
+  root to: 'static_pages#root'
 end

@@ -1,2 +1,0 @@
-class CollectionCommentsController < ApplicationController
-end

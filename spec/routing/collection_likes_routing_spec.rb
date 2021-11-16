@@ -1,13 +1,13 @@
 require "rails_helper"
 
-RSpec.describe CollectionLikesController, type: :routing do
+RSpec.describe Api::V1::CollectionLikesController, type: :routing do
   describe "routing" do
     it "routes to #create" do
-      expect(post: "/api/collection_likes").to route_to("collection_likes#create")
+      expect(post: "/api/v1/collection_likes").to route_to("api/v1/collection_likes#create")
     end
 
     it "routes to #destroy" do
-      expect(delete: "/api/collection_likes").to route_to("collection_likes#destroy")
+      expect(delete: "/api/v1/collection_likes/1").to route_to("api/v1/collection_likes#destroy", id: "1")
     end
   end
 end

@@ -1,13 +1,13 @@
 require "rails_helper"
 
-RSpec.describe SessionsController, type: :routing do
+RSpec.describe Api::V1::SessionsController, type: :routing do
   describe "routing" do
     it "routes to #create" do
-      expect(post: "/api/sessions").to route_to("sessions#create")
+      expect(post: "/api/v1/sessions").to route_to("api/v1/sessions#create")
     end
 
     it "routes to #destroy" do
-      expect(delete: "/api/sessions").to route_to("sessions#destroy")
+      expect(delete: "/api/v1/sessions").to route_to("api/v1/sessions#destroy")
     end
   end
 end
