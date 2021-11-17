@@ -47,6 +47,12 @@ RSpec.describe User, type: :model do
       it { should have_secure_password }
     end
 
+    context "image (avatar) validations" do
+      it { should validate_content_type_of(:avatar).allowing("image/png", "image/jpeg", "image/jpg") }
+      it { should validate_content_type_of(:avatar).rejecting("text/plain", "text/xml") }
+      it { should validate_size_of(:avatar).less_than(1.megabytes) }
+    end
+
     context "other validations" do
       it { should validate_length_of(:bio).is_at_most(500) }
     end
