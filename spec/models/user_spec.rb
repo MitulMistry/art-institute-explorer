@@ -6,6 +6,10 @@ RSpec.describe User, type: :model do
     expect(build(:user)).to be_valid
   end
 
+  it "has an invalid child factory" do
+    expect(build(:invalid_user)).to be_invalid
+  end
+
   describe "associations" do
     # Using shoulda-matchers
     it { should have_many(:artwork_saves) }
@@ -23,7 +27,7 @@ RSpec.describe User, type: :model do
       # validate_uniqueness_of matcher throws an error with database validations (in
       # migrations). Define a valid object to be tested (with FactoryBot) to fix this:
       # https://www.rubydoc.info/gems/shoulda-matchers/Shoulda%2FMatchers%2FActiveRecord%3Avalidate_uniqueness_of
-      subject { FactoryBot.build(:user) }
+      subject { build(:user) }
       it { should validate_uniqueness_of(:username) }
 
       it "has an alphanumeric username" do
