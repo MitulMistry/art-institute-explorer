@@ -16,10 +16,10 @@ class Api::V1::UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: "User was successfully created." }
-        format.json { render :show, status: :created, location: @user }
+        # format.html { redirect_to @user, notice: "User was successfully created." }
+        format.json { render :show, status: :created, location: api_v1_user_url(@user) }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        # format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -29,10 +29,10 @@ class Api::V1::UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
+        # format.html { redirect_to @user, notice: "User was successfully updated." }
+        format.json { render :show, status: :ok, location: api_v1_user_url(@user) }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        # format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +42,7 @@ class Api::V1::UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      # format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -55,6 +55,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :email, :bio, :password_digest)
+      params.require(:user).permit(:username, :email, :bio, :password, :password_confirmation)
     end
 end
