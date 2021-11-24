@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   before_action :set_user, only: %i[ show update destroy ]
+  before_action :authorize_ownership, only: :update
 
   # GET /users.json
   def index
@@ -41,6 +42,14 @@ class Api::V1::UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+    end
+
+    # Make sure the currently logged in user can only update their own account.
+    def authorize_ownership
+      if @user != current_user
+        render json: ["unauthorized"], status: :forbidden
+        return # Guard clause
+      end
     end
 
     # Only allow a list of trusted parameters through.
