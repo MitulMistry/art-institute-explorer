@@ -133,6 +133,12 @@ RSpec.describe "ArtworkSaves", type: :request do
     end
 
     describe "POST /create" do
+      it "does not create the requested ArtworkSave" do       
+        expect {
+          post api_v1_artwork_saves_url, params: { artwork_save: valid_attributes }
+        }.to change(ArtworkSave, :count).by(0)
+      end
+
       it "responds with 403 forbidden" do
         post api_v1_artwork_saves_url, params: { artwork_save: valid_attributes }
         expect(response).to have_http_status(403)
@@ -140,9 +146,17 @@ RSpec.describe "ArtworkSaves", type: :request do
     end
 
     describe "DELETE /destroy" do
-      it "responds with 403 forbidden" do
-        @artwork_save = ArtworkSave.create(valid_attributes)
-        
+      before :each do
+        @artwork_save = ArtworkSave.create(valid_attributes)  
+      end
+
+      it "does not destroy the requested ArtworkSave" do       
+        expect {
+          delete api_v1_artwork_save_url(@artwork_save)
+        }.to change(ArtworkSave, :count).by(0)
+      end
+
+      it "responds with 403 forbidden" do        
         delete api_v1_artwork_save_url(@artwork_save)
         expect(response).to have_http_status(403)
       end
