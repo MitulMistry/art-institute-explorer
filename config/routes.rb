@@ -9,7 +9,8 @@ Rails.application.routes.draw do
       
       get '/artworks/search' => 'artworks#search'
       resources :artworks, only: [:index, :show]      
-      resources :saved_artworks, only: [:index, :create, :destroy]
+      resources :artwork_saves, only: [:index, :create, :destroy]
+      
       resources :collections
       resources :collection_likes, only: [:create, :destroy]
       resources :collection_comments, only: [:create, :update, :destroy]

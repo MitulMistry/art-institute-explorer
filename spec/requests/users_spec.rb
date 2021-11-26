@@ -173,7 +173,7 @@ RSpec.describe "/users", type: :request do
     it_behaves_like "no modification access to non-owned users"
   end
 
-  describe "guest access" do
+  describe "unauthenticated access" do
     it_behaves_like "public access to users"
     it_behaves_like "access to user creation"
 

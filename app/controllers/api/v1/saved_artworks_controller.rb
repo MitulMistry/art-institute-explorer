@@ -1,4 +1,4 @@
-class Api::V1::SavedArtworksController < ApplicationController
+class Api::V1::ArtworkSavesController < ApplicationController
   
   def index
   end
