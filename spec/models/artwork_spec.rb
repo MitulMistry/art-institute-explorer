@@ -14,14 +14,17 @@ RSpec.describe Artwork, type: :model do
 
   describe "validations" do
     context "required validations" do
-      it { should validate_presence_of(:image_url)}
-      it { should validate_length_of(:image_url).is_at_most(1000)}          
+      it { should validate_presence_of(:aic_id) }
+      it { should validate_numericality_of(:aic_id).
+        only_integer.is_greater_than_or_equal_to(1).is_less_than_or_equal_to(99999) }
+      it { should validate_presence_of(:image_url) }
+      it { should validate_length_of(:image_url).is_at_most(1000) }
     end
 
     context "optional validations" do
-      it { should validate_length_of(:title).is_at_most(300)}
-      it { should validate_length_of(:artist_title).is_at_most(300)}
-      it { should validate_length_of(:alt_text).is_at_most(1000)}  
+      it { should validate_length_of(:title).is_at_most(300) }
+      it { should validate_length_of(:artist_title).is_at_most(300) }
+      it { should validate_length_of(:alt_text).is_at_most(1000) }
     end
   end
 end
