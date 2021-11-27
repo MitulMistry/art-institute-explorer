@@ -11,7 +11,8 @@ Rails.application.routes.draw do
       resources :artworks, only: [:index, :show]      
       resources :artwork_saves, only: [:index, :create, :destroy]
       
-      resources :collections
+      get '/collections/liked' => 'collections#liked'
+      resources :collections      
       resources :collection_likes, only: [:create, :destroy]
       resources :collection_comments, only: [:create, :update, :destroy]
     end

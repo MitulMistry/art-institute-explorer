@@ -57,6 +57,34 @@ RSpec.describe "Collections", type: :request do
     end
   end
 
+  shared_examples_for "access to liked Collections" do
+    describe "GET /liked" do
+      it "responds with a JSON formatted list of liked Collections" do
+        user2 = create(:user)
+        collection1 = create(:collection, user: @user)
+        collection2 = create(:collection, user: @user)
+        collection3 = create(:collection, user: user2)
+
+        get api_v1_collections_liked_url
+        expect(response).to be_successful
+
+        json = JSON.parse(response.body)
+        expect(json.any? { |hash| hash["title"] == collection1.title }).to be true
+        expect(json.any? { |hash| hash["title"] == collection2.title }).to be true
+        expect(json.none? { |hash| hash["title"] == collection3.title }).to be true
+      end
+    end
+  end
+
+  shared_examples_for "no access to liked Collections" do
+    describe "GET /liked" do
+      it "responds with 403 forbidden" do
+        get api_v1_collections_liked_url
+        expect(response).to have_http_status(403)
+      end
+    end
+  end
+
   shared_examples_for "access to Collection creation" do
     describe "POST /create" do
       context "with valid parameters" do
@@ -241,6 +269,7 @@ RSpec.describe "Collections", type: :request do
     end
 
     it_behaves_like "public access to Collections"
+    it_behaves_like "access to liked Collections"
     it_behaves_like "access to Collection creation"
     it_behaves_like "modification access to owned Collections"
     it_behaves_like "no modification access to non-owned Collections"
@@ -248,6 +277,7 @@ RSpec.describe "Collections", type: :request do
 
   describe "unauthenticated access" do
     it_behaves_like "public access to Collections"
+    it_behaves_like "no access to liked Collections"
     it_behaves_like "no modification or creation access to Collections"
   end
 end

@@ -6,6 +6,10 @@ RSpec.describe Api::V1::CollectionsController, type: :routing do
       expect(get: "/api/v1/collections").to route_to("api/v1/collections#index", format: :json)
     end
 
+    it "routes to #liked" do
+      expect(get: "/api/v1/collections/liked").to route_to("api/v1/collections#liked", format: :json)
+    end
+
     it "routes to #show" do
       expect(get: "/api/v1/collections/1").to route_to("api/v1/collections#show", id: "1", format: :json)
     end
