@@ -50,7 +50,7 @@ RSpec.describe "/users", type: :request do
 
         # Returns a user hash
         json = JSON.parse(response.body)
-        expect(json["username"]).to eq user.username
+        expect(json["username"]).to eq(user.username)
       end
     end
   end
@@ -151,10 +151,10 @@ RSpec.describe "/users", type: :request do
 
       patch api_v1_user_url(@user2), params: { user: new_attributes }
       @user2.reload
-      expect(@user2.username).to eq username
-      expect(@user2.email).to eq email
-      expect(@user2.bio).to eq bio
-      expect(@user2.password_digest).to eq password_digest
+      expect(@user2.username).to eq(username)
+      expect(@user2.email).to eq(email)
+      expect(@user2.bio).to eq(bio)
+      expect(@user2.password_digest).to eq(password_digest)
     end
 
     it "responds with 403 forbidden" do

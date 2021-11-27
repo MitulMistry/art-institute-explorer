@@ -6,6 +6,10 @@ RSpec.describe CollectionLike, type: :model do
     expect(build(:collection_like)).to be_valid
   end
 
+  it "has an invalid child factory" do
+    expect(build(:invalid_collection_like)).to be_invalid
+  end
+
   describe "associations" do
     # Using shoulda-matchers
     it { should belong_to(:user) }

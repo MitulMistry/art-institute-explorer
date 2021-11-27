@@ -50,7 +50,7 @@ RSpec.describe "Collections", type: :request do
 
         # Returns a collection hash
         json = JSON.parse(response.body)
-        expect(json["title"]).to eq collection.title
+        expect(json["title"]).to eq(collection.title)
         expect(json["artworks"].any? { |hash| hash["aic_id"] == artwork1.aic_id }).to be true
         expect(json["artworks"].any? { |hash| hash["aic_id"] == artwork2.aic_id }).to be true
       end
@@ -97,7 +97,7 @@ RSpec.describe "Collections", type: :request do
         it "responds with the created Collection in JSON format" do
           post api_v1_collections_url, params: { collection: valid_attributes }
           json = JSON.parse(response.body)
-          expect(json["title"]).to eq Collection.last.title
+          expect(json["title"]).to eq(Collection.last.title)
         end
       end
 
@@ -208,7 +208,7 @@ RSpec.describe "Collections", type: :request do
     end
   end
 
-  shared_examples_for "no modification or creation access to Collections" do
+  shared_examples_for "no creation or modification access to Collections" do
     describe "POST /create" do
       it "does not create the Collection" do
         expect {
@@ -278,6 +278,6 @@ RSpec.describe "Collections", type: :request do
   describe "unauthenticated access" do
     it_behaves_like "public access to Collections"
     it_behaves_like "no access to liked Collections"
-    it_behaves_like "no modification or creation access to Collections"
+    it_behaves_like "no creation or modification access to Collections"
   end
 end
