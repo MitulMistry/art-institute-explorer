@@ -24,11 +24,13 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'image_processing', '~> 1.2'
 
 # Use AWS S3 for image uploading in production
-gem "aws-sdk-s3", require: false
+gem 'aws-sdk-s3', require: false
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+# Use Faraday to make external API requests
+gem 'faraday', '~> 1.8'
 # Use Kaminari For pagination
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
 # Use Faker to generate example data
