@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.artic.edu/api/v1/artworks/search?fields=id,title,artist_title,date_display,main_reference_number,image_id&limit=10&q=van%20gogh
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.8.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1080'
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 05 Dec 2021 01:45:38 GMT
+      Server:
+      - Apache/2.4.51 () OpenSSL/1.0.2k-fips
+      Cache-Control:
+      - no-cache, private
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - '"b84a9083cd0e45423c7d8daf6aa0471e-gzip"'
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 ffd072342ed9fd3f694863ae9f14b970.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - MSP50-C1
+      X-Amz-Cf-Id:
+      - 2N2IudX9S47m1dgJSh-d4UkNF4PBPE8nfyhR1-BpqY33s3EXvUxwhw==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"preference":null,"pagination":{"total":1868,"limit":10,"offset":0,"total_pages":187,"current_page":1},"data":[{"_score":3301.1685,"date_display":"1889","artist_title":"Vincent
+        van Gogh","id":28560,"image_id":"25c31d8d-21a4-9ea1-1d73-6a2eca4dda7e","title":"The
+        Bedroom","main_reference_number":"1926.417"},{"_score":3179.3457,"date_display":"1887","artist_title":"Vincent
+        van Gogh","id":80607,"image_id":"26d3cea8-44c0-bfbd-a91a-19a007517152","title":"Self-Portrait","main_reference_number":"1954.326"},{"_score":2769.99,"date_display":"1888","artist_title":"Vincent
+        van Gogh","id":14586,"image_id":"9ea77636-76e9-9031-6b92-ff34512d7cbc","title":"The
+        Poet''s Garden","main_reference_number":"1933.433"},{"_score":2723.1409,"date_display":"c.
+        1885","artist_title":"Vincent van Gogh","id":28862,"image_id":"1d3a275d-45dd-6026-b6ed-d7d8df417a3d","title":"A
+        Peasant Woman Digging in Front of Her Cottage","main_reference_number":"1968.92"},{"_score":2709.8984,"date_display":"1890","artist_title":"Vincent
+        van Gogh","id":79349,"image_id":"d0ff5b36-bb38-b156-6042-5c8545352c2f","title":"The
+        Drinkers","main_reference_number":"1953.178"},{"_score":2706.3394,"date_display":"1887","artist_title":"Vincent
+        van Gogh","id":109314,"image_id":"92827fc4-78a3-a263-75a2-6470eabad38b","title":"Fishing
+        in Spring, the Pont de Clichy (Asni\u00e8res)","main_reference_number":"1965.1169"},{"_score":2648.1904,"date_display":"1889","artist_title":"Vincent
+        van Gogh","id":27949,"image_id":"9325e3ea-2d5d-120f-5bfb-faa0f8266ca6","title":"Madame
+        Roulin Rocking the Cradle (La berceuse)","main_reference_number":"1926.200"},{"_score":2623.1538,"date_display":"early
+        1887","artist_title":"Vincent van Gogh","id":27954,"image_id":"6cb22407-be79-bf0a-1a63-fdf2b99e035b","title":"Terrace
+        and Observation Deck at the Moulin de Blute-Fin, Montmartre","main_reference_number":"1926.202"},{"_score":2610.8215,"date_display":"1887","artist_title":"Vincent
+        van Gogh","id":64957,"image_id":"f11bd233-6cc3-4221-59eb-f7363be4119e","title":"Grapes,
+        Lemons, Pears, and Apples","main_reference_number":"1949.215"},{"_score":2391.1028,"date_display":"1889","artist_title":"Vincent
+        van Gogh","id":52733,"image_id":"34f09257-4c7f-3421-7396-e9dba321258a","title":"Weeping
+        Tree","main_reference_number":"1945.31"}],"info":{"license_text":"The data
+        in this response is licensed under a Creative Commons Zero (CC0) 1.0 designation
+        and the Terms and Conditions of artic.edu.","license_links":["https:\/\/creativecommons.org\/publicdomain\/zero\/1.0\/","https:\/\/www.artic.edu\/terms"],"version":"1.2"}}
+
+        '
+  recorded_at: Sun, 05 Dec 2021 01:45:38 GMT
+recorded_with: VCR 6.0.0

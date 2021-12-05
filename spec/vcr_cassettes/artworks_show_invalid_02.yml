@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.artic.edu/api/v1/artworks/99999999
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.8.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 05 Dec 2021 02:03:47 GMT
+      Server:
+      - Apache/2.4.51 () OpenSSL/1.0.2k-fips
+      Cache-Control:
+      - no-cache, private
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - '"6db4cab1060f1ac75ddce5567c8fa957"'
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 2a6ad3d1a0683e7c86e06f217adad5fb.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - MSP50-C1
+      X-Amz-Cf-Id:
+      - LTKN_eM-TW37fFrX_bwqa5wTKvnc-yeXxdAGxkl8YVJWwsGi3yrbQg==
+    body:
+      encoding: UTF-8
+      string: '{"status":404,"error":"Not found","detail":"The item you requested
+        cannot be found."}
+
+        '
+  recorded_at: Sun, 05 Dec 2021 02:03:47 GMT
+recorded_with: VCR 6.0.0

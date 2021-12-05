@@ -1,0 +1,283 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.artic.edu/api/v1/artworks/27992
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.8.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '8847'
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 05 Dec 2021 01:23:10 GMT
+      Server:
+      - Apache/2.4.51 () OpenSSL/1.0.2k-fips
+      Cache-Control:
+      - no-cache, private
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - '"247dd61c772d68cada4f0e59b88a82ab-gzip"'
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 d3a9074a1f531605e56b4aa23b2d6af5.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - MSP50-C1
+      X-Amz-Cf-Id:
+      - fpOWu6RhyDo1Sxqw61-l3rhvalZ6UC33cwdIxMhzV3s3Kkg35i020w==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":27992,"api_model":"artworks","api_link":"https:\/\/api.artic.edu\/api\/v1\/artworks\/27992","is_boosted":true,"title":"A
+        Sunday on La Grande Jatte \u2014 1884","alt_titles":null,"thumbnail":{"lqip":null,"width":16611,"height":11067,"alt_text":"Large
+        painting of people in a crowded park, brushstrokes are dots."},"main_reference_number":"1926.224","has_not_been_viewed_much":false,"boost_rank":14,"date_start":1884,"date_end":1886,"date_display":"1884\/86","date_qualifier_title":"","date_qualifier_id":null,"artist_display":"Georges
+        Seurat\nFrench, 1859-1891","place_of_origin":"France","dimensions":"207.5
+        \u00d7 308.1 cm (81 3\/4 \u00d7 121 1\/4 in.)","medium_display":"Oil on canvas","inscriptions":"Inscribed
+        at lower right: Seurat","credit_line":"Helen Birch Bartlett Memorial Collection","publication_history":"Jules
+        Christophe, Georges Seurat (Paris, 1890).\n\nGustave Kahn, \u201cSeurat,\u201d
+        L\u2019Art Moderne 11 (April 5, 1891), pp. 107-10.\n\nHenry van de Velde,
+        \u201cGeorges Seurat,\u201d La Wallonie 6 (March\/April 1891), pp. 167-71.\n\nEmile
+        Verhaeren, \u201cMort de Georges Seurat,\u201d La Nation (April 1, 1891).\n\n\nEmile
+        Verhaeren, \u201cGeorges Seurat,\u201d La Soci\u00e9t\u00e9 nouvelle (April
+        30, 1891), pp. 430-38.\n\nT\u00e9odor de Wyzewa, \u201cGeorges Seurat,\u201d
+        L\u2019Art dans les Deux Mondes 22 (April 18, 1891), pp. 263-64.\n\nJules
+        Christophe, \u201cSeurat,\u201d La Plume (September 1, 1891).\n\nPaul Signac,
+        D\u2019Eug\u00e8ne Delacroix au n\u00e9o-impressionnisme (Paris, 1899).\n\nEmile
+        Verhaeren, \u201cGeorges Seurat,\u201d L\u2019Art Moderne 15, 13 (April 1,
+        1900), p. 104.\n\nThad\u00e9e Natanson, \u201cUn Primitif d\u2019aujourd\u2019hui:
+        Georges Seurat,\u201d La Revue Blanche 21 (April 1900), pp. 610-14.\n\nEmile
+        Verhaeren, \u201cNotes: Georges Seurat,\u201d La Nouvelle Revue Fran\u00e7aise
+        1 (February 1, 1909), p. 92.\n\nRoger Fry, \u201cThe Post-Impressionsists,\u201d
+        in Manet and the Post-Impressionists, exh. cat. (Grafton Galleries, London,
+        1910-11), pp. 8-9.\n\nLucie Cousturier, \u201cGeorges Seurat,\u201d L\u2019Art
+        D\u00e9coratif 27 (20 June 1912), pp. 357-72.\n\nElie Faure, Les Constructeurs
+        (Paris, 1914).\n\nF\u00e9lix F\u00e9neon, \u201cGeorges Seurat,\u201d Bulletin
+        de la Vie Artistique 7 (14 May 1914); reprinted in F\u00e9lix F\u00e9n\u00e9on,
+        Oeuvres plus que compl\u00e8tes, ed. Joan Halperin (Geneva, 1970), pp. 293-94.\n\nRoger
+        Bissi\u00e8re, \u201cNotes sur l\u2019art de Seurat,\u201d L\u2019Esprit Nouveau
+        1 (Oct. 1920), pp. 13-28.\n\nAndr\u00e9 Salmon, \u201cGeorges Seurat,\u201d
+        The Burlington Magazine 37 (September 1920), pp. 115-22.\n\nRoger Fry, \u201cRetrospect\u201d
+        in Vision and Design (London, 1920), pp. 188-199.\n\nLucie Cousturier, Seurat
+        (Paris, 1921), p. 17, pl. 11.\n\nJ. Carr\u00e9.  \u201cLe Grand Art. Georges
+        Seurat,\u201d La Vie (September 1, 1922).\n\nAndr\u00e9 Salmon, Propos d\u2019atelier
+        (Paris, 1922).\n\nAndr\u00e9 Lhote, Georges Seurat (Rome, 1922), pl. 4.\n\nAndr\u00e9
+        Lhote, \u201cSeurat\u201d in Parlons peinture, 1922; reprinted in Ecrits sur
+        la peinture (Brussels, 1946).\n\nWalter Pach, \u201cGeorges Seurat (1853-1891),\u201d
+        The Arts 3 (March 1923), pp. 160-74.\n\nWalter Pach, Georges Seurat (New York,
+        1923), pl. 6.\n\nGustave Coquiot, Seurat (Paris, 1924), pp. 214-19, ill. opp.
+        p. 216, 247.\n\nF\u00e9lix F\u00e9n\u00e9on, \u201cPr\u00e9cisions concernant
+        Seurat,\u201d Bulletin de la Vie Artistique (15 August 1924); reprinted in
+        F\u00e9lix F\u00e9n\u00e9on, Oeuvres plus que compl\u00e8tes, ed. Joan Halperin
+        (Geneva, 1970), pp. 467-68.\n\nExhibition of Paintings and Drawings by Georges
+        Seurat, foreward by Walter Pach (New York, Brummer Galleries, 1924).\n\nGuy
+        Eglinton, \u201cThe Theory of Seurat,\u201d International Studio 81 (May 1925),
+        pp. 113-17.\n\nF\u00e9lix F\u00e9n\u00e9on, \u201cGeorges Seurat und die oeffentliche
+        Meinung,\u201d Der Querschnitt 6 (October 1926), pp. 767-70.    \n\nRoger
+        Fry, \u201cGeorges Seurat,\u201d The Dial 1926, reprinted in R. Fry, Transformations,
+        Critical and Speculative Essays on Art, 1926, pp. 188-96 and Sir Anthony Blunt,
+        Seurat (1965), pp. 9-22.\n\nAm\u00e9d\u00e9e Ozenfant, \u201cSeurat,\u201d
+        Cahiers d\u2019Art 7 (September 1926), p. 172.\n\nFlorent Fels, \u201cLa Peinture
+        fran\u00e7aise aux XIXe et Xxe si\u00e8cles, Seurat,\u201d A.B.C. Magazine
+        d\u2019Art (1927), pp. 282-87.\n\nAndr\u00e9 Lhote, \u201cExpositions Seurat
+        et Roger de la Fresnaye,\u201d (1927); reprinted in La Peinture, Le Coeur
+        et l\u2019Esprit (Paris, 1933).\n\nClaude Roger-Marx, \u201cGeorges Seurat,\u201d
+        Gazette des Beaux-Arts (December 1927), pp. 311-18.\n\nChristian Zervos, \u201cUn
+        Dimanche \u00e0 la Grande Jatte et la technique de Seurat,\u201d Cahiers d\u2019Art
+        9 (1928), pp. 361-75.\n\nAlfred Barr, The Museum of Modern Art First Loan
+        Exhibition New York November 1929; C\u00e9zanne, Gauguin, Seurat, Van Gogh,
+        exh. cat. (Museum of Modern Art, New York 1929), pp. 23-27.\n\nRobert Rey,
+        \u201cSeurat,\u201d in La Peinture fran\u00e7aise \u00e0 la fin du XIXe si\u00e8cle,
+        La Renaissance du Sentiment Classique, Degas, Renoir, Gauguin, C\u00e9zanne,
+        Seurat (Paris, 1931), pp. 95-134.\n\nB.E. Werner, \u201cGeorges Seurat,\u201d
+        Die Kunst 65 (February 1932), pp. 147-52.\n\nF. Walter, \u201cDu Paysage Classique
+        au surr\u00e9alisme:  Seurat,\u201d Revue de l\u2019Art Ancien et Moderne
+        63 (April 1933), pp. 165-76.\n\nP. Signac, \u201cLes \u00e9tapes de la peinture
+        contemporaine:  Georges Seurat,\u201d Beaux-Arts (December 15, 1933), p. 1.\n\nL\u00e9vy-Gutmann,
+        \u201cSeurat et ses amis,\u201d Art et D\u00e9coration 63 (Jan. 1934), pp.
+        36-37.\n\nPaul Signac, \u201cLe n\u00e9o-impressionisme,\u201d Gazette des
+        Beaux-Arts 11 (January 1934), pp. 49-59.\n\nDaniel Catton Rich, Seurat and
+        the Evolution of \u201cLa Grande Jatte\u201d (Chicago, 1935).\n\nMeyer Schapiro,
+        \u201cSeurat and \u201cLa Grande Jatte\u201d,\" The Columbia Review 17 (November
+        1935), pp. 9-16.\n\nA. Watt, \u201cArt of Georges Seurat,\u201d Apollo 23
+        (March 1936), pp. 168-69.\n\nJ. H\u00e9lion, \u201cSeurat as a predecessor,\u201d
+        The Burlington Magazine 69 (July 1936), pp. 4-14.\n\nPaul Signac, \u201cThe
+        Neo-Impressionist Movement,\u201d in Seurat and his Contemporaries, exh. cat.
+        (London, Wildenstein, 1937).\n\nGeorges Duthuit, \u201cSeurat\u2019s System,\u201d
+        The Listener 17, 421 (February 3, 1937), pp. 210-11.\n\nD. Goldring, \u201cLondon
+        Art News:  Seurat and His Contemporaries,\u201d London Studio 13 (April 1937),
+        p. 219.\n\n\u201cSeurat,\u201d Apollo 32 (July 1940), pp. 11-12.\n\nR. J.
+        Goldwater, \u201cSome Aspects of the Development of Seurat\u2019s Style,\u201d
+        Art Bulletin 23 (June 1941), pp. 117-30.\n\nLionello Venturi, \u201cThe Art
+        of Seurat,\u201d Gazette des Beaux-Arts (July-Dec. 1944), pp. 421-30.\n\nJohn
+        Rewald, Georges Seurat (New York, 1946).\n\nGeorges Duthuit, \u201cGeorges
+        Seurat, Voyant et physicien,\u201d Labyrinthe [Geneva] (December 1946).\n\nGermain
+        Seligman, The Drawings of Georges Seurat (New York, 1947).\n\nAndr\u00e9 Lhote,
+        Seurat (Paris, 1948).\n\nAndr\u00e9 Lhote, \u201cLe classicisme de Seurat;
+        excerpts,\u201d Arts (June 18, 1948), p. 2.\n\nThad\u00e9e Natanson, \u201cL\u2019Ecole
+        de Seurat,\u201d in Peints \u00e0 leur tour (Paris, 1948), pp. 121-29.\n\nJohn
+        Rewald, \u201cSeurat:  the meaning of the dots,\u201d Art News 48 (April 1949),
+        pp. 24-27, 61-63.\n\nUmbro Apollonio, \u201cDisegni di Georges Seurat,\u201d
+        in XXV Biennale di Venezia, Catalogo (Venice, 1950), pp. 175-79.\n\n\u201cSunday
+        at the Grande Jatte,\u201d Life 31 (July 23, 1951), pp. 60-64.\n\n\u201cPointillism
+        with Paint and Camera,\u201d Design 53 (March 1952), p. 141.\n\n\"Chicago''s
+        Fabulous Collectors\" Art Institute Announces it will Get Treasures from their
+        Homes,\" Life Magazine (October 27, 1952): 90.\n\nJohn Rewald, \u201cSeurat
+        and His Friends,\u201d in Seurat and His Friends, exh. cat. (New York, Wildenstein,
+        1953).\n\nTerence Mullaly, \u201cPointillists,\u201d Apollo 63 (June 1956),
+        pp. 185-89.\n\nD.C. Rich, ed., Seurat Paintings and Drawings, exh. cat. (Chicago,
+        1958).\n\nD. C. Rich, \u201cPlace of Seurat,\u201d Art Institute Quarterly
+        52 (February 1958), pp. 1-5.\n\nL. Katz, \u201cSeurat: Allegory and Image,\u201d
+        Arts 32 (April 1958), pp. 40-47.\n\nMeyer Schapiro, \u201cNew Light on Seurat,\u201d
+        Art News 57 (April 1958), pp. 22-24, 44-45, 52.\n\nJ. O. Kerr, \u201cSeurat:  the
+        Silent Post-Impressionist,\u201d Studio 155 (May 1958), pp. 129-33.\n\nRobert
+        L. Herbert, \u201cSeurat in Chicago and New York,\u201d The Burlington Magazine
+        100 (May 1958), pp. 146-155.\n\nRobert L. Herbert, \u201cSeurat and Jules
+        Ch\u00e9ret,\u201d Art Bulletin 40 (June 1958), pp. 156-58.\n\nWilliam I.
+        Homer, \u201cSeurat\u2019s formative period:  1880-1884,\u201d Connoisseur
+        142 (September 1958), pp. 58-62.\n\nHenri Dorra and John Rewald, Seurat (Paris,
+        1959), no. 139 (ill.).\n\nRobert L. Herbert, \u201cSeurat and Puvis de Chavannes,\u201d
+        Yale University Art Gallery Bulletin 25 (October 1959), pp. 22-29.\n\nRobert
+        L. Herbert, \u201cSeurat and Emile Verhaeren: Unpublished Letters,\u201d Gazette
+        des Beaux-Arts 54 (December 1959), pp. 315-28.\n\nC\u00e9sar M. De Hauke,
+        Seurat et son oeuvre 2 vol. (Paris, 1961), no. 162.\n\nJohn Russell, Seurat
+        (London, 1965).\n\nJohn House, \"Meaning in Seurat''s Figure Painting,\"Art
+        History 3, 3 (September 1980), pp. 345-56.\n\nRichard Thomson, \u201c \u2018Les
+        Quat\u2019 Pattes\u2019: The Image of the Dog in Late Nineteenth-Century French
+        Art,\u201d Art History 5 (September 1982), pp. 331-37.\n\nJeroen Stumpel,
+        \"The Grande Jatte, that patient tapestry,\" Simiolus 14 (1984), pp. 209-24.\n\nRichard
+        Thomson, Seurat (Oxford, 1985), pp. 97-126.\n\nRichard R. Brettell, \u201cThe
+        Bartletts and the \u2018Grande Jatte:\u2019 Collecting Modern Painting in
+        the 1920s,\u201d Art Institute of Chicago Museum Studies 12, 2 (1986), pp.
+        103-113 (ill.).\n\nAlan Lee, \u201cSeurat and Science,\u201d Art History 10
+        (June 1987), pp. 203-26.\n\nS. Hollis Clayson, \u201cThe Family and the Father:  The
+        Grande Jatte and its Absences,\u201d\nThe Art Institute of Chicago Museum
+        Studies 14, 2 (1989), pp. 155-72.\n\nStephen F. Eisenman, \u201cSeeing Seurat
+        Politically,\u201d The Art Institute of Chicago Museum Studies 14, 2 (1989),
+        pp. 211-21.\n\nMary Mathews Gedo, \u201cThe Grande Jatte as the Icon of a
+        New Religion:  A Psycho-Iconographic Interpretation,\u201d The Art Institute
+        of Chicago Museum Studies 14, 2 (1989), pp. 223-37.\n\nJohn House, \u201cReading
+        the Grande Jatte, \u201d The Art Institute of Chicago Museum Studies 14, 2
+        (1989), pp. 115-31.\n\nLinda Nochlin, \u201cSeurat\u2019s Grande Jatte:  An
+        Anti-Utopian Allegory,\u201d The Art Institute of Chicago Museum Studies 14,
+        2 (1989), pp. 133-53.\n\nRichard Thomson, \u201cThe Grande Jatte: Notes on
+        Drawing and Meaning,\u201d The Art Institute of Chicago Museum Studies 14,
+        2 (1989), pp. 181-97.\n\nMichael Zimmerman, \u201cSeurat, Charles Blanc, and
+        Naturalist Art Criticism,\u201d The Art Institute of Chicago Museum Studies
+        14, 2 (1989), pp. 199-209.\n\nJean Claude Lebensztejn, Chahut (Paris, 1989).\n\nNatasha
+        Staller, \u201cBabel: Hermetic Languages, Universal Languages, and Anti-Languages
+        in fin de si\u00e8cle Parisian Culture,\u201d Art Bulletin 76 (June 1994),
+        pp. 331-54.\n\nFritz Novotny, Painting and Sculpture in Europe, 1780-1880
+        (New Haven, 1995), p. 370.\n\nPaul Smith, Seurat and the Avant-Garde (New
+        Haven, 1997).\n\nSuzanne Folds McCullagh, \u201c\u2018A Lasting Monument\u2019:
+        The Regenstein Collection at the Art Institute of Chicago,\u201d Art Institute
+        of Chicago Museum Studies 26, 1 (2000), p. 13.\n\nJane Block, Le N\u00e9o-Imoressionnisme
+        de Seurat \u00e1 Paul Klee, Exh. cat. (R\u00e9union des Mus\u00e9es Nationaux,
+        2005), ill.14-15, p. 16-21, p. 27-29,  p. 32, p. 64, p. 74, p. 76, p. 85,
+        p. 97, p. 108, p. 112, p. 122.  \n\nMartha Tedeschi, \u201cStudy of Trees,
+        1884,\u201d Art Institute of Chicago Museum Studies 26, 1 (2000), pp. 82-83,
+        cat. 36, fig. 29.\n\nRichard Shiff, Jodi Hauptman, Hubert Damisch, and Richard
+        Thomson, \u201cSeurat Distracted,\u201d \u201cMedium and Miasma: Seurat\u2019s
+        Drawings on the Margins of Paris,\u201d \u201cPolka Dots and Moonbeams,\u201d
+        and \u201cThe Imperatives of Style: Seurat\u2019s Drawings,\u201d George Seurat:
+        The Drawings, Exh. cat. (The Museum of Modern Art, New York, 2007), p.18,
+        p. 110, ill. 111, p. 122, p. 123, p. 171.  \n\nBasel, Switzerland, Kunstmuseum
+        Basel, Vincent van Gogh- Between Earth and Heaven: The Landscapes, 2009, Fig.
+        45, p. 82, p. 86.\n\nMary Mathews Gedo, Monet and His Muse: Camille Monet
+        in the Artists Life, Chicago: The University of Chicago Press, 2010. p. 39,
+        p. 58, p. 164.  \n\nRichard R. Brettell, Pissarro\u2019s People. New York:
+        Fine Arts Museum of San Francisco, 2011. p. 202, p. 208, p. 217, fig. 154.
+        \n\nHomburg, Cornelia. 2010. \u201cImagining City and Country.\u201d In Vincent
+        Van Gogh: Timeless Country \u2013 Modern City. Exh. cat., pp. 29-30. Skira.\nJean-Michel
+        Nectoux, \u201cJe veux \u00c9crire mon Songe Musical\u2026,\u201d Debussy:
+        La Musique et les Arts. Exh. cat. (Mus\u00e9e d\u2019Orsay, 2012), p. 26.
+        \n\nJennifer A. Thompson, \u201cVan Gogh and Close-up Techniques in 19th-century
+        French Painting,\u201d Van Gogh: Up Close. Exh. cat. (Yale UP, 2012), p. 69.
+        \n\nJoseph J. Rishel, \u201cArcadia 1900,\u201d Gauguin, C\u00e9zanne, Matisse:
+        Visions of Arcadia Exh. cat (Philadelphia Museum of Art, 2012),  p. 7, p.
+        48, p. 50, fig. 49.  \n\nMarije Velekoop, Van gogh at Work, exh. cat. (Brussels:Mercatorfonds,
+        2013), fig. 174.\n\nRichard Kendall, Sjraar van Heugten, and Chris Stolwijk,
+        Van Gogh and Nature exh. cat. (New Haven and London: Yale University Press,
+        2015), 96 fig. 67.\n\nMichelle Foa, Georges Seurat: The Art of Vision (New
+        Haven: Yale University Press, 2015), 63\u201387.\n\nGavin Parkinson, \"Method
+        and Poetry: Georges Seurat''s Surrealist Dialectic,\" The Art Bulletin 99,
+        no. 3 (Sept. 2017), pp. 126\u201327, 131\u201333, 145n70, 145n72, fig. 5,
+        fig. 6 (detail).","exhibition_history":"Paris, Maison Dor\u00e9e, 1, rue Laffitte,
+        VIII\u00e8me Exposition de peinture, May 15\u2013June 15, 1886, cat. 175.\n\nParis,
+        Rue des Tuileries, II\u00e8me Exposition de la Soci\u00e9t\u00e9 des Artistes
+        Ind\u00e9pendants, August 21\u2013September 21, 1886, cat. 353.\n\nBrussels,
+        Mus\u00e9e de l\u2019Art Modern, IVe exposition annuelle de XX, February,
+        1887, cat. 1.\n\nParis, Pavillon de la Ville de Paris, VIII\u00e8me Exposition
+        de la Soci\u00e9t\u00e9 des Artistes Ind\u00e9pendants, March 19\u2013April
+        27, 1892, cat. 1082.\n\nParis, 23 Boulevard des Italiens, Exposition de La
+        Revue Blanche, Georges Seurat: Oeuvres peintes et dessin\u00e9es, March 19\u2013April
+        5, 1900, cat. 17.\n\nParis, Grandes Serres de la Ville de Paris (serre \u201cB\u201d
+        de la Champs de la Reine, Aval-Alma), 21me Exposition de la Soci\u00e9t\u00e9
+        des Artistes Ind\u00e9pendants.  \u00c9xposition R\u00e9trospective Georges
+        Seurat (1859-1891), 1905, cat. 18.\n\nParis, Galeries Bernheim-Jeune et Cie,
+        Georges Seurat (1859-1891), December 14, 1908\u2013January 9, 1909, cat. 58.\n\nParis,
+        Galeries Bernheim-Jeune, Exposition Georges Seurat, January 15\u201331, 1920,
+        cat. 23.\n\nMinneapolis Institute of Arts, Exhibition of Modern French Paintings
+        from the Birch-Bartlett Collection, April\u2013September, 1925, checklist
+        no. 9.\n\nBoston Art Club, Birch-Bartlett Collection of Modern French Paintings,
+        December 9-16, 1925, checklist no. 26.\n\nArt Institute of Chicago, A Century
+        of Progress Exhibition of Paintings and Sculpture, June 1\u2013November 1,
+        1933, cat. 370.\n\nArt Institute of Chicago, A Century of Progress Exhibition
+        of Paintings and Sculpture, June 1\u2013November 1, 1934, cat. 324.\n\nArt
+        Institute of Chicago, Art of the United Nations, November 16, 1944\u2013January
+        1, 1945, no cat. no.\n\nArt Institute of Chicago, Seurat: Paintings and Drawings,
+        January 16\u2013March 7, 1958, cat. 101, traveled to New York, The Museum
+        of Modern Art, Seurat: Paintings and Drawings, March 24\u2013May 11, 1958.
+        \n\nArt Institute of Chicago, The Art of the Edge: European Frames 1300-1900,
+        October 17\u2013December 14, 1986, not included in the catalogue.\n\nArt Institute
+        of Chicago, Chicago\u2019s Dream, A World\u2019s Treasure: The Art Institute
+        of Chicago 1893-1993, November 1\u2013January 9, 1994, no cat. no, pl. 21.\n\nArt
+        Institute of Chicago, Seurat and the Making of \u2018La Grande Jatte,\u2019
+        June 16-September 19, 2004, cat. 80.","provenance_text":"By descent to Mme.
+        Seurat, the artist\u2019s mother (died 1899), Paris, 1891; by descent to Emile
+        Seurat, the artist\u2019s brother; sold for 800 francs to Casimir Br\u00fb,
+        Paris, 1900; given by him to his daughter, Lucie, Paris, 1900; Lucie Br\u00fb
+        Cousturier and Edmond Cousturier, Paris; sold for $20,000 possibly through
+        Charles Vildrac, Paris to Frederic Clay and Helen Birch Bartlett, Chicago,
+        1924; given to the Art Institute, 1926.","publishing_verification_level":"Web
+        Cataloged","internal_department_id":14,"fiscal_year":1926,"fiscal_year_deaccession":null,"is_public_domain":true,"is_zoomable":true,"max_zoom_window_size":-1,"copyright_notice":null,"has_multimedia_resources":true,"has_educational_resources":true,"colorfulness":null,"color":{"h":229,"l":32,"s":52,"percentage":3.4270059722433076e-5,"population":63},"latitude":41.8795894858483,"longitude":-87.623031400144,"latlon":"41.879589485848,41.879589485848","is_on_view":true,"on_loan_display":null,"gallery_title":"Gallery
+        240","gallery_id":2147478672,"artwork_type_title":null,"artwork_type_id":null,"department_title":"Painting
+        and Sculpture of Europe","department_id":"PC-10","artist_id":40810,"artist_title":"Georges
+        Seurat","alt_artist_ids":[],"artist_ids":[40810],"artist_titles":["Georges
+        Seurat"],"category_ids":["PC-10","PC-109","PC-831"],"category_titles":["Painting
+        and Sculpture of Europe","Art Institute Icons","Essentials"],"artwork_catalogue_ids":[null],"term_titles":["oil
+        on canvas","oil painting","oil paint (paint)","Impressionism","Century of
+        Progress","animals","painting (image making)","Post-Impressionism","painting","european
+        painting","urban life","weather\/seasons","leisure","men","women","children","circles","landscapes","water","world''s
+        fairs","Chicago World''s Fairs"],"style_id":"TM-7543","style_title":"Impressionism","alt_style_ids":["TM-7547"],"style_ids":["TM-7543","TM-7547"],"style_titles":["Impressionism","Post-Impressionism"],"classification_id":"TM-66","classification_title":"oil
+        on canvas","alt_classification_ids":["TM-9","TM-54"],"classification_ids":["TM-66","TM-9","TM-54"],"classification_titles":["oil
+        on canvas","painting","european painting"],"subject_id":"TM-12169","alt_subject_ids":["TM-12218","TM-10126","TM-10095","TM-10094","TM-10121","TM-8735","TM-10118","TM-8803","TM-8657","TM-8681","TM-11299","TM-12176"],"subject_ids":["TM-12169","TM-12218","TM-10126","TM-10095","TM-10094","TM-10121","TM-8735","TM-10118","TM-8803","TM-8657","TM-8681","TM-11299","TM-12176"],"subject_titles":["Century
+        of Progress","animals","urban life","weather\/seasons","leisure","men","women","children","circles","landscapes","water","world''s
+        fairs","Chicago World''s Fairs"],"material_id":"TM-2451","alt_material_ids":[],"material_ids":["TM-2451"],"material_titles":["oil
+        paint (paint)"],"technique_id":"TM-4273","alt_technique_ids":["TM-3891"],"technique_ids":["TM-4273","TM-3891"],"technique_titles":["oil
+        painting","painting (image making)"],"theme_titles":["Art Institute Icons","Essentials"],"image_id":"1adf2696-8489-499b-cad2-821d7fde4b33","alt_image_ids":["4eddcf49-3efd-d993-fb1a-75d7e7d5b5a1"],"document_ids":["d9683532-66fd-67c3-5588-021527d115af","cd612b0c-3dfd-e213-3927-010b375c77a6"],"sound_ids":["d9683532-66fd-67c3-5588-021527d115af","cd612b0c-3dfd-e213-3927-010b375c77a6"],"video_ids":[],"text_ids":[],"section_ids":[],"section_titles":[],"site_ids":[3,22],"suggest_autocomplete_boosted":"A
+        Sunday on La Grande Jatte \u2014 1884","suggest_autocomplete_all":[{"input":["1926.224"],"contexts":{"groupings":["accession"]}},{"input":["A
+        Sunday on La Grande Jatte \u2014 1884"],"weight":975461,"contexts":{"groupings":["title"]}}],"last_updated_source":"2021-11-17T14:07:51-06:00","last_updated":"2021-12-03T23:06:40-06:00","timestamp":"2021-12-04T19:23:10-06:00"},"info":{"license_text":"The
+        data in this response is licensed under a Creative Commons Zero (CC0) 1.0
+        designation and the Terms and Conditions of artic.edu.","license_links":["https:\/\/creativecommons.org\/publicdomain\/zero\/1.0\/","https:\/\/www.artic.edu\/terms"],"version":"1.2"},"config":{"iiif_url":"https:\/\/www.artic.edu\/iiif\/2","website_url":"http:\/\/www.artic.edu"}}
+
+        '
+  recorded_at: Sun, 05 Dec 2021 01:23:10 GMT
+recorded_with: VCR 6.0.0

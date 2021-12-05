@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,date_display,main_reference_number,image_id&limit=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.8.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1225'
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 05 Dec 2021 01:47:01 GMT
+      Server:
+      - Apache/2.4.51 () OpenSSL/1.0.2k-fips
+      Cache-Control:
+      - no-cache, private
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - '"03d9f2ca10dd92e55be314610eba9e62-gzip"'
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 b492a120e23cd356f9aef807dc8ed7aa.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - MSP50-C1
+      X-Amz-Cf-Id:
+      - kufWUzqTpEp2SX2yfEAJ5NG2wv8uLxqC9PcpPeqI1XUI6R-tzDBlZw==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"pagination":{"total":115799,"limit":10,"offset":0,"total_pages":11580,"current_page":1,"next_url":"https:\/\/api.artic.edu\/api\/v1\/artworks?page=2&fields=id%2Ctitle%2Cartist_title%2Cdate_display%2Cmain_reference_number%2Cimage_id&limit=10"},"data":[{"id":262083,"title":"Intaglio
+        of Mars","main_reference_number":"2021.415","date_display":"About 1st century
+        BCE","artist_title":null,"image_id":null},{"id":4841,"title":"Pivoting Nude,
+        Seen from Above","main_reference_number":"1922.4489","date_display":"1896\/1900","artist_title":"Auguste
+        Rodin","image_id":"d2d902ae-f195-d1a3-a5d5-5fa9fb0f3aa0"},{"id":112862,"title":"The
+        Witches'' Sabbath (recto); Sketches of Centaurs (verso)","main_reference_number":"1923.943","date_display":"1883\/89","artist_title":"Auguste
+        Rodin","image_id":"29eaa0e8-254f-a871-34db-781f2e92aa61"},{"id":8969,"title":"Beggar
+        with Oysters (Philosopher)","main_reference_number":"1931.504","date_display":"1865\/67","artist_title":"\u00c9douard
+        Manet","image_id":"4e074d70-4424-331b-ec89-0776a45d6825"},{"id":9614,"title":"Haunted
+        House","main_reference_number":"1931.707","date_display":"1930","artist_title":"Morris
+        Kantor","image_id":"0330a6dd-774e-eff1-0073-2be5f85b81d0"},{"id":10550,"title":"The
+        Dance","main_reference_number":"1932.52","date_display":"c. 1750","artist_title":"Pietro
+        Longhi","image_id":"cb178a5a-6c55-c423-a186-d3d467a72f2f"},{"id":11312,"title":"Woman
+        Mending","main_reference_number":"1959.636","date_display":"1895","artist_title":"Camille
+        Pissarro","image_id":"132b782d-54e6-70e1-18f9-211468c09099"},{"id":16571,"title":"Arrival
+        of the Normandy Train, Gare Saint-Lazare","main_reference_number":"1933.1158","date_display":"1877","artist_title":"Claude
+        Monet","image_id":"0f1cc0e0-e42e-be16-3f71-2022da38cb93"},{"id":21678,"title":"Foliate
+        Bowl with Stylized Peony Spray","main_reference_number":"1964.847","date_display":"Northern
+        Song dynasty (960\u20131127), 12th century","artist_title":null,"image_id":"8b687509-2df3-6b1e-5487-f437fa02a1b5"},{"id":21727,"title":"Thanksgiving","main_reference_number":"1935.313","date_display":"c.
+        1935","artist_title":"Doris Lee","image_id":"d388928f-3222-b48c-1cbb-7afa917de928"}],"info":{"license_text":"The
+        data in this response is licensed under a Creative Commons Zero (CC0) 1.0
+        designation and the Terms and Conditions of artic.edu.","license_links":["https:\/\/creativecommons.org\/publicdomain\/zero\/1.0\/","https:\/\/www.artic.edu\/terms"],"version":"1.2"},"config":{"iiif_url":"https:\/\/www.artic.edu\/iiif\/2","website_url":"http:\/\/www.artic.edu"}}
+
+        '
+  recorded_at: Sun, 05 Dec 2021 01:47:01 GMT
+recorded_with: VCR 6.0.0

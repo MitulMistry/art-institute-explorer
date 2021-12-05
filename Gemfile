@@ -47,6 +47,10 @@ group :development, :test do
   gem 'rexml', '~> 3.2', '>= 3.2.5'
   # Use Factory Bot to generate model instances for tests
   gem 'factory_bot_rails', '~> 6.2'
+  # Use WebMock to intercept external API calls in tests
+  gem 'webmock', '~> 3.14'
+  # Use VCR to record and reuse external API calls in tests with WebMock
+  gem 'vcr', '~> 6.0'
 end
 
 group :development do

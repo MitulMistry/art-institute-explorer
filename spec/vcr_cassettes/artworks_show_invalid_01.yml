@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.artic.edu/api/v1/artworks/invalid1234
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.8.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 05 Dec 2021 02:03:46 GMT
+      Server:
+      - Apache/2.4.51 () OpenSSL/1.0.2k-fips
+      Cache-Control:
+      - no-cache, private
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - '"d0cf00d919b75759a28ce064285b04ef"'
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 2aa70b747c4cbd671958bc7faab603a2.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - MSP50-C1
+      X-Amz-Cf-Id:
+      - HL2uzZnu-mjyd7nkVHFschM1UYNSdeKLEW2rONF8XM0fhwqBbnODmA==
+    body:
+      encoding: UTF-8
+      string: '{"status":400,"error":"Invalid syntax","detail":"The identifier syntax
+        is invalid."}
+
+        '
+  recorded_at: Sun, 05 Dec 2021 02:03:46 GMT
+recorded_with: VCR 6.0.0
