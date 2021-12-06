@@ -8,7 +8,7 @@ class Api::V1::ArtworksController < ApplicationController
 
       response = Faraday.get(url) do |req|
         req.params["limit"] = 10
-        req.params["fields"] = "id,title,artist_title,date_display,main_reference_number,image_id"
+        req.params["fields"] = "id,title,artist_title,date_display,image_id,thumbnail"
         req.options.timeout = 8000
       end
 
@@ -28,7 +28,7 @@ class Api::V1::ArtworksController < ApplicationController
       response = Faraday.get(url) do |req|
         req.params["limit"] = 10
         req.params["q"] = query
-        req.params["fields"] = "id,title,artist_title,date_display,main_reference_number,image_id"
+        req.params["fields"] = "id,title,artist_title,date_display,image_id,thumbnail"
         req.options.timeout = 8000
       end
 

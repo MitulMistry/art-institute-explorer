@@ -47,7 +47,7 @@ class Api::V1::UsersController < ApplicationController
   # Make sure the currently logged in user can only update their own account.
   def authorize_ownership
     if @user != current_user
-      render json: ["unauthorized"], status: :forbidden
+      render json: ["Unauthorized"], status: :forbidden
       return # Guard clause
     end
   end
