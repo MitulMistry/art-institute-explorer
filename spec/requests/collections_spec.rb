@@ -62,25 +62,27 @@ RSpec.describe "Collections", type: :request do
       it "responds with a JSON formatted list of liked Collections" do
         user2 = create(:user)
         collection1 = create(:collection, user: @user)
-        collection2 = create(:collection, user: @user)
+        collection2 = create(:collection, user: user2)
         collection3 = create(:collection, user: user2)
+        @user.liked_collections << collection2
+        @user.liked_collections << collection3
 
         get api_v1_collections_liked_url
         expect(response).to be_successful
 
         json = JSON.parse(response.body)
-        expect(json.any? { |hash| hash["title"] == collection1.title }).to be true
+        expect(json.none? { |hash| hash["title"] == collection1.title }).to be true
         expect(json.any? { |hash| hash["title"] == collection2.title }).to be true
-        expect(json.none? { |hash| hash["title"] == collection3.title }).to be true
+        expect(json.any? { |hash| hash["title"] == collection3.title }).to be true
       end
     end
   end
 
   shared_examples_for "no access to liked Collections" do
     describe "GET /liked" do
-      it "responds with 403 forbidden" do
+      it "responds with 401 unauthorized" do
         get api_v1_collections_liked_url
-        expect(response).to have_http_status(403)
+        expect(response).to have_http_status(401)
       end
     end
   end
@@ -216,9 +218,9 @@ RSpec.describe "Collections", type: :request do
         }.to change(Collection, :count).by(0)
       end
 
-      it "responds with 403 forbidden" do
+      it "responds with 401 unauthorized" do
         post api_v1_collections_url, params: { collection: valid_attributes }
-        expect(response).to have_http_status(403)
+        expect(response).to have_http_status(401)
       end
     end
 
@@ -239,9 +241,9 @@ RSpec.describe "Collections", type: :request do
         expect(@collection.user_id).to eq(user_id)
       end
 
-      it "responds with 403 forbidden" do
+      it "responds with 401 unauthorized" do
         patch api_v1_collection_url(@collection), params: { collection: valid_attributes }
-        expect(response).to have_http_status(403)
+        expect(response).to have_http_status(401)
       end
     end
 
@@ -256,9 +258,9 @@ RSpec.describe "Collections", type: :request do
         }.to change(Collection, :count).by(0)
       end
 
-      it "responds with 403 forbidden" do
+      it "responds with 401 unauthorized" do
         delete api_v1_collection_url(@collection)
-        expect(response).to have_http_status(403)
+        expect(response).to have_http_status(401)
       end
     end
   end

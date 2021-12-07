@@ -54,8 +54,8 @@ ActiveRecord::Base.transaction do
       description: Faker::Lorem.paragraph
     )
     collection.artworks << artwork1
-    collection.artworks << artwork2 if rand(1) == 1
-    collection.artworks << artwork3 if rand(1) == 1
+    collection.artworks << artwork2 if rand(10) > 4
+    collection.artworks << artwork3 if rand(10) > 4
     collection.save
   end
 end
