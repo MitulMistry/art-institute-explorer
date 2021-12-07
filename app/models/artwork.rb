@@ -4,7 +4,7 @@ class Artwork < ApplicationRecord
   has_many :collection_artworks
   has_many :collections, through: :collection_artworks
 
-  validates :aic_id, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 99999 }
+  validates :aic_id, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 999999 }
   validates :image_id, presence: true, length: { maximum: 1000 }
   validates :image_url_prefix, presence: true, length: { maximum: 1000 }
   validates :title, length: { maximum: 300 }
@@ -13,7 +13,7 @@ class Artwork < ApplicationRecord
 
   def self.find_or_create_by_aic_id(aic_id)
     begin
-      if aic_id.is_a?(Integer) && aic_id > 0 && aic_id <= 99999
+      if aic_id.is_a?(Integer) && aic_id > 0 && aic_id <= 999999
         artwork = Artwork.find_by(aic_id: aic_id)
 
         if !artwork

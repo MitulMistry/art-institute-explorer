@@ -16,7 +16,7 @@ RSpec.describe Artwork, type: :model do
     context "required validations" do
       it { should validate_presence_of(:aic_id) }
       it { should validate_numericality_of(:aic_id).
-        only_integer.is_greater_than_or_equal_to(1).is_less_than_or_equal_to(99999) }
+        only_integer.is_greater_than_or_equal_to(1).is_less_than_or_equal_to(999999) }
       it { should validate_presence_of(:image_id) }
       it { should validate_length_of(:image_id).is_at_most(1000) }
       it { should validate_presence_of(:image_url_prefix) }

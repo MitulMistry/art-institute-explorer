@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :collections
   has_many :collection_likes
   has_many :liked_collections, through: :collection_likes, source: :collection
+  has_many :collection_comments
 
   has_one_attached :avatar
 
