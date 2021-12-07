@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "CollectionLikes", type: :request do
   let(:valid_attributes) {
-    attributes_for(:collection_like, user: (@user || create(:user)))
+    attributes_for(:collection_like, collection_id: create(:collection).id)
   }
 
   let(:invalid_attributes) {
-    attributes_for(:invalid_collection_like, user: (@user || create(:user)))
+    attributes_for(:invalid_collection_like, collection_id: build(:collection).id)
   }
 
   shared_examples_for "access to CollectionLike creation" do
@@ -21,7 +21,7 @@ RSpec.describe "CollectionLikes", type: :request do
         it "responds with the Collection's number of likes in JSON format" do
           post api_v1_collection_likes_url, params: { collection_like: valid_attributes }
           json = JSON.parse(response.body)
-          expect(json["likes"]).to eq(1)
+          expect(json["collection_like_count"]).to eq(1)
         end
       end
 
@@ -37,7 +37,7 @@ RSpec.describe "CollectionLikes", type: :request do
           expect(response).to have_http_status(422)
 
           json = JSON.parse(response.body)
-          expect(json["collection_id"]).to include("can't be blank")
+          expect(json["collection"]).to include("must exist")
         end
       end
     end
@@ -83,9 +83,9 @@ RSpec.describe "CollectionLikes", type: :request do
 
   shared_examples_for "no creation or destruction access to CollectionLikes" do
     describe "POST /create" do
-      it "responds with 403 forbidden" do
+      it "responds with 401 unauthorized" do
         post api_v1_collection_likes_url, params: { collection_like: valid_attributes }
-        expect(response).to have_http_status(403)
+        expect(response).to have_http_status(401)
       end
     end
 
@@ -100,9 +100,9 @@ RSpec.describe "CollectionLikes", type: :request do
         }.to change(CollectionLike, :count).by(0)
       end
 
-      it "responds with 403 forbidden" do     
+      it "responds with 401 unauthorized" do     
         delete api_v1_collection_like_url(@collection_like)
-        expect(response).to have_http_status(403)
+        expect(response).to have_http_status(401)
       end
     end
   end
