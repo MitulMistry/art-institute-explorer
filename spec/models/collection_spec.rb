@@ -15,6 +15,7 @@ RSpec.describe Collection, type: :model do
     it { should belong_to(:user) }
     it { should have_many(:collection_artworks) }
     it { should have_many(:artworks) }
+    it { should have_many(:collection_comments) }
   end
 
   describe "validations" do

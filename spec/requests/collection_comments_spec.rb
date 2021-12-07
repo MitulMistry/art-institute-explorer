@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "CollectionComments", type: :request do
   let(:valid_attributes) {
-    attributes_for(:collection_comment, user: (@user || create(:user)))
+    attributes_for(:collection_comment, collection_id: create(:collection).id)
   }
 
   let(:invalid_attributes) {
-    attributes_for(:invalid_collection_comment, user: (@user || create(:user)))
+    attributes_for(:invalid_collection_comment, collection_id: create(:collection).id)
   }
 
   let(:new_attributes) {
@@ -143,9 +143,9 @@ RSpec.describe "CollectionComments", type: :request do
         }.to change(CollectionComment, :count).by(0)
       end
 
-      it "responds with 403 forbidden" do
+      it "responds with 401 unauthorized" do
         post api_v1_collection_comments_url, params: { collection_comment: valid_attributes }
-        expect(response).to have_http_status(403)
+        expect(response).to have_http_status(401)
       end
     end
 
@@ -164,9 +164,9 @@ RSpec.describe "CollectionComments", type: :request do
         expect(@collection_comment.user_id).to eq(user_id)
       end
 
-      it "responds with 403 forbidden" do
+      it "responds with 401 unauthorized" do
         patch api_v1_collection_comment_url(@collection_comment), params: { collection_comment: valid_attributes }
-        expect(response).to have_http_status(403)
+        expect(response).to have_http_status(401)
       end
     end
 
@@ -181,9 +181,9 @@ RSpec.describe "CollectionComments", type: :request do
         }.to change(CollectionComment, :count).by(0)
       end
 
-      it "responds with 403 forbidden" do        
+      it "responds with 401 unauthorized" do        
         delete api_v1_collection_comment_url(@collection_comment)
-        expect(response).to have_http_status(403)
+        expect(response).to have_http_status(401)
       end
     end
   end
