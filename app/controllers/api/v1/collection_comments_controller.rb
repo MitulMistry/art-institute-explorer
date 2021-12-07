@@ -1,7 +1,20 @@
 class Api::V1::CollectionCommentsController < ApplicationController
   before_action :authorized, only: %i[ create update destroy ]
-  before_action :set_comment, only: %i[ update destroy ]
+  before_action :set_collection_comment, only: %i[ show update destroy ]
+  before_action :set_collection, only: :collection
   before_action :authorize_ownership, only: %i[ update destroy ]
+
+  def index
+    @collection_comments = CollectionComment.all
+  end
+
+  def show
+  end
+
+  def collection
+    @collection_comments = @collection.collection_comments
+    render template: "api/v1/collection_comments/index"
+  end
 
   def create
     @collection_comment = current_user.collection_comments.build(collection_comment_params)
@@ -28,8 +41,12 @@ class Api::V1::CollectionCommentsController < ApplicationController
 end
 
 private
-def set_comment
+def set_collection_comment
   @collection_comment = CollectionComment.find(params[:id])
+end
+
+def set_collection
+  @collection = Collection.find(params[:id])
 end
 
 # Make sure the currently logged in user can only update their own Comment.

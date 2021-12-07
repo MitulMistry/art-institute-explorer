@@ -14,7 +14,8 @@ Rails.application.routes.draw do
       get '/collections/liked' => 'collections#liked'
       resources :collections      
       resources :collection_likes, only: [:create, :destroy]
-      resources :collection_comments, only: [:create, :update, :destroy]
+      resources :collection_comments, only: [:index, :show, :create, :update, :destroy]
+      get '/collection_comments/collection/:id' => 'collection_comments#collection', as: 'collection_comments_by_collection'
     end
   end
 

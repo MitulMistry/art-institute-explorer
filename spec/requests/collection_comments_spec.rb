@@ -15,6 +15,54 @@ RSpec.describe "CollectionComments", type: :request do
     )
   }
 
+  shared_examples_for "public access to CollectionComments" do
+    describe "GET /index" do
+      it "responds with a JSON formatted list of CollectionComments" do
+        collection_comment1 = create(:collection_comment)
+        collection_comment2 = create(:collection_comment)
+        collection_comment3 = create(:collection_comment)
+
+        get api_v1_collection_comments_url
+        expect(response).to be_successful
+        
+        json = JSON.parse(response.body)
+        expect(json.any? { |hash| hash["body"] == collection_comment1.body }).to be true
+        expect(json.any? { |hash| hash["body"] == collection_comment2.body }).to be true
+        expect(json.any? { |hash| hash["body"] == collection_comment3.body }).to be true
+      end
+    end
+
+    describe "GET /show" do
+      it "responds with a JSON formatted CollectionComment" do
+        collection_comment = create(:collection_comment)
+
+        get api_v1_collection_comment_url(collection_comment)
+        expect(response).to be_successful
+
+        json = JSON.parse(response.body)
+        expect(json["body"]).to eq(collection_comment.body)
+      end
+    end
+
+    describe "GET /collection" do
+      it "responds with a JSON formatted list of CollectionComments for a specified Collection" do
+        collection1 = create(:collection)
+        collection2 = create(:collection)        
+        collection_comment1 = create(:collection_comment, collection_id: collection2.id)
+        collection_comment2 = create(:collection_comment, collection_id: collection2.id)
+        collection_comment3 = create(:collection_comment)
+
+        get api_v1_collection_comments_by_collection_url(collection2)
+        expect(response).to be_successful
+        
+        json = JSON.parse(response.body)
+        expect(json.length).to eq(2)
+        expect(json.any? { |hash| hash["body"] == collection_comment1.body }).to be true
+        expect(json.any? { |hash| hash["body"] == collection_comment2.body }).to be true
+      end
+    end
+  end
+
   shared_examples_for "access to CollectionComment creation" do
     describe "POST /create" do
       context "with valid parameters" do
@@ -193,12 +241,14 @@ RSpec.describe "CollectionComments", type: :request do
       @user = create_user_and_login
     end
 
+    it_behaves_like "public access to CollectionComments"
     it_behaves_like "access to CollectionComment creation"
     it_behaves_like "modification access to owned CollectionComments"
     it_behaves_like "no modification access to non-owned CollectionComments"
   end
 
   describe "unauthenticated access" do
+    it_behaves_like "public access to CollectionComments"
     it_behaves_like "no creation or modification access to CollectionComments"
   end
 end
