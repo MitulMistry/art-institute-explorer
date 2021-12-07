@@ -3,7 +3,12 @@ class Collection < ApplicationRecord
   has_many :collection_artworks
   has_many :artworks, through: :collection_artworks
   has_many :collection_comments
+  has_many :collection_likes
 
   validates :title, presence: true, length: { maximum: 300 }
   validates :description, length: { maximum: 1000 }
+
+  def like_count
+    self.collection_likes.count
+  end
 end
