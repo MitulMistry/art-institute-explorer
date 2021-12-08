@@ -25,4 +25,8 @@ class ApplicationController < ActionController::Base
   def authorized
     render json: ["Unauthorized"], status: :unauthorized unless logged_in?
   end
+
+  def render_forbidden
+    render json: ["Forbidden"], status: :forbidden
+  end
 end

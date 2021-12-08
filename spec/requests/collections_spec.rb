@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Collections", type: :request do
+RSpec.describe "/collections", type: :request do
 
   let(:valid_attributes) {
     attributes_for(:collection, user: (@user || create(:user)))
@@ -42,7 +42,7 @@ RSpec.describe "Collections", type: :request do
 
         get api_v1_collections_url
         expect(response).to be_successful
-        
+
         # Returns an array of hashes: [{id: 1, ...}, {id: 2, ...}]
         json = JSON.parse(response.body)
         # Check if any of the collection hashes contains the specified title
@@ -150,7 +150,7 @@ RSpec.describe "Collections", type: :request do
 
           VCR.use_cassette("collections_create_with_aic_ids") do
             post api_v1_collections_url, params: { collection: valid_attributes_with_aic_ids }
-            
+
             collection = Collection.last
             expect(collection.artworks).to include(artwork1)
             expect(collection.artworks).to include(artwork2)
@@ -192,7 +192,7 @@ RSpec.describe "Collections", type: :request do
 
           VCR.use_cassette("collections_create_with_aic_ids") do
             post api_v1_collections_url, params: { collection: valid_attributes_with_aic_ids }
-            
+
             collection = Collection.last
             artwork2 = Artwork.last
 
@@ -233,13 +233,13 @@ RSpec.describe "Collections", type: :request do
       @collection = create(:collection, user: (@user || create(:user)))
     end
 
-    describe "PATCH /update" do     
+    describe "PATCH /update" do
       context "with valid parameters" do
-        before :each do          
+        before :each do
           patch api_v1_collection_url(@collection), params: { collection: new_attributes }
         end
 
-        it "updates the requested Collection" do          
+        it "updates the requested Collection" do
           @collection.reload
           expect(@collection.title).to eq(new_attributes[:title])
           expect(@collection.description).to eq(new_attributes[:description])
@@ -270,7 +270,7 @@ RSpec.describe "Collections", type: :request do
 
           VCR.use_cassette("collections_create_with_aic_ids") do
             patch api_v1_collection_url(@collection), params: { collection: new_attributes_with_aic_ids }
-            
+
             collection = Collection.last
             expect(collection.artworks).to include(artwork1)
             expect(collection.artworks).to include(artwork2)
@@ -312,7 +312,7 @@ RSpec.describe "Collections", type: :request do
 
           VCR.use_cassette("collections_create_with_aic_ids") do
             patch api_v1_collection_url(@collection), params: { collection: new_attributes_with_aic_ids }
-            
+
             collection = Collection.last
             artwork2 = Artwork.last
 
@@ -367,7 +367,7 @@ RSpec.describe "Collections", type: :request do
       @collection = create(:collection, user: @user2)
     end
 
-    describe "PATCH /update" do    
+    describe "PATCH /update" do
       it "does not update the requested Collection" do
         title = @collection.title
         description = @collection.description

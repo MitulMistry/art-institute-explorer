@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.artic.edu/api/v1/artworks/search?fields=id,title,artist_title,date_display,main_reference_number,image_id&limit=10&q=van%20gogh
+    uri: https://api.artic.edu/api/v1/artworks/search?fields=id,title,artist_title,date_display,image_id,thumbnail&limit=10&q=van%20gogh
     body:
       encoding: US-ASCII
       string: ''
@@ -21,11 +21,11 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '1080'
+      - '3414'
       Connection:
       - keep-alive
       Date:
-      - Sun, 05 Dec 2021 01:45:38 GMT
+      - Wed, 08 Dec 2021 22:20:39 GMT
       Server:
       - Apache/2.4.51 () OpenSSL/1.0.2k-fips
       Cache-Control:
@@ -33,42 +33,64 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Etag:
-      - '"b84a9083cd0e45423c7d8daf6aa0471e-gzip"'
+      - '"ee12843c46335306fef9668abe2113de-gzip"'
       Vary:
       - Accept-Encoding
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 ffd072342ed9fd3f694863ae9f14b970.cloudfront.net (CloudFront)
+      - 1.1 e7e1e540136f32c828b7e3a521644343.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - MSP50-C1
+      - ORD50-C1
       X-Amz-Cf-Id:
-      - 2N2IudX9S47m1dgJSh-d4UkNF4PBPE8nfyhR1-BpqY33s3EXvUxwhw==
+      - pLTxGMDQn0CQBZf1pRn33GzMyXn-mWjb1Olbm3e4_apznzXOic3CWg==
     body:
       encoding: ASCII-8BIT
-      string: '{"preference":null,"pagination":{"total":1868,"limit":10,"offset":0,"total_pages":187,"current_page":1},"data":[{"_score":3301.1685,"date_display":"1889","artist_title":"Vincent
+      string: '{"preference":null,"pagination":{"total":1868,"limit":10,"offset":0,"total_pages":187,"current_page":1},"data":[{"_score":3438.0586,"thumbnail":{"alt_text":"Painting
+        of bedroom, blue walls, green window, tan bed, red bedding.","width":2867,"lqip":"data:image\/gif;base64,R0lGODlhBgAFAPQAAHhwV3N+bnh\/aXR8dJtsG6VsAJx4IIp8PIx0QYZ2SoZ\/bIx+b3CGboiAQoKAVoWAVpiLYZqNYIiAcoeIc5SNdJeJfJiKfXyCgneAkXmLp3eFqomMgIWJmZOerAAAAAAAACH5BAAAAAAALAAAAAAGAAUAAAUYoMYEXJdhgwBF1wM4RIE01HYYiVJZk7SEADs=","height":2250},"date_display":"1889","artist_title":"Vincent
         van Gogh","id":28560,"image_id":"25c31d8d-21a4-9ea1-1d73-6a2eca4dda7e","title":"The
-        Bedroom","main_reference_number":"1926.417"},{"_score":3179.3457,"date_display":"1887","artist_title":"Vincent
-        van Gogh","id":80607,"image_id":"26d3cea8-44c0-bfbd-a91a-19a007517152","title":"Self-Portrait","main_reference_number":"1954.326"},{"_score":2769.99,"date_display":"1888","artist_title":"Vincent
+        Bedroom"},{"_score":3311.1843,"thumbnail":{"alt_text":"Painting of a red-haired,
+        bearded man with light skin, painted in short brushstrokes and multicolored
+        dots. The background is likewise a mass of small, closely spaced colored dots,
+        these in green, blue, and red-orange.","width":7546,"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAADs1NzI4PTo5PT48PEU6PFJFPytAQy5JTDRJTD5PUEtCQEtMTVRHQUdSTmFQSW5aS2BbUZNmUYN5Z7WZeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAURINJAgSFNw\/FEQsI4wEIoRQgAOw==","height":9573},"date_display":"1887","artist_title":"Vincent
+        van Gogh","id":80607,"image_id":"26d3cea8-44c0-bfbd-a91a-19a007517152","title":"Self-Portrait"},{"_score":2884.8538,"thumbnail":{"alt_text":"Lush
+        tall grasses with small white flowers foreground a grove of bushy trees of
+        varying types and heights, their leaves ranging from deep green to golden.
+        Beneath a dense and heavy yellow sky, a small blue triangle suggesting a mountain
+        peak crests above the treeline at far left.","width":8799,"lqip":"data:image\/gif;base64,R0lGODlhBgAFAPQAAC42JTA6JTU+Jj9EKFBLJEZQI0dSJk1UJUxcJ0FSK0ZRKURWLEdXL0tVKlRRJ0FOM0hVNEldMmBaK1VoLltuLWtsNXd0NXl5NXd5RIaIQY+VSJCXSJScT5meUQAAAAAAACH5BAAAAAAALAAAAAAGAAUAAAUY4KZdWcdhDmFV0gA8UCAoCDUli1EcDROFADs=","height":6986},"date_display":"1888","artist_title":"Vincent
         van Gogh","id":14586,"image_id":"9ea77636-76e9-9031-6b92-ff34512d7cbc","title":"The
-        Poet''s Garden","main_reference_number":"1933.433"},{"_score":2723.1409,"date_display":"c.
+        Poet''s Garden"},{"_score":2836.0618,"thumbnail":{"alt_text":"Painting of
+        a dark female figure digging in front of a thatched roof structure. Its colors
+        are muted, with a gray sky.","width":3000,"lqip":"data:image\/gif;base64,R0lGODlhBwAFAPUAAD04KkU8JUQ8K0M\/LU5JNlFHNVRMM1dNN1xPN1RLOFROOl9TPltUPWNXPWZYP2JaRGZeRWZiT2liSW9mTHFtWnlyXXZzYHB0ZpKVi6eqn7i5rrC5tba8tLS9trm8tLrBuLzEu8THvM3PwwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAHAAUAAAYhQM4H1Nl4QhXKBZPRiBoThgQSsQAUhMfAEEgUDgjBwhEEADs=","height":2203},"date_display":"c.
         1885","artist_title":"Vincent van Gogh","id":28862,"image_id":"1d3a275d-45dd-6026-b6ed-d7d8df417a3d","title":"A
-        Peasant Woman Digging in Front of Her Cottage","main_reference_number":"1968.92"},{"_score":2709.8984,"date_display":"1890","artist_title":"Vincent
+        Peasant Woman Digging in Front of Her Cottage"},{"_score":2822.2703,"thumbnail":{"alt_text":"Painting
+        of three male figures, two older men in top hats and a younger man with red
+        hair, standing outdoors around a wooden table with a pitcher on it, drinking
+        from glasses. A much smaller, childlike figure at left peers over the table
+        and drinks from a white cup. The scene is rendered in winding paint strokes
+        in shades of green and blue.","width":5922,"lqip":"data:image\/gif;base64,R0lGODlhBgAFAPQAAE1dSUtdTERbVkRgRFZmWVN0Y1drcFx6fG59ZmaCZWWDaHKGin2RiX+ZkoadhoiZhoeUi52klqmvnaOtp73AqbrGusjDrszPtsHPwc3Wy9DYxNTYyNTazN3dygAAAAAAACH5BAAAAAAALAAAAAAGAAUAAAUYYJVhGrd1ESVdFkQwxjIBiCMcTfAkQ6GEADs=","height":4764},"date_display":"1890","artist_title":"Vincent
         van Gogh","id":79349,"image_id":"d0ff5b36-bb38-b156-6042-5c8545352c2f","title":"The
-        Drinkers","main_reference_number":"1953.178"},{"_score":2706.3394,"date_display":"1887","artist_title":"Vincent
+        Drinkers"},{"_score":2818.5637,"thumbnail":{"alt_text":"Painting in short
+        strokes of pale blue, green, white, yellow, and pink, of a fisherman in one
+        of two small boats on a river, a tree-lined bank and a bridge in the background.","width":2689,"lqip":"data:image\/gif;base64,R0lGODlhBgAFAPQAAGpuW2hyWXR2VHV3VHF1Wl9ycWJxZmZ0bW50aHR8Y3V+aHF7bHR9b256fX+CSX6DXXOCdH2EcH2Ee4WGX5GWaoSNeoyUf3uJh4KLg5GYiJicj6CfiJ2poKqzqwAAAAAAACH5BAAAAAAALAAAAAAGAAUAAAUYYFRlXLcliqRRDsJcmDUBS2FAz0A0RyCEADs=","height":2250},"date_display":"1887","artist_title":"Vincent
         van Gogh","id":109314,"image_id":"92827fc4-78a3-a263-75a2-6470eabad38b","title":"Fishing
-        in Spring, the Pont de Clichy (Asni\u00e8res)","main_reference_number":"1965.1169"},{"_score":2648.1904,"date_display":"1889","artist_title":"Vincent
+        in Spring, the Pont de Clichy (Asni\u00e8res)"},{"_score":2758.0034,"thumbnail":{"alt_text":"A
+        work made of oil on canvas.","width":6938,"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAABonHxsqIzQrIzsxJzQzLUE6KTtFPVBNLklHMkRPMkBHOEFEPUxMOURQPGBXMlJfQk1sSFJ3TGVpWmNpXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAURoMIg0nQ4ixEAhPA0QxJBRQgAOw==","height":8822},"date_display":"1889","artist_title":"Vincent
         van Gogh","id":27949,"image_id":"9325e3ea-2d5d-120f-5bfb-faa0f8266ca6","title":"Madame
-        Roulin Rocking the Cradle (La berceuse)","main_reference_number":"1926.200"},{"_score":2623.1538,"date_display":"early
+        Roulin Rocking the Cradle (La berceuse)"},{"_score":2731.9287,"thumbnail":{"alt_text":"A
+        work made of oil on canvas, mounted on pressboard.","width":1699,"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAAGJpY3V\/gHWBgnmChYCKhYeGiYSTnJCXnKCZkp6mrp+psaOutqiutaOxv664v6q6y668y7zGz7rF0bjF1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAURYCNBjxNNxZIwCBEMByAYSggAOw==","height":2250},"date_display":"early
         1887","artist_title":"Vincent van Gogh","id":27954,"image_id":"6cb22407-be79-bf0a-1a63-fdf2b99e035b","title":"Terrace
-        and Observation Deck at the Moulin de Blute-Fin, Montmartre","main_reference_number":"1926.202"},{"_score":2610.8215,"date_display":"1887","artist_title":"Vincent
+        and Observation Deck at the Moulin de Blute-Fin, Montmartre"},{"_score":2719.085,"thumbnail":{"alt_text":"A
+        work made of oil on canvas.","width":2717,"lqip":"data:image\/gif;base64,R0lGODlhBgAFAPQAAFRJW3hxY3Jpc4lvZY55b5B3YYtxcpyHdoN5h499gYJ2iY2IjJmJhZ6MkaeThaGZh6qah6udi6KakZuRo5ySoqOapaqis6qltresub2wvcS6v6+tw6+vwrewwQAAAAAAACH5BAAAAAAALAAAAAAGAAUAAAUYoLVdUbVw0FEwTzIIgCEpATEhDkY1WpeFADs=","height":2250},"date_display":"1887","artist_title":"Vincent
         van Gogh","id":64957,"image_id":"f11bd233-6cc3-4221-59eb-f7363be4119e","title":"Grapes,
-        Lemons, Pears, and Apples","main_reference_number":"1949.215"},{"_score":2391.1028,"date_display":"1889","artist_title":"Vincent
+        Lemons, Pears, and Apples"},{"_score":2490.2551,"thumbnail":{"alt_text":"A
+        work made of reed pen and black-brown ink, with black chalk on off-white wove
+        paper.","width":2799,"lqip":"data:image\/gif;base64,R0lGODlhBgAFAPQAAD03LT43LUI8MUY+M0tDNk1EN09GOVVMP1ZNQFdPQ1pQQlxSQl1SQmVbS2ZcS2ZcTGleTWpeTXBkUXBlVX9yXYBzXoBzYIl8aY6Aap+PdqCSfbWmj7iokfTfwAAAAAAAACH5BAAAAAAALAAAAAAGAAUAAAUYIHchx9YNQCAkWlQYymRJzPI4FQURDZaFADs=","height":2250},"date_display":"1889","artist_title":"Vincent
         van Gogh","id":52733,"image_id":"34f09257-4c7f-3421-7396-e9dba321258a","title":"Weeping
-        Tree","main_reference_number":"1945.31"}],"info":{"license_text":"The data
-        in this response is licensed under a Creative Commons Zero (CC0) 1.0 designation
-        and the Terms and Conditions of artic.edu.","license_links":["https:\/\/creativecommons.org\/publicdomain\/zero\/1.0\/","https:\/\/www.artic.edu\/terms"],"version":"1.2"}}
+        Tree"}],"info":{"license_text":"The data in this response is licensed under
+        a Creative Commons Zero (CC0) 1.0 designation and the Terms and Conditions
+        of artic.edu.","license_links":["https:\/\/creativecommons.org\/publicdomain\/zero\/1.0\/","https:\/\/www.artic.edu\/terms"],"version":"1.2"}}
 
         '
-  recorded_at: Sun, 05 Dec 2021 01:45:38 GMT
+  recorded_at: Wed, 08 Dec 2021 22:20:39 GMT
 recorded_with: VCR 6.0.0

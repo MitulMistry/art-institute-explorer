@@ -1,19 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe "Sessions", type: :request do
+RSpec.describe "/sessions", type: :request do
   describe "POST /create" do
     before :each do
       @password = "password"
       @user = create(:user, password: @password)
     end
 
-    context "with valid password" do     
+    context "with valid password" do
       it "creates a new Session" do
         post api_v1_sessions_path, params: {
           username: @user.username,
           password: @password
         }
-        
+
         expect(response).to be_successful
 
         json = JSON.parse(response.body)
@@ -27,7 +27,7 @@ RSpec.describe "Sessions", type: :request do
           username: @user.username,
           password: "wrong_password"
         }
-        
+
         expect(response).to have_http_status(401)
 
         json = JSON.parse(response.body)
@@ -58,5 +58,5 @@ RSpec.describe "Sessions", type: :request do
         expect(json).to include("Not signed in")
       end
     end
-  end 
+  end
 end

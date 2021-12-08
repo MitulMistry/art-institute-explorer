@@ -52,7 +52,7 @@ class Api::V1::CollectionsController < ApplicationController
   # Make sure the currently logged in user can only update their own Collection.
   def authorize_ownership
     if @collection.user != current_user
-      render json: ["Unauthorized"], status: :forbidden
+      render_forbidden
       return # Guard clause
     end
   end

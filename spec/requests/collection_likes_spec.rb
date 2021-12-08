@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "CollectionLikes", type: :request do
+RSpec.describe "/collection_likes", type: :request do
   let(:valid_attributes) {
     attributes_for(:collection_like, collection_id: create(:collection).id)
   }
@@ -100,7 +100,7 @@ RSpec.describe "CollectionLikes", type: :request do
         }.to change(CollectionLike, :count).by(0)
       end
 
-      it "responds with 401 unauthorized" do     
+      it "responds with 401 unauthorized" do
         delete api_v1_collection_like_url(@collection_like)
         expect(response).to have_http_status(401)
       end

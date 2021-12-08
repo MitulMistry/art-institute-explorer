@@ -52,7 +52,7 @@ end
 # Make sure the currently logged in user can only update their own Comment.
 def authorize_ownership
   if @collection_comment.user != current_user
-    render json: ["Unauthorized"], status: :forbidden
+    render_forbidden
     return # Guard clause
   end
 end

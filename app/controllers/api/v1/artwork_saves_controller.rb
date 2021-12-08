@@ -43,7 +43,7 @@ class Api::V1::ArtworkSavesController < ApplicationController
    # Make sure the currently logged in user can only update their own ArtworkSaves.
    def authorize_ownership
     if @artwork_save.user != current_user
-      render json: ["Unauthorized"], status: :forbidden
+      render_forbidden
       return # Guard clause
     end
   end

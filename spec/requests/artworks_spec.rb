@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Artworks", type: :request do
+RSpec.describe "/artworks", type: :request do
   shared_examples_for "public access to artworks" do
     describe "GET /index" do
       it "responds with a JSON formatted list of artworks (10 by default)" do
@@ -33,7 +33,7 @@ RSpec.describe "Artworks", type: :request do
           VCR.use_cassette("artworks_show_grande_jatte") do
             get api_v1_artwork_url(27992)
             expect(response).to be_successful
-            
+
             json = JSON.parse(response.body)
             expect(json["data"]["title"]).to eq("A Sunday on La Grande Jatte — 1884")
           end

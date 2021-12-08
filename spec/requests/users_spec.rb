@@ -1,7 +1,7 @@
  require 'rails_helper'
 
-RSpec.describe "/users", type: :request do  
-  
+RSpec.describe "/users", type: :request do
+
   # A hash of valid attributes for User model (Using FactoryBot)
   # attributes_for creates a params hash, mimicking the hash from a form
   let(:valid_attributes) {
@@ -31,7 +31,7 @@ RSpec.describe "/users", type: :request do
 
         get api_v1_users_url
         expect(response).to be_successful
-        
+
         # Returns an array of hashes: [{id: 1, ...}, {id: 2, ...}]
         json = JSON.parse(response.body)
         # Check if any of the user hashes contains the specified username
@@ -97,7 +97,7 @@ RSpec.describe "/users", type: :request do
           patch api_v1_user_url(@user), params: { user: new_attributes }
         end
 
-        it "updates the requested user" do          
+        it "updates the requested user" do
           @user.reload
           expect(@user.username).to eq("updated_user")
           expect(@user.email).to eq("updated@email.com")
@@ -184,7 +184,7 @@ RSpec.describe "/users", type: :request do
         expect(response).to have_http_status(403)
 
         json = JSON.parse(response.body)
-        expect(json).to include("unauthorized")
+        expect(json).to include("Forbidden")
       end
     end
   end

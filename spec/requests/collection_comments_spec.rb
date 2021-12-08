@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "CollectionComments", type: :request do
+RSpec.describe "/collection_comments", type: :request do
   let(:valid_attributes) {
     attributes_for(:collection_comment, collection_id: create(:collection).id)
   }
@@ -24,7 +24,7 @@ RSpec.describe "CollectionComments", type: :request do
 
         get api_v1_collection_comments_url
         expect(response).to be_successful
-        
+
         json = JSON.parse(response.body)
         expect(json.any? { |hash| hash["body"] == collection_comment1.body }).to be true
         expect(json.any? { |hash| hash["body"] == collection_comment2.body }).to be true
@@ -47,14 +47,14 @@ RSpec.describe "CollectionComments", type: :request do
     describe "GET /collection" do
       it "responds with a JSON formatted list of CollectionComments for a specified Collection" do
         collection1 = create(:collection)
-        collection2 = create(:collection)        
+        collection2 = create(:collection)
         collection_comment1 = create(:collection_comment, collection_id: collection2.id)
         collection_comment2 = create(:collection_comment, collection_id: collection2.id)
         collection_comment3 = create(:collection_comment)
 
         get api_v1_collection_comments_by_collection_url(collection2)
         expect(response).to be_successful
-        
+
         json = JSON.parse(response.body)
         expect(json.length).to eq(2)
         expect(json.any? { |hash| hash["body"] == collection_comment1.body }).to be true
@@ -102,13 +102,13 @@ RSpec.describe "CollectionComments", type: :request do
       @collection_comment = create(:collection_comment, user: (@user || create(:user)))
     end
 
-    describe "PATCH /update" do     
+    describe "PATCH /update" do
       context "with valid parameters" do
-        before :each do          
+        before :each do
           patch api_v1_collection_comment_url(@collection_comment), params: { collection_comment: new_attributes }
         end
 
-        it "updates the requested Collection" do          
+        it "updates the requested Collection" do
           @collection_comment.reload
           expect(@collection_comment.body).to eq(new_attributes[:body])
         end
@@ -152,7 +152,7 @@ RSpec.describe "CollectionComments", type: :request do
       @collection_comment = create(:collection_comment, user: @user2)
     end
 
-    describe "PATCH /update" do    
+    describe "PATCH /update" do
       it "does not update the requested CollectionComment" do
         body = @collection_comment.body
         user_id = @collection_comment.user_id
@@ -229,7 +229,7 @@ RSpec.describe "CollectionComments", type: :request do
         }.to change(CollectionComment, :count).by(0)
       end
 
-      it "responds with 401 unauthorized" do        
+      it "responds with 401 unauthorized" do
         delete api_v1_collection_comment_url(@collection_comment)
         expect(response).to have_http_status(401)
       end

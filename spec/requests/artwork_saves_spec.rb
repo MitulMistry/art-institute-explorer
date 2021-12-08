@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "ArtworkSaves", type: :request do
+RSpec.describe "/artwork_saves", type: :request do
 
   let(:valid_attributes) {
     { user_id: (@user || create(:user)).id, artwork_id: create(:artwork, aic_id: 27992).id }
@@ -36,7 +36,7 @@ RSpec.describe "ArtworkSaves", type: :request do
         expect(json.any? { |hash| hash["title"] == artwork1.title }).to be true
         expect(json.any? { |hash| hash["title"] == artwork2.title }).to be true
       end
-    end    
+    end
 
     describe "POST /create" do
       context "with valid parameters" do
@@ -114,7 +114,7 @@ RSpec.describe "ArtworkSaves", type: :request do
         # @artwork_save = ArtworkSave.create(user_id: @user.id, artwork_id: valid_attributes[:artwork_id])
       end
 
-      it "destroys the requested ArtworkSave successfully" do       
+      it "destroys the requested ArtworkSave successfully" do
         expect {
           # byebug
           delete api_v1_artwork_save_url(@artwork_save)
@@ -135,7 +135,7 @@ RSpec.describe "ArtworkSaves", type: :request do
         @artwork_save = ArtworkSave.create(valid_attributes_non_owned)
       end
 
-      it "does not destroy the requested ArtworkSave" do       
+      it "does not destroy the requested ArtworkSave" do
         expect {
           delete api_v1_artwork_save_url(@artwork_save)
         }.to change(ArtworkSave, :count).by(0)
@@ -157,7 +157,7 @@ RSpec.describe "ArtworkSaves", type: :request do
     end
 
     describe "POST /create" do
-      it "does not create the requested ArtworkSave" do       
+      it "does not create the requested ArtworkSave" do
         expect {
           post api_v1_artwork_saves_url, params: { artwork_save: valid_attributes }
         }.to change(ArtworkSave, :count).by(0)
@@ -171,16 +171,16 @@ RSpec.describe "ArtworkSaves", type: :request do
 
     describe "DELETE /destroy" do
       before :each do
-        @artwork_save = ArtworkSave.create(valid_attributes)  
+        @artwork_save = ArtworkSave.create(valid_attributes)
       end
 
-      it "does not destroy the requested ArtworkSave" do       
+      it "does not destroy the requested ArtworkSave" do
         expect {
           delete api_v1_artwork_save_url(@artwork_save)
         }.to change(ArtworkSave, :count).by(0)
       end
 
-      it "responds with 401 unauthorized" do        
+      it "responds with 401 unauthorized" do
         delete api_v1_artwork_save_url(@artwork_save)
         expect(response).to have_http_status(401)
       end
