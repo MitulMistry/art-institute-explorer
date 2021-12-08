@@ -67,6 +67,57 @@ RSpec.describe Artwork, type: :model do
           artwork = Artwork.find_or_create_by_aic_id(@aic_id)
           expect(artwork).to be_valid
           expect(artwork.aic_id).to eq(@aic_id)
+          expect(artwork.artist_title).to eq("Georges Seurat")
+        end
+      end
+    end
+
+    context "##find_or_create_by_aic_ids" do
+      before :each do
+        @aic_id1 = 27992
+        @aic_id2 = 151424
+      end
+
+      it "finds the correct Artworks using aic_ids if they exist" do
+        VCR.use_cassette("collections_create_with_aic_ids") do
+          artwork1 = create(:artwork, aic_id: @aic_id1)
+          artwork2 = create(:artwork, aic_id: @aic_id2)
+
+          found_artworks = Artwork.find_or_create_by_aic_ids([@aic_id1, @aic_id2])
+
+          expect(found_artworks.count).to eq(2)
+          expect(found_artworks).to include(artwork1)
+          expect(found_artworks).to include(artwork2)
+        end
+      end
+
+      it "doesn't create Artworks if they exist" do
+        VCR.use_cassette("collections_create_with_aic_ids") do
+          create(:artwork, aic_id: @aic_id1)
+          create(:artwork, aic_id: @aic_id2)
+          
+          expect {
+            Artwork.find_or_create_by_aic_ids([@aic_id1, @aic_id2])
+          }.to change(Artwork, :count).by(0)
+        end
+      end
+      
+      it "creates Artworks using aic_ids if they don't exist" do
+        VCR.use_cassette("collections_create_with_aic_ids") do
+          expect {
+            Artwork.find_or_create_by_aic_ids([@aic_id1, @aic_id2])
+          }.to change(Artwork, :count).by(2)
+        end
+      end
+
+      it "returns the correctly created Artworks using aic_ids if they don't exist" do
+        VCR.use_cassette("collections_create_with_aic_ids") do
+          artworks = Artwork.find_or_create_by_aic_ids([@aic_id1, @aic_id2])
+
+          expect(artworks.any? { |artwork| artwork["aic_id"] == 27992 }).to be true
+          expect(artworks.any? { |artwork| artwork["artist_title"] == "Georges Seurat" }).to be true
+          expect(artworks.any? { |artwork| artwork["aic_id"] == 151424 }).to be true
+          expect(artworks.any? { |artwork| artwork["title"] == "Inventions of the Monsters" }).to be true
         end
       end
     end
