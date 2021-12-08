@@ -10,10 +10,26 @@ RSpec.describe "Collections", type: :request do
     attributes_for(:invalid_collection, user: (@user || create(:user)))
   }
 
+  let(:valid_attributes_with_aic_ids) {
+    attributes_for(:collection, aic_ids: [27992, 151424])
+  }
+
+  let(:invalid_attributes_with_aic_ids) {
+    attributes_for(:collection, aic_ids: [9999999, 9999998])
+  }
+
   let(:new_attributes) {
     attributes_for(:collection,
       title: "updated_title",
       description: "updated description"
+    )
+  }
+
+  let(:new_attributes_with_aic_ids) {
+    attributes_for(:collection,
+      title: "updated_title",
+      description: "updated description",
+      aic_ids: [27992, 151424]
     )
   }
 
@@ -118,6 +134,97 @@ RSpec.describe "Collections", type: :request do
           expect(json["title"]).to include("can't be blank")
         end
       end
+
+      context "with valid aic_ids for Artworks" do
+        it "creates a new Collection" do
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            expect {
+              post api_v1_collections_url, params: { collection: valid_attributes_with_aic_ids }
+            }.to change(Collection, :count).by(1)
+          end
+        end
+
+        it "finds Artworks if they exist" do
+          artwork1 = create(:artwork, aic_id: 27992)
+          artwork2 = create(:artwork, aic_id: 151424)
+
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            post api_v1_collections_url, params: { collection: valid_attributes_with_aic_ids }
+            
+            collection = Collection.last
+            expect(collection.artworks).to include(artwork1)
+            expect(collection.artworks).to include(artwork2)
+          end
+        end
+
+        it "doesn't create Artworks if they exist" do
+          create(:artwork, aic_id: 27992)
+          create(:artwork, aic_id: 151424)
+
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            expect {
+              post api_v1_collections_url, params: { collection: valid_attributes_with_aic_ids }
+            }.to change(Artwork, :count).by(0)
+          end
+        end
+
+        it "creates multiple new Artworks if they don't exist" do
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            expect {
+              post api_v1_collections_url, params: { collection: valid_attributes_with_aic_ids }
+            }.to change(Artwork, :count).by(2)
+          end
+        end
+
+        it "creates new Artworks with correct data if they don't exist" do
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            post api_v1_collections_url, params: { collection: valid_attributes_with_aic_ids }
+            artwork1 = Artwork.find_by(aic_id: 27992)
+            artwork2 = Artwork.find_by(aic_id: 151424)
+
+            expect(artwork1.artist).to eq("Georges Seurat")
+            expect(artwork2.title).to eq("Inventions of the Monsters")
+          end
+        end
+
+        it "finds or creates Artworks in combination" do
+          artwork1 create(:artwork, aic_id: 27992)
+
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            post api_v1_collections_url, params: { collection: valid_attributes_with_aic_ids }
+            
+            collection = Collection.last
+            artwork2 = Artwork.last
+
+            expect(collection.artworks).to include(artwork1)
+            expect(artwork2.aic_id).to eq(151424)
+            expect(artwork2.title).to eq("Inventions of the Monsters")
+            expect(collection.artworks).to include(artwork2)
+          end
+        end
+
+        it "responds with the created Collection in JSON format" do
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            post api_v1_collections_url, params: { collection: valid_attributes_with_aic_ids }
+            json = JSON.parse(response.body)
+
+            expect(json.any? { |hash| hash["aic_id"] == 27992 }).to be true
+            expect(json.any? { |hash| hash["artist_title"] == "Georges Seurat" }).to be true
+            expect(json.any? { |hash| hash["aic_id"] == 151424 }).to be true
+            expect(json.any? { |hash| hash["title"] == "Inventions of the Monsters" }).to be true
+          end
+        end
+      end
+
+      context "with invalid aic_ids for Artworks" do
+        it "doesn't create Artworks" do
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            expect {
+              post api_v1_collections_url, params: { collection: invalid_attributes_with_aic_ids }
+            }.to change(Artwork, :count).by(0)
+          end
+        end
+      end
     end
   end
 
@@ -153,6 +260,89 @@ RSpec.describe "Collections", type: :request do
 
           json = JSON.parse(response.body)
           expect(json["title"]).to include("can't be blank")
+        end
+      end
+
+      context "with valid aic_ids for Artworks" do
+        it "finds Artworks if they exist" do
+          artwork1 = create(:artwork, aic_id: 27992)
+          artwork2 = create(:artwork, aic_id: 151424)
+
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            patch api_v1_collection_url(@collection), params: { collection: new_attributes_with_aic_ids }
+            
+            collection = Collection.last
+            expect(collection.artworks).to include(artwork1)
+            expect(collection.artworks).to include(artwork2)
+          end
+        end
+
+        it "doesn't create Artworks if they exist" do
+          create(:artwork, aic_id: 27992)
+          create(:artwork, aic_id: 151424)
+
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            expect {
+              patch api_v1_collection_url(@collection), params: { collection: new_attributes_with_aic_ids }
+            }.to change(Artwork, :count).by(0)
+          end
+        end
+
+        it "creates multiple new Artworks if they don't exist" do
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            expect {
+              patch api_v1_collection_url(@collection), params: { collection: new_attributes_with_aic_ids }
+            }.to change(Artwork, :count).by(2)
+          end
+        end
+
+        it "creates new Artworks with correct data if they don't exist" do
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            patch api_v1_collection_url(@collection), params: { collection: new_attributes_with_aic_ids }
+            artwork1 = Artwork.find_by(aic_id: 27992)
+            artwork2 = Artwork.find_by(aic_id: 151424)
+
+            expect(artwork1.artist).to eq("Georges Seurat")
+            expect(artwork2.title).to eq("Inventions of the Monsters")
+          end
+        end
+
+        it "finds or creates Artworks in combination" do
+          artwork1 create(:artwork, aic_id: 27992)
+
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            patch api_v1_collection_url(@collection), params: { collection: new_attributes_with_aic_ids }
+            
+            collection = Collection.last
+            artwork2 = Artwork.last
+
+            expect(collection.artworks).to include(artwork1)
+            expect(artwork2.aic_id).to eq(151424)
+            expect(artwork2.title).to eq("Inventions of the Monsters")
+            expect(collection.artworks).to include(artwork2)
+          end
+        end
+
+        it "responds with the created Collection in JSON format" do
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            patch api_v1_collection_url(@collection), params: { collection: new_attributes_with_aic_ids }
+            json = JSON.parse(response.body)
+
+            expect(json.any? { |hash| hash["aic_id"] == 27992 }).to be true
+            expect(json.any? { |hash| hash["artist_title"] == "Georges Seurat" }).to be true
+            expect(json.any? { |hash| hash["aic_id"] == 151424 }).to be true
+            expect(json.any? { |hash| hash["title"] == "Inventions of the Monsters" }).to be true
+          end
+        end
+      end
+
+      context "with invalid aic_ids for Artworks" do
+        it "doesn't create Artworks" do
+          VCR.use_cassette("collections_create_with_aic_ids") do
+            expect {
+              patch api_v1_collections_url(@collection), params: { collection: invalid_attributes_with_aic_ids }
+            }.to change(Artwork, :count).by(0)
+          end
         end
       end
     end
