@@ -11,11 +11,11 @@ RSpec.describe "Collections", type: :request do
   }
 
   let(:valid_attributes_with_aic_ids) {
-    attributes_for(:collection, aic_ids: [27992, 151424])
+    attributes_for(:collection, artwork_aic_ids: [27992, 151424])
   }
 
   let(:invalid_attributes_with_aic_ids) {
-    attributes_for(:collection, aic_ids: [9999999, 9999998])
+    attributes_for(:collection, artwork_aic_ids: [9999999, 9999998])
   }
 
   let(:new_attributes) {
@@ -29,7 +29,7 @@ RSpec.describe "Collections", type: :request do
     attributes_for(:collection,
       title: "updated_title",
       description: "updated description",
-      aic_ids: [27992, 151424]
+      artwork_aic_ids: [27992, 151424]
     )
   }
 
@@ -182,13 +182,13 @@ RSpec.describe "Collections", type: :request do
             artwork1 = Artwork.find_by(aic_id: 27992)
             artwork2 = Artwork.find_by(aic_id: 151424)
 
-            expect(artwork1.artist).to eq("Georges Seurat")
+            expect(artwork1.artist_title).to eq("Georges Seurat")
             expect(artwork2.title).to eq("Inventions of the Monsters")
           end
         end
 
         it "finds or creates Artworks in combination" do
-          artwork1 create(:artwork, aic_id: 27992)
+          artwork1 = create(:artwork, aic_id: 27992)
 
           VCR.use_cassette("collections_create_with_aic_ids") do
             post api_v1_collections_url, params: { collection: valid_attributes_with_aic_ids }
@@ -208,10 +208,10 @@ RSpec.describe "Collections", type: :request do
             post api_v1_collections_url, params: { collection: valid_attributes_with_aic_ids }
             json = JSON.parse(response.body)
 
-            expect(json.any? { |hash| hash["aic_id"] == 27992 }).to be true
-            expect(json.any? { |hash| hash["artist_title"] == "Georges Seurat" }).to be true
-            expect(json.any? { |hash| hash["aic_id"] == 151424 }).to be true
-            expect(json.any? { |hash| hash["title"] == "Inventions of the Monsters" }).to be true
+            expect(json["artworks"].any? { |hash| hash["aic_id"] == 27992 }).to be true
+            expect(json["artworks"].any? { |hash| hash["artist_title"] == "Georges Seurat" }).to be true
+            expect(json["artworks"].any? { |hash| hash["aic_id"] == 151424 }).to be true
+            expect(json["artworks"].any? { |hash| hash["title"] == "Inventions of the Monsters" }).to be true
           end
         end
       end
@@ -302,13 +302,13 @@ RSpec.describe "Collections", type: :request do
             artwork1 = Artwork.find_by(aic_id: 27992)
             artwork2 = Artwork.find_by(aic_id: 151424)
 
-            expect(artwork1.artist).to eq("Georges Seurat")
+            expect(artwork1.artist_title).to eq("Georges Seurat")
             expect(artwork2.title).to eq("Inventions of the Monsters")
           end
         end
 
         it "finds or creates Artworks in combination" do
-          artwork1 create(:artwork, aic_id: 27992)
+          artwork1 = create(:artwork, aic_id: 27992)
 
           VCR.use_cassette("collections_create_with_aic_ids") do
             patch api_v1_collection_url(@collection), params: { collection: new_attributes_with_aic_ids }
@@ -328,10 +328,10 @@ RSpec.describe "Collections", type: :request do
             patch api_v1_collection_url(@collection), params: { collection: new_attributes_with_aic_ids }
             json = JSON.parse(response.body)
 
-            expect(json.any? { |hash| hash["aic_id"] == 27992 }).to be true
-            expect(json.any? { |hash| hash["artist_title"] == "Georges Seurat" }).to be true
-            expect(json.any? { |hash| hash["aic_id"] == 151424 }).to be true
-            expect(json.any? { |hash| hash["title"] == "Inventions of the Monsters" }).to be true
+            expect(json["artworks"].any? { |hash| hash["aic_id"] == 27992 }).to be true
+            expect(json["artworks"].any? { |hash| hash["artist_title"] == "Georges Seurat" }).to be true
+            expect(json["artworks"].any? { |hash| hash["aic_id"] == 151424 }).to be true
+            expect(json["artworks"].any? { |hash| hash["title"] == "Inventions of the Monsters" }).to be true
           end
         end
       end
@@ -340,7 +340,7 @@ RSpec.describe "Collections", type: :request do
         it "doesn't create Artworks" do
           VCR.use_cassette("collections_create_with_aic_ids") do
             expect {
-              patch api_v1_collections_url(@collection), params: { collection: invalid_attributes_with_aic_ids }
+              patch api_v1_collection_url(@collection), params: { collection: invalid_attributes_with_aic_ids }
             }.to change(Artwork, :count).by(0)
           end
         end

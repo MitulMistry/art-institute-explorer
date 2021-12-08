@@ -15,16 +15,11 @@ class Api::V1::CollectionsController < ApplicationController
   def show
   end
 
-  def create
-    # Needs to process aic_ids to create new Artworks if not existing, with single API request
-    # and single database transaction.
-    # Also need to add tests for Artwork creation in Collections requests spec
+  def create    
+    @collection = current_user.collections.build(collection_params.except(:artwork_aic_ids))
+    artwork_aic_ids = params["collection"]["artwork_aic_ids"]
 
-    # if params["artwork_aic_ids"]
-    #   # Process Artworks via aic_ids
-    # end
-
-    @collection = current_user.collections.build(collection_params)
+    process_artwork_aic_ids(artwork_aic_ids)
 
     if @collection.save
       render :show, status: :created, location: api_v1_collection_url(@collection)
@@ -34,7 +29,10 @@ class Api::V1::CollectionsController < ApplicationController
   end
 
   def update
-    if @collection.update(collection_params)
+    artwork_aic_ids = params["collection"]["artwork_aic_ids"]
+
+    if @collection.update(collection_params.except(:artwork_aic_ids))
+      process_artwork_aic_ids(artwork_aic_ids)
       render :show, status: :ok, location: api_v1_collection_url(@collection)
     else
       render json: @collection.errors, status: :unprocessable_entity
@@ -56,6 +54,25 @@ class Api::V1::CollectionsController < ApplicationController
     if @collection.user != current_user
       render json: ["Unauthorized"], status: :forbidden
       return # Guard clause
+    end
+  end
+
+  # Process Artworks via aic_ids. Either find or create new Artworks and add them
+  # to the @collection
+  def process_artwork_aic_ids(artwork_aic_ids)
+    if(!artwork_aic_ids.nil? && !artwork_aic_ids.empty?)
+
+      # Convert array of strings to integers
+      artwork_aic_ids = artwork_aic_ids.map(&:to_i)
+      aic_artworks = Artwork.find_or_create_by_aic_ids(artwork_aic_ids)
+      
+      if aic_artworks && !aic_artworks.empty?
+        aic_artworks.each do |artwork|
+          unless @collection.artworks.include?(artwork)
+            @collection.artworks << artwork
+          end
+        end
+      end
     end
   end
 
