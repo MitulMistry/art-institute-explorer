@@ -78,7 +78,7 @@ group :test do
   # Use one-line matchers for RSpec testing
   gem 'shoulda-matchers', '~> 5.0'
   # Clean databases for testing
-  gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
+  gem 'database_cleaner-active_record', '~> 2.0', '>= 2.0.1'
   # Bring back assigns and assert_template for controller testing
   # gem 'rails-controller-testing'
 end

@@ -14,6 +14,9 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+# Require Database Cleaner to clean database between tests
+require 'database_cleaner/active_record'
+
 require 'active_storage_validations/matchers'
 
 # Require VCR to make external API request recording available to tests
@@ -61,14 +64,19 @@ RSpec.configure do |config|
 
   # Configure Database Cleaner for tests
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.clean_with :truncation, except: %w(ar_internal_metadata)
   end
 
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 
 # The settings below are suggested to provide a good initial experience
