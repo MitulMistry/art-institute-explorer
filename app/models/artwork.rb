@@ -58,7 +58,9 @@ class Artwork < ApplicationRecord
   # This method is a helper method for actually making the external AIC API call using a
   # given aic_id argument. It uses Faraday to make the GET request and retrieve the data used
   # to create the new Artwork. It returns the newly created Artwork, or nil if it times out.
-  def self.create_artwork_from_aic_api(aic_id)
+  # This method should not be used directly since you risk creating duplicate Artworks with the
+  # same aic_ids. Instead, use find_or_create_by_aic_id() or find_or_create_by_aic_ids().
+  private_class_method def self.create_artwork_from_aic_api(aic_id)
     begin
       url = "https://api.artic.edu/api/v1/artworks/#{aic_id}"
 
