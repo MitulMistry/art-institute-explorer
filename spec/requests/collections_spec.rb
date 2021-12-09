@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe "/collections", type: :request do
 
   let(:valid_attributes) {
-    attributes_for(:collection, user: (@user || create(:user)))
+    attributes_for(:collection, user_id: (@user || create(:user)).id)
   }
 
   let(:invalid_attributes) {
-    attributes_for(:invalid_collection, user: (@user || create(:user)))
+    attributes_for(:invalid_collection, user_id: (@user || create(:user)).id)
   }
 
   let(:valid_attributes_with_aic_ids) {
@@ -230,7 +230,7 @@ RSpec.describe "/collections", type: :request do
 
   shared_examples_for "modification access to owned Collections" do
     before :each do
-      @collection = create(:collection, user: (@user || create(:user)))
+      @collection = create(:collection, user_id: (@user || create(:user)).id)
     end
 
     describe "PATCH /update" do

@@ -46,7 +46,7 @@ RSpec.describe "/collection_likes", type: :request do
   shared_examples_for "destruction access to owned CollectionLikes" do
     describe "DELETE /destroy" do
       before :each do
-        @collection_like = create(:collection_like, user: (@user || create(:user)))
+        @collection_like = create(:collection_like, user_id: (@user || create(:user)).id)
       end
 
       it "destroys the requested Collection" do

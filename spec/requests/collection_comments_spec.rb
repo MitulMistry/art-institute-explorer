@@ -99,7 +99,7 @@ RSpec.describe "/collection_comments", type: :request do
 
   shared_examples_for "modification access to owned CollectionComments" do
     before :each do
-      @collection_comment = create(:collection_comment, user: (@user || create(:user)))
+      @collection_comment = create(:collection_comment, user_id: (@user || create(:user)).id)
     end
 
     describe "PATCH /update" do
