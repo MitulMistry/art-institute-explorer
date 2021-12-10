@@ -1,26 +1,25 @@
-// Run this example by adding <%= javascript_pack_tag 'hello_react' %> to the head of your layout file,
-// like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
-// of the page.
+// Run this file by adding <%= javascript_pack_tag 'hello_react' %> to the head of 
+// the layout file, like app/views/layouts/application.html.erb.
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
+// React
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-const Hello = props => (
-  <div>Hello {props.name}!</div>
-)
-
-Hello.defaultProps = {
-  name: 'David'
-}
-
-Hello.propTypes = {
-  name: PropTypes.string
-}
+// Components
+import App from './components/App';
+import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Load previous state from browser's localStorage into Redux store
+  // if it exists, otherwise use empty object.
+  const preloadedState = localStorage.state ?
+    JSON.parse(localStorage.state) : {};
+  const store = configureStore(preloadedState);
+
   ReactDOM.render(
-    <Hello name="React" />,
-    document.body.appendChild(document.createElement('div')),
-  )
-})
+    <React.StrictMode>
+      <App store={store} />
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+});
