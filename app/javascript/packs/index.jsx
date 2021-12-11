@@ -6,7 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // Components
-import App from './components/App';
+import Root from './components/Root';
 import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   ReactDOM.render(
     <React.StrictMode>
-      <App store={store} />
+      <Root store={store} />
     </React.StrictMode>,
     document.getElementById('root')
   );
