@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { CollectionShow } from './';
+import { CollectionShow } from './CollectionShow';
 
 // Actions
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { CollectionsIndex } from './';
+import { CollectionsIndex } from './CollectionsIndex';
 
 // Actions
 

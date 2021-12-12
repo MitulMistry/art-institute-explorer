@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { LoginForm } from './LoginForm';
+import { UserEdit } from './UserEdit';
 
 // Actions
 
@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoginForm);
+)(UserEdit);

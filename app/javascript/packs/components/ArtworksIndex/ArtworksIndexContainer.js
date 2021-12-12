@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { ArtworksIndex } from './';
+import { ArtworksIndex } from './ArtworksIndex';
 
 // Actions
 

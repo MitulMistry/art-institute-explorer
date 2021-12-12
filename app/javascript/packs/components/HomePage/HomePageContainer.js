@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { HomePage } from './';
+import { HomePage } from './HomePage';
 
 // Actions
 

@@ -1,9 +1,9 @@
 import React from 'react';
 
-export class CollectionShow extends React.Component {
+export class CollectionForm extends React.Component {
   render() {
     return (
-      <div className="div">CollectionShow</div>
+      <div className="div">CollectionForm</div>
     );
   }
 }
