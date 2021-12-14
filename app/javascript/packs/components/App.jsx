@@ -17,7 +17,6 @@ import CollectionsIndexContainer from './CollectionsIndex/CollectionsIndexContai
 import CollectionsNewContainer from './CollectionNew/CollectionNewContainer';
 import CollectionShowContainer from './CollectionShow/CollectionShowContainer';
 import CollectionEditContainer from './CollectionEdit/CollectionEditContainer';
-import { Footer } from './common/Footer';
 
 const App = () => (
   <div className="app">
@@ -38,7 +37,6 @@ const App = () => (
         <Route path="collections/:collectionId/edit" element={<CollectionEditContainer />} />        
       </Routes>
     </div>
-    <Footer />
   </div>
 );
 

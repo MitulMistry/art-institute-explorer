@@ -2,13 +2,25 @@
 // font-family: 'Libre Baskerville', serif;
 // font-family: 'Karla', sans-serif;
 
-li {
-  list-style: none;
+// Set height to 100% to enable sticky footer in index.jsx
+html,
+body {
+  height: 100%;
 }
 
-ul {
-  padding: 0;
-  margin: 0;
+/* body, #root, .app, and .footer configured to use Flexbox to implement sticky footer */
+/* Using: https://medium.com/@stefanmaretic/react-sticky-footer-f842d5fbd68 */
+/* https://codesandbox.io/s/l2v2k0q7rq?from-embed=&file=/src/index.js */
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app {
+  flex: 1 0 auto;
+  padding: 10px;
 }
 
 .clearfix:after {
@@ -21,7 +33,15 @@ body {
   font-family: 'Libre Baskerville', serif;
   font-weight: 500;
   color: black;
-  padding: 2rem;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
 }
 
 h1 {
@@ -49,7 +69,7 @@ a:hover {
 }
 
 .content {
-  max-width: 800px;
+  max-width: 1000px;
   margin: auto;
   min-height: 400px;
   padding-top: 1.5rem;

@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom';
 
 // Components
 import Root from './components/Root';
+import { Footer } from './components/common/Footer';
 import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,9 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     JSON.parse(localStorage.state) : {};
   const store = configureStore(preloadedState);
 
+  // Set up sticky footer with Flexbox by rendering an array.
+  const content = [<Root store={store} key="1" />, <Footer key="2" />];
+
   ReactDOM.render(
     <React.StrictMode>
-      <Root store={store} />
+      {content}
     </React.StrictMode>,
     document.getElementById('root')
   );
