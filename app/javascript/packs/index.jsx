@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 
 // Components
 import Root from './components/Root';
-import { Footer } from './components/common/Footer';
+import { Footer } from './components/Footer/Footer';
 import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {

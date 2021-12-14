@@ -4,7 +4,7 @@ import {
   Route
 } from 'react-router-dom';
 
-import { NavBar } from './nav/NavBar';
+import { NavBar } from './NavBar/NavBar';
 import HomePageContainer from './HomePage/HomePageContainer';
 import LoginFormContainer from './LoginForm/LoginFormContainer';
 import SignUpFormContainer from './SignUpForm/SignUpFormContainer';

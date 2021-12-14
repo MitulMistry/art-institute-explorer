@@ -1,4 +1,6 @@
+// This file acts as a manifest of SCSS files for Rails Webpacker to load in
+// views/layouts/application.html.erb using the stylesheet_pack_tag.
 @import "./reset.scss";
 @import "./defaults";
-@import "../components/nav/NavBar.scss";
-@import "../components/common/Footer.scss";
+@import "../components/NavBar/NavBar.scss";
+@import "../components/Footer/Footer.scss";
