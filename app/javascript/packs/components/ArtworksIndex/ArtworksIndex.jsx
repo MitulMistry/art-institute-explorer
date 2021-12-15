@@ -9,7 +9,7 @@ export class ArtworksIndex extends React.Component {
 
   render() {
     const { artworksArray, image_base_url } = this.props;
-    if (artworksArray) {
+    if (artworksArray.length > 0 && image_base_url) {
       return (
         <div className="artworks-index">
           <h1 className="header-ruler">Artworks</h1>

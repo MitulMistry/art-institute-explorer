@@ -3,7 +3,20 @@ import {
   RECEIVE_ARTWORK
 } from '../actions/artworkActions';
 
-const initialState = {};
+const initialState = {
+  artworksArray: [],
+  artworksArrayResponse: {
+    config: {
+      iiif_url: null
+    }
+  },
+  artworkShow: null,
+  artworkShowResponse: {
+    config: {
+      iiif_url: null
+    }
+  }
+};
 
 const artworksReducer = (state = initialState, action) => {
   let nextState;
