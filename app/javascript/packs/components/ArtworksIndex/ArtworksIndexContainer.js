@@ -5,7 +5,8 @@ import { ArtworksIndex } from './ArtworksIndex';
 import { fetchArtworks } from '../../actions/artworkActions';
 
 const mapStateToProps = state => ({
-  artworksArray: state.entities.artworks.artworksArray
+  artworksArray: state.entities.artworks.artworksArray,
+  image_base_url: state.entities.artworks.artworksArrayResponse.config.iiif_url
 });
 
 const mapDispatchToProps = dispatch => ({

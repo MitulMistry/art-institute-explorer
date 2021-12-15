@@ -1,5 +1,5 @@
 import React from 'react';
-import { Artwork } from './Artwork';
+import { ArtworkCard } from './ArtworkCard';
 
 export class ArtworksIndex extends React.Component {
   componentDidMount() {
@@ -8,16 +8,17 @@ export class ArtworksIndex extends React.Component {
   }
 
   render() {
-    const { artworksArray } = this.props;
+    const { artworksArray, image_base_url } = this.props;
     if (artworksArray) {
       return (
         <div className="artworks-index">
-          <h1>Artworks</h1>
+          <h1 className="header-ruler">Artworks</h1>
           <div className="cards-container">
             {artworksArray.map((artwork, i) =>
-              <Artwork
+              <ArtworkCard
                 key={i}
                 artwork={artwork}
+                image_base_url={image_base_url}
               />
             )}
           </div>
