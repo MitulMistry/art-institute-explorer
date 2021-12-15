@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArtworkCard } from './ArtworkCard';
+import { LoadingSpinner } from '../elements/LoadingSpinner';
 
 export class ArtworksIndex extends React.Component {
   componentDidMount() {
@@ -27,7 +28,7 @@ export class ArtworksIndex extends React.Component {
     } else {
       return (
         <div className="artworks-index">
-          <p>Loading...</p>
+          <LoadingSpinner />
         </div>
       );
     }
