@@ -32,7 +32,7 @@ body {
 body {
   font-family: 'Libre Baskerville', serif;
   font-weight: 500;
-  color: black;
+  color: $app-black;
 }
 
 li {
@@ -73,7 +73,7 @@ h5 {
 }
 
 a:hover {
-  color: #810303;
+  color: $app-hover-color;
 }
 
 .content {
