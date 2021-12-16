@@ -1,5 +1,5 @@
 import React from 'react';
-// import { useParams } from 'react-router-dom';
+import { ArtworkImage } from '../ArtworksIndex/ArtworkImage';
 import { LoadingSpinner } from '../elements/LoadingSpinner';
 
 export class ArtworkShow extends React.Component {
@@ -15,6 +15,10 @@ export class ArtworkShow extends React.Component {
     if (artworkShow && imageBaseUrl) {
       return (
         <div className="artworks-show">
+          <ArtworkImage
+            artwork={artworkShow}
+            imageBaseUrl={imageBaseUrl}
+          />
           <h1>{artworkShow.title}</h1>
           <p>Date: {artworkShow.date_display}</p>
           <p>Artist: {artworkShow.artist_display}</p>

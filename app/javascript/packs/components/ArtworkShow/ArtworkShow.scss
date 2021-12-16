@@ -1,6 +1,11 @@
 .artworks-show {
   max-width: 600px;
 
+  .artwork-image {
+    max-width: 450px;
+    margin-bottom: 1rem;
+  }
+
   p {
     font-family: 'Karla', sans-serif;
     font-weight: 400;
