@@ -15,7 +15,7 @@ export class ArtworkImage extends React.Component {
     } else {
       image = (
         <img src={Placeholder_Image} 
-          alt="Placeholder image" className="artwork-card-image" />
+          alt="Placeholder image" className="artwork-image" />
       );
     }
 

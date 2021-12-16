@@ -10,9 +10,9 @@ export class ArtworkShow extends React.Component {
   }
 
   render() {
-    const { artworkShow, imageBaseUrl} = this.props;
+    const { artworkShow, artworkId, imageBaseUrl} = this.props;
 
-    if (artworkShow && imageBaseUrl) {
+    if (artworkShow && artworkShow.id == artworkId && imageBaseUrl) {
       return (
         <div className="artworks-show">
           <ArtworkImage
