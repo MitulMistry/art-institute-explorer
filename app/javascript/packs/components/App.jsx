@@ -11,7 +11,7 @@ import SignUpFormContainer from './SignUpForm/SignUpFormContainer';
 import UserShowContainer from './UserShow/UserShowContainer';
 import UserEditContainer from './UserEdit/UserEditContainer';
 import ArtworksIndexContainer from './ArtworksIndex/ArtworksIndexContainer';
-import ArtworksShowContainer from './ArtworkShow/ArtworksShowContainer';
+import ArtworkShowContainer from './ArtworkShow/ArtworkShowContainer';
 import ArtworksSavedContainer from './ArtworksSaved/ArtworksSavedContainer';
 import CollectionsIndexContainer from './CollectionsIndex/CollectionsIndexContainer';
 import CollectionsNewContainer from './CollectionNew/CollectionNewContainer';
@@ -29,7 +29,7 @@ const App = () => (
         <Route path="users/:userId" element={<UserShowContainer />} />        
         <Route path="users/:userId/edit" element={<UserEditContainer />} />        
         <Route path="artworks" element={<ArtworksIndexContainer />} />        
-        <Route path="artworks/:artworkId" element={<ArtworksShowContainer />} />        
+        <Route path="artworks/:artworkId" element={<ArtworkShowContainer />} />        
         <Route path="artworks/saved" element={<ArtworksSavedContainer />} />        
         <Route path="collections" element={<CollectionsIndexContainer />} />        
         <Route path="collections/new" element={<CollectionsNewContainer />} />        
