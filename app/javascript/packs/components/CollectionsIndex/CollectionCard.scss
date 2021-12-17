@@ -1,0 +1,23 @@
+.collection-card {
+  margin-bottom: 1.5rem;
+
+  .collection-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+}
+
+.collection-card-title {
+  font-weight: 400;
+  font-size: 1rem;
+  margin-top: .6rem;
+  margin-bottom: .3rem;
+}
+
+.collection-card-user {
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
+  color: $app-gray;
+  font-size: 1rem;
+}

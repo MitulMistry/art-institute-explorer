@@ -22,7 +22,7 @@ export const fetchArtworks = () => dispatch => (
 
 export const fetchArtwork = id => dispatch => (
   APIUtil.fetchArtwork(id).then(response => response.json())
-    .then(artwork => (
-      dispatch(receiveArtwork(artwork))
+    .then(response => (
+      dispatch(receiveArtwork(response))
     ))
 );
