@@ -16,7 +16,7 @@ export class ArtworksIndex extends React.Component {
       return (
         <div className="artworks-index">
           <h1 className="header-ruler">Artworks</h1>
-          <div className="cards-container">
+          <div className="cards-container masonry-with-columns">
             {artworksArray.map((artwork, i) =>
               <ArtworkCard
                 key={i}

@@ -7,7 +7,7 @@ export class ArtworkCard extends React.Component {
     const { artwork, imageBaseUrl } = this.props;
 
     return (
-      <div className="artwork-card">
+      <div className="artwork-card masonry-item">
         <Link to={`${artwork.id}`}>
           <ArtworkImage
             artwork={artwork}
