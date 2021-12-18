@@ -5,7 +5,7 @@ import { LoadingSpinner } from '../elements/LoadingSpinner';
 
 export class CollectionShow extends React.Component {
   componentDidMount() {
-    // Dispatch Redux action to fetch Artwork via API call
+    // Dispatch Redux action to fetch Collection via API call
     const { fetchCollection, collectionId } = this.props;
     fetchCollection(collectionId);
   }

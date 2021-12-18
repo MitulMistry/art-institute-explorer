@@ -14,7 +14,7 @@ export class ArtworkShow extends React.Component {
 
     if (artworkShow && artworkShow.id == artworkId && imageBaseUrl) {
       return (
-        <div className="artworks-show">
+        <div className="artwork-show">
           <ArtworkImage
             artwork={artworkShow}
             imageBaseUrl={imageBaseUrl}
@@ -30,7 +30,7 @@ export class ArtworkShow extends React.Component {
       );
     } else {
       return (
-        <div className="artworks-show">
+        <div className="artwork-show">
           <LoadingSpinner />
         </div>
       );
