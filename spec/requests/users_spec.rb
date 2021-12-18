@@ -43,14 +43,20 @@ RSpec.describe "/users", type: :request do
     end
 
     describe "GET /show" do
-      it "responds with a JSON formatted user" do
+      it "responds with a JSON formatted user with SavedArtworks and Collections" do
         user = create(:user)
+        artwork = create(:artwork)
+        user.saved_artworks << artwork
+        collection = create(:collection, user_id: user.id)
+
         get api_v1_user_url(user)
         expect(response).to be_successful
 
         # Returns a user hash
         json = JSON.parse(response.body)
         expect(json["username"]).to eq(user.username)
+        expect(json["saved_artworks"][0]["title"]).to eq(artwork.title)
+        expect(json["collections"][0]["title"]).to eq(collection.title)
       end
     end
   end
