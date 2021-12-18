@@ -11,7 +11,7 @@ export class CollectionCard extends React.Component {
     let image = null;
     if (collection.artworks.length > 0) {
       image = (
-        <Link to={`${collection.id}`}>
+        <Link to={`/collections/${collection.id}`}>
           <ArtworkImage
             artwork={collection.artworks[0]}
             imageBaseUrl={collection.artworks[0].image_url_prefix}
@@ -21,7 +21,7 @@ export class CollectionCard extends React.Component {
     } else {
       const emptyArtwork = {};
       image = (
-        <Link to={`${collection.id}`}>
+        <Link to={`/collections/${collection.id}`}>
           <ArtworkImage
             artwork={emptyArtwork}
           />
@@ -33,7 +33,7 @@ export class CollectionCard extends React.Component {
       <div className="collection-card masonry-item">
         {image}
         <h5 className="collection-card-title">
-          <Link to={`${collection.id}`}>{collection.title}</Link>
+          <Link to={`/collections/${collection.id}`}>{collection.title}</Link>
         </h5>
         <p className="collection-card-user">
           <Link to={`/users/${collection.user.id}`}>{collection.user.username}</Link>

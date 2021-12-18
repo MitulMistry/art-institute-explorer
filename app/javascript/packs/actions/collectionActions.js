@@ -8,7 +8,7 @@ export const receiveCollections = response => ({
   response,
 });
 
-export const receiveCollection = respones => ({
+export const receiveCollection = response => ({
   type: RECEIVE_COLLECTION,
   response,
 });
@@ -23,6 +23,6 @@ export const fetchCollections = () => dispatch => (
 export const fetchCollection = id => dispatch => (
   APIUtil.fetchCollection(id).then(response => response.json())
     .then(response => (
-      dispatch(receiveArtwork(response))
+      dispatch(receiveCollection(response))
     ))
 );

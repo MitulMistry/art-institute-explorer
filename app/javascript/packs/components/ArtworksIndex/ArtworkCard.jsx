@@ -8,14 +8,14 @@ export class ArtworkCard extends React.Component {
 
     return (
       <div className="artwork-card masonry-item">
-        <Link to={`${artwork.id}`}>
+        <Link to={`/artworks/${artwork.id}`}>
           <ArtworkImage
             artwork={artwork}
             imageBaseUrl={imageBaseUrl}
           />
         </Link>
         <h5 className="artwork-card-title">
-          <Link to={`${artwork.id}`}>{artwork.title}</Link>
+          <Link to={`/artworks/${artwork.id}`}>{artwork.title}</Link>
         </h5>
         <p className="artwork-card-artist">{artwork.artist_title}</p>
       </div>

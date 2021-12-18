@@ -33,7 +33,7 @@ export class ArtworkShow extends React.Component {
         <div className="artworks-show">
           <LoadingSpinner />
         </div>
-      )
+      );
     }
   }
 }

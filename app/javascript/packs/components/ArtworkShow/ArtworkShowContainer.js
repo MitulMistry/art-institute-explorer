@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-// import { ArtworkShow } from './ArtworkShow';
 import ArtworkShowParent from './ArtworkShowParent';
 
 // Actions
