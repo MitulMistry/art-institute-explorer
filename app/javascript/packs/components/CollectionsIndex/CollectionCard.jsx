@@ -29,15 +29,22 @@ export class CollectionCard extends React.Component {
       )
     }
 
+    let userInfo = null;
+    if ("user" in collection && collection.user.id) {
+      userInfo = (
+        <p className="collection-card-user">
+          <Link to={`/users/${collection.user.id}`}>{collection.user.username}</Link>
+        </p>
+      );
+    }
+
     return (
       <div className="collection-card masonry-item">
         {image}
         <h5 className="collection-card-title">
           <Link to={`/collections/${collection.id}`}>{collection.title}</Link>
         </h5>
-        <p className="collection-card-user">
-          <Link to={`/users/${collection.user.id}`}>{collection.user.username}</Link>
-        </p>
+        {userInfo}
       </div>
     );
   }
