@@ -11,7 +11,9 @@ export class ArtworkImage extends React.Component {
     // altText is stored in nested thumbnail key for AIC API calls, but
     // stored in alt_text key for internal API calls for saved Artworks.
     if ("thumbnail" in artwork) {
-      altText = artwork.thumbnail.alt_text;
+      if (artwork.thumbnail && "alt_text" in artwork.thumbnail) {
+        altText = artwork.thumbnail.alt_text;
+      }
     } else if ("alt_text" in artwork) {
       altText = artwork.alt_text
     }
