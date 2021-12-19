@@ -4,7 +4,11 @@ import {
 
 const initialState = {
   artworksArray: [],
-  artworksArrayResponse: null,
+  artworksArrayResponse: {
+    config: {
+      iiif_url: null
+    }
+  },
   collectionsArray: []
 };
 
