@@ -1,6 +1,5 @@
 import React from 'react';
-import { CollectionCard } from './CollectionCard';
-import { LoadingSpinner } from '../elements/LoadingSpinner';
+import { CollectionsGrid } from './CollectionsGrid';
 
 export class CollectionsIndex extends React.Component {
   componentDidMount() {
@@ -12,26 +11,13 @@ export class CollectionsIndex extends React.Component {
   render() {
     const { collectionsArray } = this.props;
     
-    if (collectionsArray.length > 0) {
-      return (
-        <div className="collections-index">
-          <h1 className="header-ruler">Collections</h1>
-          <div className="cards-container masonry-with-columns">
-            {collectionsArray.map((collection, i) =>
-              <CollectionCard
-                key={i}
-                collection={collection}
-              />
-            )}
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div className="collections-index">
-          <LoadingSpinner />
-        </div>
-      );
-    }
+    return (
+      <div className="collections-index">
+        <h1 className="header-ruler">Collections</h1>
+        <CollectionsGrid
+          collectionsArray={collectionsArray}
+        />
+      </div>
+    );
   }
 }

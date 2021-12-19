@@ -1,6 +1,6 @@
 import React from 'react';
-import { CollectionCard } from '../CollectionsIndex/CollectionCard';
-import { ArtworkCard } from '../ArtworksIndex/ArtworkCard';
+import { CollectionsGrid } from '../CollectionsIndex/CollectionsGrid';
+import { ArtworksGrid } from '../ArtworksIndex/ArtworksGrid';
 import { LoadingSpinner } from '../elements/LoadingSpinner';
 
 export class UserShow extends React.Component {
@@ -20,14 +20,9 @@ export class UserShow extends React.Component {
         userCollections = (
           <div className="user-collections">
             <h1 className="header-ruler">User Collections</h1>
-            <div className="cards-container masonry-with-columns">
-              {userShow.collections.map((collection, i) =>
-                <CollectionCard
-                  key={i}
-                  collection={collection}
-                />
-              )}
-            </div>
+            <CollectionsGrid
+              collectionsArray={userShow.collections}
+            />
           </div>
         );
       }
@@ -37,15 +32,10 @@ export class UserShow extends React.Component {
         savedArtworks = (
           <div className="user-saved-artworks">
             <h1 className="header-ruler">Saved Artworks</h1>
-            <div className="cards-container masonry-with-columns">
-              {userShow.saved_artworks.map((artwork, i) =>
-                <ArtworkCard
-                  key={i}
-                  artwork={artwork}
-                  imageBaseUrl={artwork.image_url_prefix}
-                />
-              )}
-            </div>
+            <ArtworksGrid
+              artworksArray={userShow.saved_artworks}
+              imageBaseUrl={userShow.saved_artworks[0].image_url_prefix}
+            />
           </div>
         );
       }
