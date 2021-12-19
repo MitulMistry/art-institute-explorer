@@ -13,7 +13,7 @@ export class HomePage extends React.Component {
     const { artworksArray, collectionsArray, imageBaseUrl } = this.props;
     
     return (
-      <div className="splash-page">
+      <div className="home-page">
         <h1 className="header-ruler">AIC Explorer</h1>
         <p>
           Explore thousands of artworks from the Art Institute of Chicago (AIC).

@@ -5,9 +5,9 @@ import { HomePage } from './HomePage';
 import { fetchMixedDataIndex } from '../../actions/mixedDataActions';
 
 const mapStateToProps = state => ({
-  collectionsArray: state.entities.splashPage.collectionsArray,
-  artworksArray: state.entities.splashPage.artworksArray,
-  imageBaseUrl: state.entities.splashPage.artworksArrayResponse.config.iiif_url
+  collectionsArray: state.entities.homePage.collectionsArray,
+  artworksArray: state.entities.homePage.artworksArray,
+  imageBaseUrl: state.entities.homePage.artworksArrayResponse.config.iiif_url
 });
 
 const mapDispatchToProps = dispatch => ({

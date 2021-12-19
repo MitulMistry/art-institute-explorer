@@ -12,7 +12,7 @@ const initialState = {
   collectionsArray: []
 };
 
-const splashPageReducer = (state = initialState, action) => {
+const homePageReducer = (state = initialState, action) => {
   let nextState;
   Object.freeze(state);
 
@@ -28,4 +28,4 @@ const splashPageReducer = (state = initialState, action) => {
   }
 }
 
-export default splashPageReducer;
+export default homePageReducer;
