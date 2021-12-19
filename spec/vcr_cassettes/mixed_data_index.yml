@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,date_display,image_id,thumbnail&limit=3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.8.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1054'
+      Connection:
+      - keep-alive
+      Date:
+      - Sat, 18 Dec 2021 23:25:56 GMT
+      Server:
+      - Apache/2.4.51 () OpenSSL/1.0.2k-fips
+      Cache-Control:
+      - no-cache, private
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - '"3c0944b521bfe1dee0283e9fea6aec27-gzip"'
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 dc44064c54cfe99859200f562d23535e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - ORD51-C2
+      X-Amz-Cf-Id:
+      - cbfecMKjas6I4FpWEIQf3i1g2jRW51Giqi78IT9VGnH3ZPm3HHZNfA==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"pagination":{"total":115840,"limit":3,"offset":0,"total_pages":38614,"current_page":1,"next_url":"https:\/\/api.artic.edu\/api\/v1\/artworks?page=2&fields=id%2Ctitle%2Cartist_title%2Cdate_display%2Cimage_id%2Cthumbnail&limit=3"},"data":[{"id":9614,"title":"Haunted
+        House","thumbnail":{"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAABsXFR4ZFh4cHSEcFiAgJS0qJycnLDIrKj86M0YsJkxEOjk6RldGVGFRRn5nWYV3Yoh6Zp+NcaqYdKubggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAURIAJNTxFJytA4B5AwixAQRggAOw==","width":2003,"height":2250,"alt_text":"A
+        work made of oil on canvas."},"date_display":"1930","artist_title":"Morris
+        Kantor","image_id":"0330a6dd-774e-eff1-0073-2be5f85b81d0"},{"id":8969,"title":"Beggar
+        with Oysters (Philosopher)","thumbnail":{"lqip":"data:image\/gif;base64,R0lGODlhAwAFAPMAABAQDRMRDhMSDxQSDhgUDwkRFBESEBgVEB8bFRoaGBgcHColIDs0Kkc+L0hBNgAAACH5BAAAAAAALAAAAAADAAUAAAQL8CAi1ADFrBQcaxEAOw==","width":1312,"height":2250,"alt_text":"A
+        work made of oil on canvas."},"date_display":"1865\/67","artist_title":"\u00c9douard
+        Manet","image_id":"4e074d70-4424-331b-ec89-0776a45d6825"},{"id":11312,"title":"Woman
+        Mending","thumbnail":{"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAAEw\/QE5BRU9DSE1ESVJFSllKUFlPVFtPVV9ZX25eXmtdYXZrZYt8cIx\/dYF7epJ6dYiFfJCJfJiRhcK9rQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAURIMREk\/M0EqIki3EMAUAUQggAOw==","width":1850,"height":2250,"alt_text":"A
+        work made of oil on canvas."},"date_display":"1895","artist_title":"Camille
+        Pissarro","image_id":"132b782d-54e6-70e1-18f9-211468c09099"}],"info":{"license_text":"The
+        data in this response is licensed under a Creative Commons Zero (CC0) 1.0
+        designation and the Terms and Conditions of artic.edu.","license_links":["https:\/\/creativecommons.org\/publicdomain\/zero\/1.0\/","https:\/\/www.artic.edu\/terms"],"version":"1.2"},"config":{"iiif_url":"https:\/\/www.artic.edu\/iiif\/2","website_url":"http:\/\/www.artic.edu"}}
+
+        '
+  recorded_at: Sat, 18 Dec 2021 23:25:56 GMT
+recorded_with: VCR 6.0.0

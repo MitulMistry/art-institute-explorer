@@ -8,6 +8,8 @@ class Collection < ApplicationRecord
   validates :title, presence: true, length: { maximum: 300 }
   validates :description, length: { maximum: 1000 }
 
+  extend ClassOrderable
+
   def like_count
     self.collection_likes.count
   end

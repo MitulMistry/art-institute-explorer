@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       resources :sessions, only: [:create]
       delete '/sessions', to: 'sessions#destroy'
       
+      resources :mixed_data, only: [:index]
+
       get '/artworks/search' => 'artworks#search'
       resources :artworks, only: [:index, :show]      
       resources :artwork_saves, only: [:index, :create, :destroy]
