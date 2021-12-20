@@ -5,9 +5,10 @@ export class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      email: '',
       username: '',
       password: '',
-      passwordConfirmation: '',
+      password_confirmation: '',
       bio: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +23,7 @@ export class SignUpForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    this.props.processForm({"user": user});
   }
 
   renderErrors() {
@@ -51,6 +52,17 @@ export class SignUpForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="signup-form-box">
           {this.renderErrors()}
           <div className="auth-form">
+
+            <div className="form-group">
+              <label htmlFor="form-email">Email</label>
+              <input type="text"
+                value={this.state.email}
+                onChange={this.update('email')}
+                className="form-input"
+                id="form-email"
+              />              
+            </div>
+
             <div className="form-group">
               <label htmlFor="form-username">Username</label>
               <input type="text"
@@ -74,8 +86,8 @@ export class SignUpForm extends React.Component {
             <div className="form-group">
               <label htmlFor="form-password-confirmation">Password Confirmation</label>
               <input type="password"
-                value={this.state.passwordConfirmation}
-                onChange={this.update('passwordConfirmation')}
+                value={this.state.password_confirmation}
+                onChange={this.update('password_confirmation')}
                 className="form-input"
                 id="form-password-confirmation"
               />              
