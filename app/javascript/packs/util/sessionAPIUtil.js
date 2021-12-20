@@ -1,6 +1,9 @@
+import { CSRFRequestHeaders } from "./CSRFTokenUtil";
+
 export const login = user => (
   fetch('/api/v1/sessions', {
     method: 'POST',
+    headers: CSRFRequestHeaders(),
     body: JSON.stringify(user)
   })
 );
@@ -8,6 +11,7 @@ export const login = user => (
 export const signUp = user => (
   fetch('/api/v1/users', {
     method: 'POST',
+    headers: CSRFRequestHeaders(),
     body: JSON.stringify(user)
   })
 );
@@ -15,12 +19,14 @@ export const signUp = user => (
 export const editProfile = user => (
   fetch(`/api/v1/users/${user.id}`, {
     method: 'PATCH',
+    headers: CSRFRequestHeaders(),
     body: JSON.stringify(user)
   })
 );
 
 export const logout = () => (
   fetch('/api/v1/sessions', {
-    method: 'DELETE'
+    method: 'DELETE',
+    headers: CSRFRequestHeaders()
   })
 );
