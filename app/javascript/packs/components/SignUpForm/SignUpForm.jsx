@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 export class SignUpForm extends React.Component {
   constructor(props) {
@@ -39,16 +39,34 @@ export class SignUpForm extends React.Component {
   }
 
   render() {
-    let links = null;
-    if (this.props.formType == "signUp") {
-      links = (
-        <p>Create a new account or <Link to="/sessions/new">click here to login</Link></p>
+    const { formType, redirect, resetRedirect } = this.props;
+    
+    let header = null;
+    if (formType == "signUp") {
+      header = (
+        <div>
+          <h1 className="header-ruler">Sign Up</h1>
+          <p>Create a new account or <Link to="/sessions/new">click here to login</Link></p>
+        </div>
+      );
+    } else {
+      header = (
+        <div>
+          <h1 className="header-ruler">Edit Account</h1>
+        </div>
+      );
+    }
+
+    if (redirect) {
+      resetRedirect();
+      return (
+        <Navigate to={redirect} replace={true} />
       );
     }
 
     return (
       <div className="form-container signup-container">
-        {links}
+        {header}
         <form onSubmit={this.handleSubmit} className="signup-form-box">
           {this.renderErrors()}
           <div className="auth-form">
