@@ -3,6 +3,8 @@
 @import "./variables.scss";
 @import "./reset.scss";
 @import "./defaults";
+@import "./buttons.scss";
+@import "./forms.scss";
 @import "./masonryGrid.scss";
 @import "../components/NavBar/NavBar.scss";
 @import "../components/Footer/Footer.scss";
@@ -15,3 +17,4 @@
 @import "../components/CollectionsIndex/CollectionCard.scss";
 @import "../components/CollectionShow/CollectionShow.scss";
 @import "../components/UserShow/UserShow.scss";
+@import "../components/SignUpForm/SignUpForm.scss";

@@ -5,9 +5,16 @@ export const login = user => (
   })
 );
 
-export const signup = user => (
+export const signUp = user => (
   fetch('/api/v1/users', {
     method: 'POST',
+    body: JSON.stringify(user)
+  })
+);
+
+export const editProfile = user => (
+  fetch(`/api/v1/users/${user.id}`, {
+    method: 'PATCH',
     body: JSON.stringify(user)
   })
 );

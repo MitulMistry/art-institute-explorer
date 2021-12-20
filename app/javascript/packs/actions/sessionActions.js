@@ -18,8 +18,17 @@ export const receiveErrors = errors => ({
   errors
 });
 
-export const signup = user => dispatch => (
-  APIUtil.signup(user).then(response => response.json())
+export const signUp = user => dispatch => (
+  APIUtil.signUp(user).then(response => response.json())
+  .then(user => (
+    dispatch(receiveCurrentUser(user))
+  )).catch(errors => (
+    dispatch(receiveErrors(errors))
+  ))
+);
+
+export const editProfile = user => dispatch => (
+  APIUtil.editProfile(user).then(response => response.json())
   .then(user => (
     dispatch(receiveCurrentUser(user))
   )).catch(errors => (
