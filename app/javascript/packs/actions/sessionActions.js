@@ -20,9 +20,15 @@ export const receiveErrors = errors => ({
 });
 
 export const signUp = user => dispatch => (
-  APIUtil.signUp(user).then(response => {
+  APIUtil.signUp(user).then(async response => {
+    const isJson = response.headers.get('content-type')?.includes('application/json');
+    const data = isJson ? await response.json() : null;
+
     if (!response.ok) {
-      return Promise.reject(response);
+      // return Promise.reject(response.json());
+      console.log(data);
+      const errors = data || {"Error code": response.status};
+      return Promise.reject(errors);
     } else {
       return response.json();
     }

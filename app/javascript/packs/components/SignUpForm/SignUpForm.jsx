@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Navigate } from 'react-router-dom';
+import { RenderErrors } from '../RenderErrors/RenderErrors';
 
 export class SignUpForm extends React.Component {
   constructor(props) {
@@ -28,13 +29,11 @@ export class SignUpForm extends React.Component {
 
   renderErrors() {
     return(
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
+      <div>
+      <RenderErrors
+        errors={this.props.errors}
+      />
+      </div>
     );
   }
 
