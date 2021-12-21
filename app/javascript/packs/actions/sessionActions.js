@@ -1,5 +1,6 @@
 import * as APIUtil from '../util/sessionAPIUtil';
 import { setRedirect } from './uiActions';
+import { processResponse } from '../util/APIRequestHelpers';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
@@ -20,19 +21,7 @@ export const receiveErrors = errors => ({
 });
 
 export const signUp = user => dispatch => (
-  APIUtil.signUp(user).then(async response => {
-    const isJson = response.headers.get('content-type')?.includes('application/json');
-    const data = isJson ? await response.json() : null;
-
-    if (!response.ok) {
-      // return Promise.reject(response.json());
-      console.log(data);
-      const errors = data || {"Error code": response.status};
-      return Promise.reject(errors);
-    } else {
-      return response.json();
-    }
-  })
+  APIUtil.signUp(user).then(response => processResponse(response))
   .then(user => {
     dispatch(receiveCurrentUser(user));
     dispatch(setRedirect('/artworks'));
@@ -43,7 +32,7 @@ export const signUp = user => dispatch => (
 );
 
 export const editProfile = user => dispatch => (
-  APIUtil.editProfile(user).then(response => response.json())
+  APIUtil.editProfile(user).then(response => processResponse(response))
   .then(user => {
     dispatch(receiveCurrentUser(user))
     dispatch(setRedirect(`/users/${user.id}`))
@@ -53,7 +42,7 @@ export const editProfile = user => dispatch => (
 );
 
 export const login = user => dispatch => (
-  APIUtil.login(user).then(response => response.json())
+  APIUtil.login(user).then(response => processResponse(response))
   .then(user => {
     dispatch(receiveCurrentUser(user))
     dispatch(setRedirect('/artworks'))
