@@ -10,6 +10,6 @@ export const processResponse = async response => {
     const errors = data || {"Error code": response.status};
     return Promise.reject(errors);
   } else {
-    return response;
+    return data;
   }
 }

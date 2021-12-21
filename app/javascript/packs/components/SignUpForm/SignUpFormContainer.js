@@ -4,6 +4,7 @@ import { SignUpForm } from './SignUpForm';
 // Actions
 import { signUp } from '../../actions/sessionActions';
 import { resetRedirect } from '../../actions/uiActions';
+import { resetSessionErrors } from '../../actions/sessionActions';
 
 const mapStateToProps = state => ({
   errors: state.errors.sessionErrors,
@@ -15,7 +16,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     processForm: (user) => dispatch(signUp(user)),
-    resetRedirect: () => dispatch(resetRedirect)
+    resetRedirect: () => dispatch(resetRedirect()),
+    resetSessionErrors: () => dispatch(resetSessionErrors())
   };
 };
 
