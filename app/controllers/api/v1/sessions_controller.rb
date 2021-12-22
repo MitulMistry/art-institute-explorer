@@ -2,12 +2,15 @@ class Api::V1::SessionsController < ApplicationController
 
   # Login action
   def create
-    @user = User.find_by(username: params[:username])
-    if @user && @user.authenticate(params[:password])
+    email = params[:email] || params["email"]
+    password = params[:password] || params["password"]
+
+    @user = User.find_by(email: email)
+    if @user && @user.authenticate(password)
       login(@user)
       render "api/v1/users/show"
     else
-      render json: ["Invalid username/password"], status: :unauthorized
+      render json: ["Invalid email/password"], status: :unauthorized
     end
   end
 

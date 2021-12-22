@@ -10,7 +10,7 @@ RSpec.describe "/sessions", type: :request do
     context "with valid password" do
       it "creates a new Session" do
         post api_v1_sessions_path, params: {
-          username: @user.username,
+          email: @user.email,
           password: @password
         }
 
@@ -24,14 +24,14 @@ RSpec.describe "/sessions", type: :request do
     context "with invalid password" do
       it "does not create a new Session" do
         post api_v1_sessions_path, params: {
-          username: @user.username,
+          email: @user.email,
           password: "wrong_password"
         }
 
         expect(response).to have_http_status(401)
 
         json = JSON.parse(response.body)
-        expect(json).to include("Invalid username/password")
+        expect(json).to include("Invalid email/password")
       end
     end
   end

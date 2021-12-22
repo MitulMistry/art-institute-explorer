@@ -6,7 +6,7 @@ module SpecTestHelper
     user = create(:user, password: password)
 
     post api_v1_sessions_path, params: {
-      username: user.username,
+      email: user.email,
       password: password
     }
 
