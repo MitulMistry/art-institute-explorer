@@ -1,5 +1,6 @@
 import {
   RECEIVE_ARTWORKS,
+  RECEIVE_SAVED_ARTWORKS,
   RECEIVE_ARTWORK
 } from '../actions/artworkActions';
 
@@ -10,6 +11,7 @@ const initialState = {
       iiif_url: null
     }
   },
+  savedArtworksArray: [],
   artworkShow: null,
   artworkShowResponse: {
     config: {
@@ -28,6 +30,10 @@ const artworksReducer = (state = initialState, action) => {
       nextState.artworksArray = action.response.data;
       nextState.artworksArrayResponse = action.response;
       delete nextState.artworksArrayResponse.data;
+      return nextState;
+    case RECEIVE_SAVED_ARTWORKS:
+      nextState = Object.assign({}, state);
+      nextState.savedArtworksArray = action.artworks;
       return nextState;
     case RECEIVE_ARTWORK:
       nextState = Object.assign({}, state);
