@@ -4,7 +4,7 @@ import {
   Route
 } from 'react-router-dom';
 
-import { NavBar } from './NavBar/NavBar';
+import NavBarContainer from './NavBar/NavBarContainer';
 import HomePageContainer from './HomePage/HomePageContainer';
 import LoginFormContainer from './LoginForm/LoginFormContainer';
 import SignUpFormContainer from './SignUpForm/SignUpFormContainer';
@@ -21,7 +21,7 @@ import { ProtectedRoute, AuthRoute } from './routeUtil/routeUtil';
 
 const App = () => (
   <div className="app">
-    <NavBar />
+    <NavBarContainer />
     <div className="content">
       <Routes>
         <Route path="/" element={<HomePageContainer />} />

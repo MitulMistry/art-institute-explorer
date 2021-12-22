@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useLocation, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 // Referenced from: https://reactrouter.com/docs/en/v6/examples/auth
 // https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
@@ -21,9 +21,9 @@ function AuthRouteComponent({ children, loggedIn }) {
   return children;
 }
 
-const mapStateToProps = state => (
-  {loggedIn: Boolean(state.session.id)}
-);
+const mapStateToProps = state => ({
+  loggedIn: Boolean(state.session.id)
+});
 
 export const ProtectedRoute = connect(mapStateToProps)(ProtectedRouteComponent);
 
