@@ -5,7 +5,7 @@ import { AuthLinks } from './AuthLinks';
 import { logout } from '../../actions/sessionActions';
 
 const mapStateToProps = state => ({
-  currentUser: state.entities.currentUser
+  currentUser: state.entities.users.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({

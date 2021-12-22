@@ -60,6 +60,5 @@ export const logout = () => dispatch => (
   APIUtil.logout().then(response => response.json())
   .then(user => {
     dispatch(logoutCurrentUser())
-    dispatch(setRedirect('/'))
   })
 );

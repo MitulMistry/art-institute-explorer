@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AuthLinks } from './AuthLinks';
+import AuthLinksContainer from './AuthLinksContainer';
 
 export class NavBar extends React.Component {
   render() {
@@ -16,7 +16,7 @@ export class NavBar extends React.Component {
             <li><Link to="/collections">Collections</Link></li>
             <li><Link to="/collections/new">New Collection</Link></li>            
           </ul>
-          <AuthLinks />
+          <AuthLinksContainer />
           </div>
         </div>
         </nav>

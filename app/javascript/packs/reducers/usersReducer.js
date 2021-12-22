@@ -1,8 +1,10 @@
-import { RECEIVE_CURRENT_USER } from '../actions/sessionActions';
+import {
+  RECEIVE_CURRENT_USER,
+  LOGOUT_CURRENT_USER } from '../actions/sessionActions';
 
 import {
   RECEIVE_USERS,
-  RECEIVE_USER
+  RECEIVE_USER,
 } from '../actions/userActions';
 
 const initialState = {
@@ -19,6 +21,10 @@ const usersReducer = (state = initialState, action) => {
     case RECEIVE_CURRENT_USER:
       nextState = Object.assign({}, state);
       nextState.currentUser = action.currentUser;
+      return nextState;
+    case LOGOUT_CURRENT_USER:
+      nextState = Object.assign({}, state);
+      nextState.currentUser = initialState.currentUser;
       return nextState;
     case RECEIVE_USERS:
       nextState = Object.assign({}, state);
