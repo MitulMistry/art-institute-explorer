@@ -21,7 +21,11 @@ export class RenderErrors extends React.Component {
 
       // Convert object of arrays into single array of error messages
       for (const errorGroup in errors) {
-        errors[errorGroup].forEach(error => errorsArray.push(`${errorGroup}: ${error}`));
+        if (Array.isArray(errors[errorGroup])) {
+          errors[errorGroup].forEach(error => errorsArray.push(`${errorGroup}: ${error}`));
+        } else {
+          errorsArray.push(`${errorGroup}: ${errors[errorGroup]}`);
+        }
       }
 
       errorsList = (
