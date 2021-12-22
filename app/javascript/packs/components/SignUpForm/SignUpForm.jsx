@@ -16,7 +16,10 @@ export class SignUpForm extends React.Component {
   }
   
   componentDidMount() {
-    this.props.resetSessionErrors();
+    const { errors, resetSessionErrors } = this.props;
+    if (Object.keys(errors).length > 0) {
+      resetSessionErrors();
+    }
   }
 
   update(field) {
@@ -49,7 +52,7 @@ export class SignUpForm extends React.Component {
       header = (
         <div>
           <h1 className="header-ruler">Sign Up</h1>
-          <p>Create a new account or <Link to="/sessions/new">click here to login</Link></p>
+          <p>Create a new account or <Link to="/login">click here to login</Link></p>
         </div>
       );
     } else {

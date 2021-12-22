@@ -13,13 +13,11 @@ const mapStateToProps = state => ({
   redirect: state.ui.redirect
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    processForm: (user) => dispatch(signUp(user)),
+const mapDispatchToProps = dispatch => ({
+    processForm: user => dispatch(signUp(user)),
     resetRedirect: () => dispatch(resetRedirect()),
     resetSessionErrors: () => dispatch(resetSessionErrors())
-  };
-};
+});
 
 export default connect(
   mapStateToProps,

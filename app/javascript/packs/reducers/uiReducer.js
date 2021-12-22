@@ -18,7 +18,7 @@ const uiReducer = (state = initialState, action) => {
       return nextState;
     case RESET_REDIRECT:
       nextState = Object.assign({}, state);
-      nextState.redirect = null;
+      nextState.redirect = initialState.redirect;
       return nextState;
     default:
       return state;
