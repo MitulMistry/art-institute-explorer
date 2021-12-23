@@ -2,6 +2,16 @@ import React from 'react';
 import Placeholder_Image from 'images/No-Image-Placeholder.png';
 
 export class ArtworkImage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.setPlaceholder = this.setPlaceholder.bind(this);
+  }
+
+  setPlaceholder(e) {
+    e.target.src = Placeholder_Image;
+    e.target.alt = 'Placeholder image';
+  }
+
   render() {
     const { artwork, imageBaseUrl } = this.props;
     const defaultBaseUrl = "https://www.artic.edu/iiif/2/";
@@ -23,7 +33,8 @@ export class ArtworkImage extends React.Component {
     if (artwork.image_id) {
       image = (
         <img src={`${imageBaseUrl || defaultBaseUrl}/${artwork.image_id || 0}/full/843,/0/default.jpg`} 
-          alt={altText || "Artwork"} className="artwork-image" />
+          alt={altText || "Artwork"} className="artwork-image"
+          onError={this.setPlaceholder} />
       );
     } else {
       image = (
