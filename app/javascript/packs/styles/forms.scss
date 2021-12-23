@@ -14,8 +14,18 @@
   input {
     display: inline-block;
     width: 100%;
-    font-size: 1.1rem;
+    font-family: 'Karla', sans-serif;
+    font-size: 1rem;
+    padding: 6px 8px;
+    border: 1px solid $app-black;
+    border-radius: 2px;
+    margin-top: 4px;
   }
+
+  // input:focus-visible {
+  //   border: 1px solid $app-accent-color;
+  //   outline: -webkit-focus-ring-color auto 1px;
+  // }
 
   textarea {
     font-size: 1.1rem;    
