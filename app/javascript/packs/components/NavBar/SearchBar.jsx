@@ -21,7 +21,10 @@ export class SearchBar extends React.Component {
     e.preventDefault();    
     const search = Object.assign({}, this.state);
     this.props.processForm(search.query);
-    this.setState({submitted: true});
+    this.setState({
+      submitted: true,
+      query: ''
+    });
   }
 
   render() {
