@@ -6,7 +6,7 @@ export class ArtworksGrid extends React.Component {
   render() {
     const { artworksArray, imageBaseUrl } = this.props;
 
-    if (artworksArray.length > 0 && imageBaseUrl) {
+    if (artworksArray.length > 0) {
       return (
         <div className="artworks-grid">          
           <div className="cards-container masonry-with-columns">

@@ -4,6 +4,7 @@ import Placeholder_Image from 'images/No-Image-Placeholder.png';
 export class ArtworkImage extends React.Component {
   render() {
     const { artwork, imageBaseUrl } = this.props;
+    const defaultBaseUrl = "https://www.artic.edu/iiif/2/";
     
     let image = null;
     let altText = null;
@@ -21,7 +22,7 @@ export class ArtworkImage extends React.Component {
     // Check if image is available, otherwise use placeholder.
     if (artwork.image_id) {
       image = (
-        <img src={`${imageBaseUrl}/${artwork.image_id || 0}/full/843,/0/default.jpg`} 
+        <img src={`${imageBaseUrl || defaultBaseUrl}/${artwork.image_id || 0}/full/843,/0/default.jpg`} 
           alt={altText || "Artwork"} className="artwork-image" />
       );
     } else {

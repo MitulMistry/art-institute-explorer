@@ -30,6 +30,9 @@ const artworksReducer = (state = initialState, action) => {
       nextState.artworksArray = action.response.data;
       nextState.artworksArrayResponse = action.response;
       delete nextState.artworksArrayResponse.data;
+      if (!("config" in action.response)) {
+        nextState.artworksArrayResponse.config = initialState.artworksArrayResponse.config;
+      }
       return nextState;
     case RECEIVE_SAVED_ARTWORKS:
       nextState = Object.assign({}, state);

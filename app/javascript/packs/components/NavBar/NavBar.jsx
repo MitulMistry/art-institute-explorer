@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SearchBarContainer from './SearchBarContainer';
 import AuthLinksContainer from './AuthLinksContainer';
 
 export class NavBar extends React.Component {
@@ -32,6 +33,7 @@ export class NavBar extends React.Component {
           <h1 className="header-nav-logo"><Link to="/">AIC Explorer</Link></h1>
           <div className="header-nav-list clearfix">
           {links}
+          <SearchBarContainer />
           <AuthLinksContainer />
           </div>
         </div>

@@ -9,3 +9,7 @@ export const fetchSavedArtworks = () => (
 export const fetchArtwork = id => (
   fetch(`/api/v1/artworks/${id}`)
 );
+
+export const searchArtworks = queryString => (
+  fetch(`/api/v1/artworks/search?q=${encodeURIComponent(queryString)}`)
+);

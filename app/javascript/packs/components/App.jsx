@@ -13,6 +13,7 @@ import UserEditContainer from './UserEdit/UserEditContainer';
 import ArtworksIndexContainer from './ArtworksIndex/ArtworksIndexContainer';
 import ArtworkShowContainer from './ArtworkShow/ArtworkShowContainer';
 import ArtworksSavedContainer from './ArtworksSaved/ArtworksSavedContainer';
+import ArtworksSearchedContainer from './ArtworksSearched/ArtworksSearchedContainer';
 import CollectionsIndexContainer from './CollectionsIndex/CollectionsIndexContainer';
 import CollectionsNewContainer from './CollectionNew/CollectionNewContainer';
 import CollectionShowContainer from './CollectionShow/CollectionShowContainer';
@@ -48,6 +49,7 @@ const App = () => (
             <ArtworksSavedContainer />
           </ProtectedRoute>
           } />
+        <Route path="artworks/search" element={<ArtworksSearchedContainer />} />
         <Route path="collections" element={<CollectionsIndexContainer />} />
         <Route path="collections/new" element={
           <ProtectedRoute>

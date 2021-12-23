@@ -39,3 +39,10 @@ export const fetchArtwork = id => dispatch => (
       dispatch(receiveArtwork(response))
     ))
 );
+
+export const searchArtworks = queryString => dispatch => (
+  APIUtil.searchArtworks(queryString).then(response => response.json())
+    .then(response => (
+      dispatch(receiveArtworks(response))
+    ))
+);

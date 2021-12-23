@@ -1,0 +1,17 @@
+.search-bar {
+  display: inline-block;
+
+  .btn-primary-small-submit {
+    margin-left: .3rem;
+    padding: 5px 10px;
+  }
+
+  input {
+    margin-left: 1rem;
+    font-family: 'Karla', sans-serif;
+    font-size: .9rem;
+    border-radius: 1.5rem;
+    border: 2px solid $app-gray-light;
+    padding: 5px 10px;
+  }
+}
