@@ -1,9 +1,103 @@
 import React from 'react';
+import { Link, Navigate } from 'react-router-dom';
+import { RenderErrors } from '../RenderErrors/RenderErrors';
 
 export class CollectionForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+      description: ''
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  
+  componentDidMount() {
+    const { errors, resetCollectionErrors } = this.props;
+    if (Object.keys(errors).length > 0) {
+      resetCollectionErrors();
+    }
+  }
+
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const collection = Object.assign({}, this.state);
+    this.props.processForm({"collection": collection});
+  }
+
+  renderErrors() {
+    return(
+      <div>
+      <RenderErrors
+        errors={this.props.errors}
+      />
+      </div>
+    );
+  }
+
   render() {
+    const { formType } = this.props;
+    
+    let header = null;
+    if (formType == "newCollection") {
+      header = (
+        <div>
+          <h1 className="header-ruler">New Collection</h1>
+          <p>Create a new collection of artworks.</p>
+        </div>
+      );
+    } else {
+      header = (
+        <div>
+          <h1 className="header-ruler">Edit Collection</h1>
+        </div>
+      );
+    }
+
+    // if (redirect) {
+    //   resetRedirect();
+    //   return (
+    //     <Navigate to={redirect} replace={true} />
+    //   );
+    // }
+
     return (
-      <div className="div">CollectionForm</div>
+      <div className="form-container collection-form-container">
+        {header}
+        <form onSubmit={this.handleSubmit} className="signup-form-box">
+          {this.renderErrors()}
+          <div className="auth-form">
+
+            <div className="form-group">
+              <label htmlFor="form-title">Title</label>
+              <input type="text"
+                value={this.state.title}
+                onChange={this.update('title')}
+                className="form-input"
+                id="form-title"
+              />              
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="form-description">Description</label>
+              <input type="textarea"
+                value={this.state.description}
+                onChange={this.update('description')}
+                className="form-input"
+                id="form-description"
+              />              
+            </div>
+
+            <input className="collection-submit btn-primary" type="submit" value="Submit" />
+          </div>
+        </form>
+      </div>
     );
   }
 }
