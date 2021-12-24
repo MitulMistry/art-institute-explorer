@@ -13,7 +13,7 @@ export class UserShow extends React.Component {
   render() {
     const { userShow, userId } = this.props;
 
-    if (userShow && userShow.id == userId) {
+    if (userShow && userShow.id === userId) {
 
       let userCollections = null;
       if (userShow.collections.length > 0) {

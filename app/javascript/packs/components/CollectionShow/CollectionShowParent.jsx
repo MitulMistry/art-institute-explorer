@@ -12,7 +12,7 @@ export default function ArtworkShowParent({collectionShow, fetchCollection}) {
     <CollectionShow
       collectionShow={collectionShow}
       fetchCollection={fetchCollection}
-      collectionId={collectionId}
+      collectionId={parseInt(collectionId)}
     />
   );
 }

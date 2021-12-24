@@ -13,7 +13,7 @@ export class CollectionShow extends React.Component {
   render() {
     const { collectionShow, collectionId} = this.props;
 
-    if (collectionShow && collectionShow.id == collectionId) {
+    if (collectionShow && collectionShow.id === collectionId) {
 
       let artworks = null;
       if (collectionShow.artworks.length > 0) {

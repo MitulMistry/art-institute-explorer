@@ -12,7 +12,7 @@ export default function UserShowParent({userShow, fetchUser}) {
     <UserShow
       userShow={userShow}
       fetchUser={fetchUser}
-      userId={userId}
+      userId={parseInt(userId)}
     />
   );
 }

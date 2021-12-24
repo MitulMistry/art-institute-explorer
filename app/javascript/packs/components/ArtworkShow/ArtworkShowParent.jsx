@@ -13,7 +13,7 @@ export default function ArtworkShowParent({artworkShow, imageBaseUrl, fetchArtwo
       artworkShow={artworkShow}
       imageBaseUrl={imageBaseUrl}
       fetchArtwork={fetchArtwork}
-      artworkId={artworkId}
+      artworkId={parseInt(artworkId)}
     />
   );
 }
