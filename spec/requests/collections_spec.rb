@@ -70,6 +70,20 @@ RSpec.describe "/collections", type: :request do
         expect(json["artworks"].any? { |hash| hash["aic_id"] == artwork1.aic_id }).to be true
         expect(json["artworks"].any? { |hash| hash["aic_id"] == artwork2.aic_id }).to be true
       end
+
+      it "responds with JSON formatted comments" do
+        collection = create(:collection)
+        comment1 = create(:collection_comment, collection_id: collection.id)
+        comment2 = create(:collection_comment, collection_id: collection.id)
+
+        get api_v1_collection_url(collection)
+        expect(response).to be_successful
+        json = JSON.parse(response.body)
+        expect(json["collection_comments"].any? { |hash| hash["user_id"] == comment1.user_id }).to be true
+        expect(json["collection_comments"].any? { |hash| hash["user_id"] == comment2.user_id }).to be true
+        expect(json["collection_comments"].any? { |hash| hash["username"] == comment1.user.username }).to be true
+        expect(json["collection_comments"].any? { |hash| hash["username"] == comment2.user.username }).to be true
+      end
     end
   end
 
