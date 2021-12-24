@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArtworkCard } from '../ArtworksIndex/ArtworkCard';
+import { CollectionCommentsGrid, CommentsGrid } from '../CollectionComment/CollectionCommentsGrid';
 import { LoadingSpinner } from '../elements/LoadingSpinner';
 
 export class CollectionShow extends React.Component {
@@ -30,6 +31,18 @@ export class CollectionShow extends React.Component {
         );
       }
 
+      let comments = null;
+      if (collectionShow.collection_comments.length > 0) {
+        comments = (
+          <div className ="collection-show-comments">
+            <h3>Comments</h3>
+            <CollectionCommentsGrid
+              commentsArray={collectionShow.collection_comments}
+            />
+          </div>
+        );
+      }
+
       return (
         <div className="collection-show">
           <div className="collection-show-description">
@@ -38,6 +51,7 @@ export class CollectionShow extends React.Component {
             <p>{collectionShow.description}</p>
           </div>
           {artworks}
+          {comments}
         </div>
       );
     } else {
