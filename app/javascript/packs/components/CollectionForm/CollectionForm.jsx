@@ -7,7 +7,8 @@ export class CollectionForm extends React.Component {
     super(props);
     this.state = {
       title: '',
-      description: ''
+      description: '',
+      submitted: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -27,7 +28,9 @@ export class CollectionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({submitted: true});
     const collection = Object.assign({}, this.state);
+    delete collection.submitted;
     this.props.processForm({"collection": collection});
   }
 
@@ -42,7 +45,7 @@ export class CollectionForm extends React.Component {
   }
 
   render() {
-    const { formType } = this.props;
+    const { formType, redirect, resetRedirect } = this.props;
     
     let header = null;
     if (formType == "newCollection") {
@@ -60,12 +63,15 @@ export class CollectionForm extends React.Component {
       );
     }
 
-    // if (redirect) {
-    //   resetRedirect();
-    //   return (
-    //     <Navigate to={redirect} replace={true} />
-    //   );
-    // }
+    // Redirect if form has been submitted and redirect path has been
+    // set in the Redux store by Collection action.
+    if (this.state.submitted && redirect) {
+      this.setState({submitted: false});
+      resetRedirect();
+      return (
+        <Navigate to={redirect} replace={true} />
+      );
+    }
 
     return (
       <div className="form-container collection-form-container">

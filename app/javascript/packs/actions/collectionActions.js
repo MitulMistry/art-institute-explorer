@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/collectionAPIUtil';
+import { setRedirect } from './uiActions';
 import { processResponse } from '../util/APIRequestHelpers';
 
 export const RECEIVE_COLLECTIONS = 'RECEIVE_COLLECTIONS';
@@ -41,18 +42,20 @@ export const fetchCollection = id => dispatch => (
 
 export const createCollection = collection => dispatch => (
   APIUtil.createCollection(collection).then(response => processResponse(response))
-  .then(collection => (
-    dispatch(receiveCollection(collection))
-  )).catch(errors => (
+  .then(collection => {
+    dispatch(receiveCollection(collection));
+    dispatch(setRedirect(`/collections/${collection.id}`));
+  }).catch(errors => (
     dispatch(receiveCollectionErrors(errors))
   ))
 );
 
 export const updateCollection = collection => dispatch => (
   APIUtil.updateCollection(collection).then(response => processResponse(response))
-  .then(collection => (
-    dispatch(receiveCollection(collection))
-  )).catch(errors => (
+  .then(collection => {
+    dispatch(receiveCollection(collection));
+    dispatch(setRedirect(`/collections/${collection.id}`));
+  }).catch(errors => (
     dispatch(receiveCollectionErrors(errors))
   ))
 );
