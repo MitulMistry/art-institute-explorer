@@ -30,3 +30,10 @@ export const logout = () => (
     headers: CSRFRequestHeaders()
   })
 );
+
+export const deleteAccount = id => (
+  fetch(`/api/v1/users/${id}`, {
+    method: 'DELETE',
+    headers: CSRFRequestHeaders()
+  })
+);

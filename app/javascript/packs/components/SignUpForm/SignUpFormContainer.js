@@ -14,9 +14,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    processForm: user => dispatch(signUp(user)),
-    resetRedirect: () => dispatch(resetRedirect()),
-    resetSessionErrors: () => dispatch(resetSessionErrors())
+  processForm: user => dispatch(signUp(user)),
+  resetRedirect: () => dispatch(resetRedirect()),
+  resetSessionErrors: () => dispatch(resetSessionErrors())
 });
 
 export default connect(

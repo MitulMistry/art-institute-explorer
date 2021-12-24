@@ -56,3 +56,10 @@ export const updateCollection = collection => dispatch => (
     dispatch(receiveCollectionErrors(errors))
   ))
 );
+
+export const deleteCollection = id => dispatch => (
+  APIUtil.deleteCollection(id).then(response => response.json())
+    .then(response => (
+      dispatch(receiveCollection(response))
+    ))
+);

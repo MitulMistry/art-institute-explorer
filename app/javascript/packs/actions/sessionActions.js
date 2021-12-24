@@ -30,10 +30,9 @@ export const signUp = user => dispatch => (
   .then(user => {
     dispatch(receiveCurrentUser(user));
     dispatch(setRedirect('/artworks'));
-  }).catch(errors => {
-    console.log(errors);
+  }).catch(errors => (
     dispatch(receiveSessionErrors(errors))
-  })
+  ))
 );
 
 export const editProfile = user => dispatch => (
@@ -49,8 +48,8 @@ export const editProfile = user => dispatch => (
 export const login = user => dispatch => (
   APIUtil.login(user).then(response => processResponse(response))
   .then(user => {
-    dispatch(receiveCurrentUser(user))
-    dispatch(setRedirect('/artworks'))
+    dispatch(receiveCurrentUser(user));
+    dispatch(setRedirect('/artworks'));
   }).catch(errors => (
     dispatch(receiveSessionErrors(errors))
   ))
@@ -58,7 +57,14 @@ export const login = user => dispatch => (
 
 export const logout = () => dispatch => (
   APIUtil.logout().then(response => response.json())
-  .then(user => {
+  .then(user => (
     dispatch(logoutCurrentUser())
-  })
+  ))
+);
+
+export const deleteAccount = id => dispatch => (
+  APIUtil.deleteAccount().then(response => response.json())
+  .then(response => (
+    dispatch(logoutCurrentUser())
+  ))
 );
