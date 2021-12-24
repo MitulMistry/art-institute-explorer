@@ -14,7 +14,13 @@ export class CollectionForm extends React.Component {
   }
   
   componentDidMount() {
-    const { errors, resetCollectionErrors } = this.props;
+    const { redirect, resetRedirect, errors, resetCollectionErrors } = this.props;
+    // Clear redirect from store when component mounts
+    if (redirect) {
+      resetRedirect();
+    }
+    
+    // Clear errors from store
     if (Object.keys(errors).length > 0) {
       resetCollectionErrors();
     }
@@ -45,10 +51,10 @@ export class CollectionForm extends React.Component {
   }
 
   render() {
-    const { formType, redirect, resetRedirect } = this.props;
+    const { formType, redirect } = this.props;
     
     let header = null;
-    if (formType == "newCollection") {
+    if (formType === "newCollection") {
       header = (
         <div>
           <h1 className="header-ruler">New Collection</h1>
@@ -67,7 +73,6 @@ export class CollectionForm extends React.Component {
     // set in the Redux store by Collection action.
     if (this.state.submitted && redirect) {
       this.setState({submitted: false});
-      resetRedirect();
       return (
         <Navigate to={redirect} replace={true} />
       );

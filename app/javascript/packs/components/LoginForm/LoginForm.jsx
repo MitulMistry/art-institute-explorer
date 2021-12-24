@@ -7,13 +7,20 @@ export class LoginForm extends React.Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      submitted: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    const { errors, resetSessionErrors } = this.props;
+    const { redirect, resetRedirect, errors, resetSessionErrors } = this.props;
+    // Clear redirect from store when component mounts
+    if (redirect) {
+      resetRedirect();
+    }
+
+    // Clear errors from store
     if (Object.keys(errors).length > 0) {
       resetSessionErrors();
     }
@@ -27,7 +34,9 @@ export class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({submitted: true});
     const user = Object.assign({}, this.state);
+    delete user.submitted;
     this.props.processForm(user);
   }
 
@@ -42,10 +51,12 @@ export class LoginForm extends React.Component {
   }
 
   render() {
-    const { redirect, resetRedirect } = this.props;
+    const { redirect } = this.props;
 
-    if (redirect) {
-      resetRedirect();
+    // Redirect if form has been submitted and redirect path has been
+    // set in the Redux store by Collection action.
+    if (this.state.submitted && redirect) {
+      this.setState({submitted: false});
       return (
         <Navigate to={redirect} replace={true} />
       );

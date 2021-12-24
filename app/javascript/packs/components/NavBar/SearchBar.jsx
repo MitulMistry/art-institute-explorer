@@ -28,12 +28,11 @@ export class SearchBar extends React.Component {
   }
 
   render() {
-    // const { fetchArtworksSearch } = this.props;
-
-    let navigate = null;
+    // Redirect if form has been submitted
+    let redirectNav = null;
     if(this.state.submitted) {
       this.setState({submitted: false});
-      navigate = (
+      redirectNav = (
         <Navigate to={"/artworks/search"} />
       );
     }
@@ -46,7 +45,7 @@ export class SearchBar extends React.Component {
           className="form-input"
           id="form-search" />
         <button className="btn-primary-small-submit" type="submit">Search</button>
-        {navigate}
+        {redirectNav}
       </form>
     );
   }
