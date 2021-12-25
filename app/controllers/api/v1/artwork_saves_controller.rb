@@ -1,5 +1,5 @@
 class Api::V1::ArtworkSavesController < ApplicationController
-  before_action :authorized, only: %i[ index create destroy ]
+  before_action :authorized, only: %i[ index create destroy destroy_by_artwork_id destroy_by_aic_id ]
   before_action :set_artwork_save, only: :destroy
   before_action :authorize_ownership, only: :destroy
   
@@ -32,6 +32,27 @@ class Api::V1::ArtworkSavesController < ApplicationController
 
   def destroy
     @artwork_save.destroy
+    head :no_content
+  end
+
+  def destroy_by_artwork_id
+    artwork = Artwork.find(params[:id])
+    if artwork
+      artwork_save = ArtworkSave.where(artwork_id: artwork.id, user_id: current_user.id).first
+      artwork_save.destroy if artwork_save
+    end
+
+    head :no_content
+  end
+
+  def destroy_by_aic_id
+    aic_id = params[:id]
+    artwork = Artwork.find_by(aic_id: aic_id)
+    if artwork
+      artwork_save = ArtworkSave.where(artwork_id: artwork.id, user_id: current_user.id).first
+      artwork_save.destroy if artwork_save
+    end
+
     head :no_content
   end
 

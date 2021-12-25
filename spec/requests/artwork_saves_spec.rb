@@ -107,23 +107,43 @@ RSpec.describe "/artwork_saves", type: :request do
     end
 
     describe "DELETE /destroy" do
-      before :each do
-        # @artwork_save = @user.artwork_saves.build(artwork_id: valid_attributes[:artwork_id])
-        # @artwork_save.save
-        @artwork_save = ArtworkSave.create! valid_attributes #{ user_id: @user.id, artwork_id: valid_attributes[:artwork_id] }
-        # @artwork_save = ArtworkSave.create(user_id: @user.id, artwork_id: valid_attributes[:artwork_id])
-      end
+      context "with standard request" do
+        before :each do
+          # @artwork_save = @user.artwork_saves.build(artwork_id: valid_attributes[:artwork_id])
+          # @artwork_save.save
+          @artwork_save = ArtworkSave.create! valid_attributes #{ user_id: @user.id, artwork_id: valid_attributes[:artwork_id] }
+          # @artwork_save = ArtworkSave.create(user_id: @user.id, artwork_id: valid_attributes[:artwork_id])
+        end
 
-      it "destroys the requested ArtworkSave successfully" do
-        expect {
-          # byebug
+        it "destroys the requested ArtworkSave successfully" do
+          expect {
+            delete api_v1_artwork_save_url(@artwork_save)
+          }.to change(ArtworkSave, :count).by(-1)
+        end
+
+        it "responds successfully" do
           delete api_v1_artwork_save_url(@artwork_save)
-        }.to change(ArtworkSave, :count).by(-1)
+          expect(response).to be_successful
+        end
       end
 
-      it "responds successfully" do
-        delete api_v1_artwork_save_url(@artwork_save)
-        expect(response).to be_successful
+      context "with Artwork id requests" do
+        before :each do
+          @artwork = create(:artwork)
+          @user.saved_artworks << @artwork
+        end
+
+        it "destroys the requested ArtworkSave by aic_id" do
+          expect {
+            delete api_v1_artwork_save_by_aic_id_url(@artwork.aic_id)
+          }.to change(ArtworkSave, :count).by(-1)
+        end
+
+        it "destroys the requested ArtworkSave by artwork_id" do
+          expect {
+            delete api_v1_artwork_save_by_artwork_id_url(@artwork.id)
+          }.to change(ArtworkSave, :count).by(-1)
+        end
       end
     end
   end
@@ -131,19 +151,41 @@ RSpec.describe "/artwork_saves", type: :request do
   # Define @user before using these tests
   shared_examples_for "no destruction access to non-owned ArtworkSaves" do
     describe "DELETE /destroy" do
-      before :each do
-        @artwork_save = ArtworkSave.create(valid_attributes_non_owned)
-      end
+      context "with standard request" do
+        before :each do
+          @artwork_save = ArtworkSave.create(valid_attributes_non_owned)
+        end
 
-      it "does not destroy the requested ArtworkSave" do
-        expect {
+        it "does not destroy the requested ArtworkSave" do
+          expect {
+            delete api_v1_artwork_save_url(@artwork_save)
+          }.to change(ArtworkSave, :count).by(0)
+        end
+
+        it "responds with 403 forbidden" do
           delete api_v1_artwork_save_url(@artwork_save)
-        }.to change(ArtworkSave, :count).by(0)
+          expect(response).to have_http_status(403)
+        end
       end
 
-      it "responds with 403 forbidden" do
-        delete api_v1_artwork_save_url(@artwork_save)
-        expect(response).to have_http_status(403)
+      context "with Artwork id requests" do
+        before :each do
+          @other_user = create(:user)
+          @artwork = create(:artwork)
+          @other_user.saved_artworks << @artwork
+        end
+
+        it "does not destroy the requested ArtworkSave" do
+          expect {
+            delete api_v1_artwork_save_by_aic_id_url(@artwork.aic_id)
+          }.to change(ArtworkSave, :count).by(0)
+        end
+
+        it "does not destroy the requested ArtworkSave" do
+          expect {
+            delete api_v1_artwork_save_by_artwork_id_url(@artwork.id)
+          }.to change(ArtworkSave, :count).by(0)
+        end
       end
     end
   end

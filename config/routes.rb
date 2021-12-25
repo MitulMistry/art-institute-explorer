@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       get '/artworks/search' => 'artworks#search'
       resources :artworks, only: [:index, :show]      
       resources :artwork_saves, only: [:index, :create, :destroy]
+      delete '/artwork_saves/artwork_id/:id' => 'artwork_saves#destroy_by_artwork_id', as: 'artwork_save_by_artwork_id'
+      delete '/artwork_saves/aic_id/:id' => 'artwork_saves#destroy_by_aic_id', as: 'artwork_save_by_aic_id'      
       
       get '/collections/liked' => 'collections#liked'
       resources :collections      
