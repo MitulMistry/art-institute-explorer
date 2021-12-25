@@ -20,7 +20,7 @@ RSpec.describe "/sessions", type: :request do
         expect(json["username"]).to eq(@user.username)
       end
 
-      it "responds with a JSON formatted user with SavedArtworks aic_ids" do
+      it "responds with a JSON formatted user with saved Artworks aic_ids" do
         artwork1 = create(:artwork)
         artwork2 = create(:artwork)
         @user.saved_artworks << artwork1
@@ -34,11 +34,34 @@ RSpec.describe "/sessions", type: :request do
         expect(response).to be_successful
 
         json = JSON.parse(response.body)
+        expect(json).to have_key("saved_artworks_aic_ids")
         ids = json["saved_artworks_aic_ids"]
 
         expect(ids.length).to eq(2)
         expect(ids).to include(artwork1.aic_id)
         expect(ids).to include(artwork2.aic_id)
+      end
+
+      it "responds with a JSON formatted user with liked Collections ids" do
+        collection1 = create(:collection)
+        collection2 = create(:collection)
+        @user.liked_collections << collection1
+        @user.liked_collections << collection2
+
+        post api_v1_sessions_path, params: {
+          email: @user.email,
+          password: @password
+        }
+        
+        expect(response).to be_successful
+
+        json = JSON.parse(response.body)
+        expect(json).to have_key("liked_collections_ids")
+        ids = json["liked_collections_ids"]
+
+        expect(ids.length).to eq(2)
+        expect(ids).to include(collection1.id)
+        expect(ids).to include(collection2.id)
       end
     end
 

@@ -17,8 +17,13 @@ class User < ApplicationRecord
 
   validates :avatar, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: { less_than: 1.megabytes }
 
-  # Return an array of aic_ids from the user's saved artworks
+  # Return an array of aic_ids from the user's saved Artworks
   def saved_artworks_aic_ids
     self.saved_artworks.pluck(:aic_id)
+  end
+
+  # Return an array of ids from the user's liked Collections
+  def liked_collections_ids
+    self.liked_collections.pluck(:id)
   end
 end

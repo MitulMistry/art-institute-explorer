@@ -64,7 +64,7 @@ RSpec.describe User, type: :model do
 
   describe "instance methods" do
     context "#saved_artworks_aic_ids" do
-      it "returns an array of aic_ids from the user's saved artworks" do
+      it "returns an array of aic_ids from the user's saved Artworks" do
         artwork1 = create(:artwork)
         artwork2 = create(:artwork)
         user = create(:user)
@@ -75,6 +75,21 @@ RSpec.describe User, type: :model do
         expect(ids.length).to eq(2)
         expect(ids).to include(artwork1.aic_id)
         expect(ids).to include(artwork2.aic_id)
+      end
+    end
+
+    context "#liked_collections_ids" do
+      it "returns an array of ids from the user's liked Collections" do
+        collection1 = create(:collection)
+        collection2 = create(:collection)
+        user = create(:user)
+        user.liked_collections << collection1
+        user.liked_collections << collection2
+        ids = user.liked_collections_ids
+
+        expect(ids.length).to eq(2)
+        expect(ids).to include(collection1.id)
+        expect(ids).to include(collection2.id)
       end
     end
   end
