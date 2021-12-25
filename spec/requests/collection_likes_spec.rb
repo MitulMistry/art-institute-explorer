@@ -45,38 +45,79 @@ RSpec.describe "/collection_likes", type: :request do
 
   shared_examples_for "destruction access to owned CollectionLikes" do
     describe "DELETE /destroy" do
-      before :each do
-        @collection_like = create(:collection_like, user_id: (@user || create(:user)).id)
-      end
+      context "with standard request" do
+        before :each do
+          @collection_like = create(:collection_like, user_id: (@user || create(:user)).id)
+        end
 
-      it "destroys the requested Collection" do
-        expect {
+        it "destroys the requested Collection" do
+          expect {
+            delete api_v1_collection_like_url(@collection_like)
+          }.to change(CollectionLike, :count).by(-1)
+        end
+
+        it "responds successfully" do
           delete api_v1_collection_like_url(@collection_like)
-        }.to change(CollectionLike, :count).by(-1)
+          expect(response).to be_successful
+        end
       end
 
-      it "responds successfully" do
-        delete api_v1_collection_like_url(@collection_like)
-        expect(response).to be_successful
+      context "with Collection id request" do
+        before :each do
+          @collection = create(:collection)
+          @user.liked_collections << @collection
+        end
+        
+        it "destroys the requested CollectionLike by collection_id" do
+          expect {
+            delete api_v1_collection_like_by_collection_id_url(@collection.id)
+          }.to change(CollectionLike, :count).by(-1)
+        end
+
+        it "responds successfully" do
+          delete api_v1_collection_like_by_collection_id_url(@collection)
+          expect(response).to be_successful
+        end
       end
     end
   end
 
   shared_examples_for "no destruction access to non-owned CollectionLikes" do
     describe "DELETE /destroy" do
-      before :each do
-        @collection_like = create(:collection_like)
-      end
+      context "with standard request" do
+        before :each do
+          @collection_like = create(:collection_like)
+        end
 
-      it "does not destroy the requested CollectionLike" do
-        expect {
+        it "does not destroy the requested CollectionLike" do
+          expect {
+            delete api_v1_collection_like_url(@collection_like)
+          }.to change(Collection, :count).by(0)
+        end
+
+        it "responds with 403 forbidden" do
           delete api_v1_collection_like_url(@collection_like)
-        }.to change(Collection, :count).by(0)
+          expect(response).to have_http_status(403)
+        end
       end
 
-      it "responds with 403 forbidden" do
-        delete api_v1_collection_like_url(@collection_like)
-        expect(response).to have_http_status(403)
+      context "with Collection id request" do
+        before :each do
+          @other_user = create(:user)
+          @collection = create(:collection)
+          @other_user.liked_collections << @collection  
+        end
+
+        it "destroys the requested CollectionLike by collection_id" do
+          expect {
+            delete api_v1_collection_like_by_collection_id_url(@collection.id)
+          }.to change(CollectionLike, :count).by(0)
+        end
+
+        it "responds with 404 not found" do
+          delete api_v1_collection_like_by_collection_id_url(@collection.id)
+          expect(response).to have_http_status(404)
+        end
       end
     end
   end
@@ -90,19 +131,40 @@ RSpec.describe "/collection_likes", type: :request do
     end
 
     describe "DELETE /destroy" do
-      before :each do
-        @collection_like = create(:collection_like)
-      end
+      context "with standard request" do
+        before :each do
+          @collection_like = create(:collection_like)
+        end
 
-      it "does not destroy the requested CollectionLike" do
-        expect {
+        it "does not destroy the requested CollectionLike" do
+          expect {
+            delete api_v1_collection_like_url(@collection_like)
+          }.to change(CollectionLike, :count).by(0)
+        end
+
+        it "responds with 401 unauthorized" do
           delete api_v1_collection_like_url(@collection_like)
-        }.to change(CollectionLike, :count).by(0)
+          expect(response).to have_http_status(401)
+        end
       end
 
-      it "responds with 401 unauthorized" do
-        delete api_v1_collection_like_url(@collection_like)
-        expect(response).to have_http_status(401)
+      context "with Collection id request" do
+        before :each do
+          @other_user = create(:user)
+          @collection = create(:collection)
+          @other_user.liked_collections << @collection  
+        end
+
+        it "destroys the requested CollectionLike by collection_id" do
+          expect {
+            delete api_v1_collection_like_by_collection_id_url(@collection.id)
+          }.to change(CollectionLike, :count).by(0)
+        end
+
+        it "responds with 401 unauthorized" do
+          delete api_v1_collection_like_by_collection_id_url(@collection.id)
+          expect(response).to have_http_status(401)
+        end
       end
     end
   end

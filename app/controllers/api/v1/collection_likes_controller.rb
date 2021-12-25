@@ -1,5 +1,5 @@
 class Api::V1::CollectionLikesController < ApplicationController
-  before_action :authorized, only: %i[ create destroy ]
+  before_action :authorized, only: %i[ create destroy destroy_by_collection_id ]
   before_action :set_collection_like, only: %i[ destroy ]
   before_action :authorize_ownership, only: %i[ destroy ]
 
@@ -16,6 +16,21 @@ class Api::V1::CollectionLikesController < ApplicationController
   def destroy
     @collection_like.destroy
     head :no_content
+  end
+
+  def destroy_by_collection_id
+    collection = Collection.find(params[:id])
+    if collection
+      collection_like = CollectionLike.where(collection_id: collection.id, user_id: current_user.id).first
+      if collection_like
+        collection_like.destroy
+        head :no_content
+      else
+        render_not_found
+      end
+    else
+      render_not_found
+    end
   end
 end
 
