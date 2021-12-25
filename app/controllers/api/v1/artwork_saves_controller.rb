@@ -39,10 +39,15 @@ class Api::V1::ArtworkSavesController < ApplicationController
     artwork = Artwork.find(params[:id])
     if artwork
       artwork_save = ArtworkSave.where(artwork_id: artwork.id, user_id: current_user.id).first
-      artwork_save.destroy if artwork_save
+      if artwork_save
+        artwork_save.destroy
+        head :no_content
+      else
+        render_not_found
+      end
+    else
+      render_not_found
     end
-
-    head :no_content
   end
 
   def destroy_by_aic_id
@@ -50,10 +55,15 @@ class Api::V1::ArtworkSavesController < ApplicationController
     artwork = Artwork.find_by(aic_id: aic_id)
     if artwork
       artwork_save = ArtworkSave.where(artwork_id: artwork.id, user_id: current_user.id).first
-      artwork_save.destroy if artwork_save
-    end
-
-    head :no_content
+      if artwork_save
+        artwork_save.destroy
+        head :no_content
+      else
+        render_not_found
+      end
+    else
+      render_not_found
+    end    
   end
 
   private

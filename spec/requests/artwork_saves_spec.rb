@@ -139,10 +139,20 @@ RSpec.describe "/artwork_saves", type: :request do
           }.to change(ArtworkSave, :count).by(-1)
         end
 
+        it "responds successfully" do
+          delete api_v1_artwork_save_by_aic_id_url(@artwork.aic_id)
+          expect(response).to be_successful
+        end
+
         it "destroys the requested ArtworkSave by artwork_id" do
           expect {
             delete api_v1_artwork_save_by_artwork_id_url(@artwork.id)
           }.to change(ArtworkSave, :count).by(-1)
+        end
+
+        it "responds successfully" do
+          delete api_v1_artwork_save_by_artwork_id_url(@artwork.id)
+          expect(response).to be_successful
         end
       end
     end
@@ -181,10 +191,20 @@ RSpec.describe "/artwork_saves", type: :request do
           }.to change(ArtworkSave, :count).by(0)
         end
 
+        it "responds with 404 not found" do
+          delete api_v1_artwork_save_by_aic_id_url(@artwork.aic_id)
+          expect(response).to have_http_status(404)
+        end
+
         it "does not destroy the requested ArtworkSave" do
           expect {
             delete api_v1_artwork_save_by_artwork_id_url(@artwork.id)
           }.to change(ArtworkSave, :count).by(0)
+        end
+
+        it "responds with 404 not found" do
+          delete api_v1_artwork_save_by_artwork_id_url(@artwork.id)
+          expect(response).to have_http_status(404)
         end
       end
     end
@@ -212,19 +232,51 @@ RSpec.describe "/artwork_saves", type: :request do
     end
 
     describe "DELETE /destroy" do
-      before :each do
-        @artwork_save = ArtworkSave.create(valid_attributes)
-      end
+      context "with standard request" do
+        before :each do
+          @artwork_save = ArtworkSave.create(valid_attributes)
+        end
 
-      it "does not destroy the requested ArtworkSave" do
-        expect {
+        it "does not destroy the requested ArtworkSave" do
+          expect {
+            delete api_v1_artwork_save_url(@artwork_save)
+          }.to change(ArtworkSave, :count).by(0)
+        end
+
+        it "responds with 401 unauthorized" do
           delete api_v1_artwork_save_url(@artwork_save)
-        }.to change(ArtworkSave, :count).by(0)
+          expect(response).to have_http_status(401)
+        end
       end
 
-      it "responds with 401 unauthorized" do
-        delete api_v1_artwork_save_url(@artwork_save)
-        expect(response).to have_http_status(401)
+      context "with Artwork id requests" do
+        before :each do
+          @other_user = create(:user)
+          @artwork = create(:artwork)
+          @other_user.saved_artworks << @artwork
+        end
+
+        it "does not destroy the requested ArtworkSave" do
+          expect {
+            delete api_v1_artwork_save_by_aic_id_url(@artwork.aic_id)
+          }.to change(ArtworkSave, :count).by(0)
+        end
+
+        it "responds with 401 unauthorized" do
+          delete api_v1_artwork_save_by_aic_id_url(@artwork.aic_id)
+          expect(response).to have_http_status(401)
+        end
+
+        it "does not destroy the requested ArtworkSave" do
+          expect {
+            delete api_v1_artwork_save_by_artwork_id_url(@artwork.id)
+          }.to change(ArtworkSave, :count).by(0)
+        end
+
+        it "responds with 401 unauthorized" do
+          delete api_v1_artwork_save_by_artwork_id_url(@artwork.id)
+          expect(response).to have_http_status(401)
+        end
       end
     end
   end
