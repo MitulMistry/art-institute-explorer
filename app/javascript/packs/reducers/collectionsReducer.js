@@ -5,7 +5,7 @@ import {
 
 import {
   RECEIVE_COLLECTION_COMMENT,
-  DELETE_COLLECTION_COMMENT
+  REMOVE_COLLECTION_COMMENT
 } from '../actions/collectionCommentActions'
 
 const initialState = {
@@ -30,7 +30,7 @@ const collectionsReducer = (state = initialState, action) => {
       nextState = Object.assign({}, state);
       nextState.collectionShow.collection_comments.push(action.collectionComment);
       return nextState;
-    case DELETE_COLLECTION_COMMENT:
+    case REMOVE_COLLECTION_COMMENT:
       nextState = Object.assign({}, state);
       // Create new array of comments that don't match the id that needs to be removed
       let commentArray = nextState.collectionShow.collection_comments.filter((comment) => (

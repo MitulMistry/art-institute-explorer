@@ -20,7 +20,11 @@ const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       nextState = Object.assign({}, state);
-      nextState.currentUser = action.currentUser;
+      let currentUser = Object.assign({}, action.currentUser);
+      nextState.currentUser = currentUser;
+      if ("saved_artworks_aic_ids" in nextState.currentUser) {
+        delete nextState.currentUser.saved_artworks_aic_ids;
+      }
       return nextState;
     case LOGOUT_CURRENT_USER:
       nextState = Object.assign({}, state);
