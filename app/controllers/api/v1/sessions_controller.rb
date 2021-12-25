@@ -8,7 +8,7 @@ class Api::V1::SessionsController < ApplicationController
     @user = User.find_by(email: email)
     if @user && @user.authenticate(password)
       login(@user)
-      render "api/v1/users/show"
+      render "api/v1/users/current_user"
     else
       render json: ["Invalid email/password"], status: :unauthorized
     end

@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
 
     if @user.save
       login(@user)
-      render :show, status: :created, location: api_v1_user_url(@user)
+      render "api/v1/users/current_user", status: :created, location: api_v1_user_url(@user)
     else
       render json: @user.errors, status: :unprocessable_entity
     end

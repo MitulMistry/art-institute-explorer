@@ -16,4 +16,9 @@ class User < ApplicationRecord
   validates :bio, length: { maximum: 500 }
 
   validates :avatar, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: { less_than: 1.megabytes }
+
+  # Return an array of aic_ids from the user's saved artworks
+  def saved_artworks_aic_ids
+    self.saved_artworks.pluck(:aic_id)
+  end
 end

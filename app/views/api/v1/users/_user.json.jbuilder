@@ -1,5 +1,4 @@
 json.extract! user, :id, :username, :email, :bio, :created_at, :updated_at
-# json.extract! user, :id, :username, :email, :bio, :collections, :saved_artworks, :created_at, :updated_at
 
 json.collections user.collections.last(10) do |collection|
   json.id collection.id

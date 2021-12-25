@@ -19,6 +19,27 @@ RSpec.describe "/sessions", type: :request do
         json = JSON.parse(response.body)
         expect(json["username"]).to eq(@user.username)
       end
+
+      it "responds with a JSON formatted user with SavedArtworks aic_ids" do
+        artwork1 = create(:artwork)
+        artwork2 = create(:artwork)
+        @user.saved_artworks << artwork1
+        @user.saved_artworks << artwork2
+
+        post api_v1_sessions_path, params: {
+          email: @user.email,
+          password: @password
+        }
+        
+        expect(response).to be_successful
+
+        json = JSON.parse(response.body)
+        ids = json["saved_artworks_aic_ids"]
+
+        expect(ids.length).to eq(2)
+        expect(ids).to include(artwork1.aic_id)
+        expect(ids).to include(artwork2.aic_id)
+      end
     end
 
     context "with invalid password" do

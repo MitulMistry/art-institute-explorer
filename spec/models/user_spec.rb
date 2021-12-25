@@ -37,7 +37,7 @@ RSpec.describe User, type: :model do
         expect(build(:user, username: "test user4")).to be_invalid
         expect(build(:user, username: "testUser5$")).to be_invalid
       end
-      
+
       it { should validate_presence_of(:email) }
       it { should validate_length_of(:email).is_at_most(100) }
 
@@ -59,6 +59,23 @@ RSpec.describe User, type: :model do
 
     context "other validations" do
       it { should validate_length_of(:bio).is_at_most(500) }
+    end
+  end
+
+  describe "instance methods" do
+    context "#saved_artworks_aic_ids" do
+      it "returns an array of aic_ids from the user's saved artworks" do
+        artwork1 = create(:artwork)
+        artwork2 = create(:artwork)
+        user = create(:user)
+        user.saved_artworks << artwork1
+        user.saved_artworks << artwork2
+        ids = user.saved_artworks_aic_ids
+
+        expect(ids.length).to eq(2)
+        expect(ids).to include(artwork1.aic_id)
+        expect(ids).to include(artwork2.aic_id)
+      end
     end
   end
 end
