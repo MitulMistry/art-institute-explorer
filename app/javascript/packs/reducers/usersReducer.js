@@ -25,6 +25,9 @@ const usersReducer = (state = initialState, action) => {
       if ("saved_artworks_aic_ids" in nextState.currentUser) {
         delete nextState.currentUser.saved_artworks_aic_ids;
       }
+      if ("liked_collections_ids" in nextState.currentUser) {
+        delete nextState.currentUser.liked_collections_ids;
+      }
       return nextState;
     case LOGOUT_CURRENT_USER:
       nextState = Object.assign({}, state);
