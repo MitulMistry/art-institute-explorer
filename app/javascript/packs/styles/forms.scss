@@ -27,8 +27,15 @@
   //   outline: -webkit-focus-ring-color auto 1px;
   // }
 
-  textarea {
-    font-size: 1.1rem;    
+  input[type="textarea"] {
+    font-size: 1rem;    
     width: 100%;
+  }
+
+  textarea {    
+    width: 100%;
+    font-family: 'Karla', sans-serif;
+    font-size: 1rem;
+    padding: 6px 8px;
   }
 }

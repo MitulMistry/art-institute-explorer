@@ -18,7 +18,7 @@ export const createCollection = collection => (
 
 export const updateCollection = collection => (
   fetch(`/api/v1/collections/${collection.id}`, {
-    method: 'POST',
+    method: 'PATCH',
     headers: CSRFRequestHeaders(),
     body: JSON.stringify(collection)
   })

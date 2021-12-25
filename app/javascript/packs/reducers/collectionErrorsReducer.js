@@ -1,7 +1,7 @@
 import {
   RECEIVE_COLLECTION_ERRORS,
   RESET_COLLECTION_ERRORS,
-  RECEIVE_COLLECTION,
+  RECEIVE_COLLECTION
 } from '../actions/collectionActions';
 
 const initialState = [];

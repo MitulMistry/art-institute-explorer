@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArtworkCard } from '../ArtworksIndex/ArtworkCard';
-import { CollectionCommentsGrid, CommentsGrid } from '../CollectionComment/CollectionCommentsGrid';
+import { CollectionCommentsGrid } from '../CollectionComment/CollectionCommentsGrid';
+import CollectionCommentNewContainer from '../CollectionCommentNew/CollectionCommentNewContainer';
 import { LoadingSpinner } from '../elements/LoadingSpinner';
 
 export class CollectionShow extends React.Component {
@@ -12,7 +13,7 @@ export class CollectionShow extends React.Component {
   }
 
   render() {
-    const { collectionShow, collectionId} = this.props;
+    const { collectionShow, collectionId, loggedIn} = this.props;
 
     if (collectionShow && collectionShow.id === collectionId) {
 
@@ -43,6 +44,15 @@ export class CollectionShow extends React.Component {
         );
       }
 
+      let commentForm = null;
+      if (loggedIn) {
+        commentForm = (
+          <div className="new-comment-form">
+            <CollectionCommentNewContainer />
+          </div>
+        );
+      }
+
       return (
         <div className="collection-show">
           <div className="collection-show-description">
@@ -51,6 +61,7 @@ export class CollectionShow extends React.Component {
             <p>{collectionShow.description}</p>
           </div>
           {artworks}
+          {commentForm}
           {comments}
         </div>
       );

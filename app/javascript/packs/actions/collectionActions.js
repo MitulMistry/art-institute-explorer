@@ -42,22 +42,22 @@ export const fetchCollection = id => dispatch => (
 
 export const createCollection = collection => dispatch => (
   APIUtil.createCollection(collection).then(response => processResponse(response))
-  .then(collection => {
-    dispatch(receiveCollection(collection));
-    dispatch(setRedirect(`/collections/${collection.id}`));
-  }).catch(errors => (
-    dispatch(receiveCollectionErrors(errors))
-  ))
+    .then(collection => {
+      dispatch(receiveCollection(collection));
+      dispatch(setRedirect(`/collections/${collection.id}`));
+    }).catch(errors => (
+      dispatch(receiveCollectionErrors(errors))
+    ))
 );
 
 export const updateCollection = collection => dispatch => (
   APIUtil.updateCollection(collection).then(response => processResponse(response))
-  .then(collection => {
-    dispatch(receiveCollection(collection));
-    dispatch(setRedirect(`/collections/${collection.id}`));
-  }).catch(errors => (
-    dispatch(receiveCollectionErrors(errors))
-  ))
+    .then(collection => {
+      dispatch(receiveCollection(collection));
+      dispatch(setRedirect(`/collections/${collection.id}`));
+    }).catch(errors => (
+      dispatch(receiveCollectionErrors(errors))
+    ))
 );
 
 export const deleteCollection = id => dispatch => (

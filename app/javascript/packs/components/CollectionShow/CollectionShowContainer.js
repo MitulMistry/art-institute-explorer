@@ -5,7 +5,8 @@ import CollectionShowParent from './CollectionShowParent';
 import { fetchCollection } from '../../actions/collectionActions';
 
 const mapStateToProps = state => ({
-  collectionShow: state.entities.collections.collectionShow
+  collectionShow: state.entities.collections.collectionShow,
+  loggedIn: Boolean(state.session.id)
 });
 
 const mapDispatchToProps = dispatch => ({
