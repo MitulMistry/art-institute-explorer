@@ -14,4 +14,6 @@ json.collection_comments local_collection.collection_comments do |collection_com
   json.updated_at collection_comment.updated_at
 end
 
+json.like_count local_collection.like_count
+
 json.url api_v1_collection_url(local_collection, format: :json)
