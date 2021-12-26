@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArtworkImage } from '../ArtworksIndex/ArtworkImage';
+import CollectionLikeButtonContainer from './CollectionLikeButtonContainer';
 
 export class CollectionCard extends React.Component {
   render() {
@@ -41,10 +42,19 @@ export class CollectionCard extends React.Component {
     return (
       <div className="collection-card masonry-item">
         {image}
-        <h5 className="collection-card-title">
-          <Link to={`/collections/${collection.id}`}>{collection.title}</Link>
-        </h5>
-        {userInfo}
+        <div className="card-info flex-row">
+          <div className="flex-row-left">
+            <h5 className="collection-card-title">
+              <Link to={`/collections/${collection.id}`}>{collection.title}</Link>
+            </h5>
+            {userInfo}
+          </div>
+          <div className="flex-row-right">
+            <CollectionLikeButtonContainer
+              collection={collection}
+            />
+          </div>
+        </div>
       </div>
     );
   }
