@@ -41,6 +41,11 @@
 
 .btn-interactive {
 	cursor: pointer;
+	-webkit-transition: color .1s linear;
+  -moz-transition: color .1s linear;
+  -ms-transition: color .1s linear;
+  -o-transition: color .1s linear;
+  transition: color .1s linear;
 }
 
 .btn-interactive:hover {

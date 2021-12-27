@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArtworkCard } from '../ArtworksIndex/ArtworkCard';
 import { CollectionCommentsGrid } from '../CollectionComment/CollectionCommentsGrid';
 import CollectionCommentNewContainer from '../CollectionCommentNew/CollectionCommentNewContainer';
+import CollectionLikeButtonContainer from '../CollectionsIndex/CollectionLikeButtonContainer';
 import { LoadingSpinner } from '../elements/LoadingSpinner';
 
 export class CollectionShow extends React.Component {
@@ -56,9 +57,20 @@ export class CollectionShow extends React.Component {
       return (
         <div className="collection-show">
           <div className="collection-show-description">
-            <h1>{collectionShow.title}</h1>
-            <p>By: <Link to={`/users/${collectionShow.user.id}`}>{collectionShow.user.username}</Link></p>
-            <p>{collectionShow.description}</p>
+            <div className="flex-row">
+              <div className="flex-row-left">
+                <h1>{collectionShow.title}</h1>
+                <p>By: <Link to={`/users/${collectionShow.user.id}`}>{collectionShow.user.username}</Link></p>
+                <p>{collectionShow.description}</p>
+              </div>
+              <div className="flex-row-right">
+                <div className="collection-show-like-button">
+                  <CollectionLikeButtonContainer
+                    collection={collectionShow}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
           {artworks}
           {commentForm}
