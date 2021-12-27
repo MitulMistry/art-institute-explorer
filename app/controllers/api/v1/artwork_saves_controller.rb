@@ -2,7 +2,7 @@ class Api::V1::ArtworkSavesController < ApplicationController
   before_action :authorized, only: %i[ index create destroy destroy_by_artwork_id destroy_by_aic_id ]
   before_action :set_artwork_save, only: :destroy
   before_action :authorize_ownership, only: :destroy
-  
+
   def index
     user = current_user
     @artworks = user.saved_artworks
@@ -16,11 +16,30 @@ class Api::V1::ArtworkSavesController < ApplicationController
     # If using external API id, ArtworkSave will use class method to find Artwork in our database,
     # or make an external API call and create the Artwork in our database.
     if !params["artwork_save"]["artwork_id"].nil?
-      @artwork_save = @user.artwork_saves.build(artwork_save_params)      
+      # Check for duplicates
+      @artwork_save = ArtworkSave.where(user_id: @user.id, artwork_id: params["artwork_save"]["artwork_id"]).first
+      if !@artwork_save
+        @artwork_save = @user.artwork_saves.build(artwork_save_params)
+      else
+        render_duplicate
+        return
+      end
     elsif !params["artwork_save"]["aic_id"].nil?
-      @artwork_save = ArtworkSave.new_by_aic_id(@user.id, params["artwork_save"]["aic_id"].to_i)
+      # Check for duplicates
+      artwork = Artwork.find_by(aic_id: params["artwork_save"]["aic_id"])
+      if artwork
+        @artwork_save = ArtworkSave.where(user_id: @user.id, artwork_id: artwork.id).first
+      end
+
+      if !artwork || !@artwork_save
+        @artwork_save = ArtworkSave.new_by_aic_id(@user.id, params["artwork_save"]["aic_id"].to_i)
+      else
+        render_duplicate
+        return
+      end
     else
       render json: ["Invalid parameters"], status: :unprocessable_entity
+      return
     end
 
     if @artwork_save.save
@@ -63,7 +82,7 @@ class Api::V1::ArtworkSavesController < ApplicationController
       end
     else
       render_not_found
-    end    
+    end
   end
 
   private

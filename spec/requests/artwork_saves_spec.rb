@@ -103,6 +103,53 @@ RSpec.describe "/artwork_saves", type: :request do
             expect(json["artwork"]).to include("must exist")
           end
         end
+
+        context "with duplicate parameters" do
+          before :each do
+            @artwork = create(:artwork, aic_id: valid_attributes_using_aic_id[:aic_id])
+            @user.saved_artworks << @artwork
+          end
+  
+          it "does not create a new ArtworkSave with duplicate Artwork id" do
+            VCR.use_cassette("artwork_save_grande_jatte") do
+              expect {
+                post api_v1_artwork_saves_url, params: { artwork_save:
+                  { user_id: @user.id, artwork_id: @artwork.id }}
+              }.to change(CollectionLike, :count).by(0)
+            end
+          end
+  
+          it "responds with an error in JSON format for duplicate Artwork id" do
+            VCR.use_cassette("artwork_save_grande_jatte") do
+              post api_v1_artwork_saves_url, params: { artwork_save:
+                { user_id: @user.id, artwork_id: @artwork.id }}
+              expect(response).to have_http_status(422)
+    
+              json = JSON.parse(response.body)
+              expect(json).to include("Duplicate record")
+            end
+          end
+
+          it "does not create a new ArtworkSave with duplicate Artwork aic_id" do
+            VCR.use_cassette("artwork_save_grande_jatte") do
+              expect {
+                post api_v1_artwork_saves_url, params: { artwork_save:
+                  { user_id: @user.id, aic_id: @artwork.aic_id }}
+              }.to change(CollectionLike, :count).by(0)
+            end
+          end
+  
+          it "responds with an error in JSON format for duplicate aic_id" do
+            VCR.use_cassette("artwork_save_grande_jatte") do
+              post api_v1_artwork_saves_url, params: { artwork_save:
+                { user_id: @user.id, aic_id: @artwork.aic_id }}
+              expect(response).to have_http_status(422)
+    
+              json = JSON.parse(response.body)
+              expect(json).to include("Duplicate record")
+            end
+          end
+        end
       end
     end
 
