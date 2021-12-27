@@ -7,33 +7,32 @@ import { faThumbsUp as faThumbsUpSolid } from '@fortawesome/free-solid-svg-icons
 export class CollectionLikeButton extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   liked: false
-    // };
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      likeCount: 0
+    };
+
     this.handleLike = this.handleLike.bind(this);
-    this.handleUnlike = this.handleLike.bind(this);
+    this.handleUnlike = this.handleUnlike.bind(this);
   }
 
-  // componentDidMount() {
-  //   const { loggedIn, likedCollectionIds, collection } = this.props;
-
-  //   if (loggedIn && likedCollectionIds && likedCollectionIds.includes(collection.id)) {
-  //     this.setState({liked: true});
-  //   }
-  // }
-
-  // handleSubmit(e) {
-  //   this.setState({liked: !this.state.liked});
-  // }
+  componentDidMount() {
+    const { collection } = this.props;
+    this.setState({likeCount: collection.like_count});
+  }
 
   handleLike(e) {
     const { collection, createCollectionLike } = this.props;
+    this.setState(prevState => ({
+      likeCount: prevState.likeCount + 1
+    }));
     createCollectionLike(collection.id);
   }
 
   handleUnlike(e) {
     const { collection, deleteCollectionLike } = this.props;
+    this.setState(prevState => ({
+      likeCount: prevState.likeCount - 1
+    }));
     deleteCollectionLike(collection.id);
   }
 
@@ -51,7 +50,7 @@ export class CollectionLikeButton extends React.Component {
               className="btn-interactive-selected"
               onClick={this.handleUnlike}
             />
-            <p className="like-count-selected">{collection.like_count}</p>
+            <p className="like-count-selected">{this.state.likeCount}</p>
           </div>
         );
       } else {
@@ -63,7 +62,7 @@ export class CollectionLikeButton extends React.Component {
               className="btn-interactive"
               onClick={this.handleLike}
             />
-            <p className="like-count">{collection.like_count}</p>
+            <p className="like-count">{this.state.likeCount}</p>
           </div>
         );
       }
@@ -74,7 +73,7 @@ export class CollectionLikeButton extends React.Component {
             icon={faThumbsUpRegular}
             size="1x"
           />
-        <p className="like-count">{collection.like_count}</p>
+        <p className="like-count">{this.state.likeCount}</p>
         </div>
       );
     }

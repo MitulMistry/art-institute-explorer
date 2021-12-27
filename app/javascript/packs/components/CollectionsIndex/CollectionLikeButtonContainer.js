@@ -3,8 +3,10 @@ import { CollectionLikeButton } from './CollectionLikeButton';
 
 // Actions
 import { createCollectionLike } from '../../actions/collectionLikeActions';
-import { deleteCollectionLike } from '../../util/collectionLikeAPIUtil';
+import { deleteCollectionLike } from '../../actions/collectionLikeActions';
 
+// Since collection is being passed in as a prop to this container, it will
+// not be updated if there are changes to it in the store.
 const mapStateToProps = (state, ownProps) => ({
   loggedIn: Boolean(state.session.id),
   likedCollectionIds: state.session.likedCollectionsIds,

@@ -34,28 +34,42 @@ const sessionReducer = (state = initialState, action) => {
       return initialState;
     case RECEIVE_ARTWORK_SAVE:
       nextState = Object.assign({}, state);
-      nextState.savedArtworksAicIds.push(action.artworkSave.aic_id);
+      let receiveSaveArray = nextState.savedArtworksAicIds;
+
+      // Arrays must be copied in order to trigger re-render in Redux Connect
+      receiveSaveArray.push(action.artworkSave.aic_id);
+      nextState.savedArtworksAicIds = [...receiveSaveArray];
+
+      return nextState;
     case REMOVE_ARTWORK_SAVE:
       nextState = Object.assign({}, state);
-      let artworkIds = nextState.savedArtworksAicIds;
-      const artworkIndex = artworkIds.indexOf(action.aic_id);
+      let removeSaveArray = nextState.savedArtworksAicIds;
+
+      const artworkIndex = removeSaveArray.indexOf(action.aic_id);
       if (artworkIndex > -1) {
-        artworkIds.splice(artworkIndex, 1);
-        nextState.savedArtworksAicIds = artworkIds;
+        removeSaveArray.splice(artworkIndex, 1);
+        nextState.savedArtworksAicIds = [...removeSaveArray];
       }
+
       return nextState;
     case RECEIVE_COLLECTION_LIKE:
-      nextState = Object.assign({}, state);
-      nextState.likedCollectionsIds.push(action.collectionLike.collection_id);
+      nextState = Object.assign({}, state);      
+      let receiveLikeArray = nextState.likedCollectionsIds;
+
+      receiveLikeArray.push(action.collectionLike.collection_id);
+      nextState.likedCollectionsIds = [...receiveLikeArray];
+
       return nextState;
     case REMOVE_COLLECTION_LIKE:
       nextState = Object.assign({}, state);
-      let collectionIds = nextState.likedCollectionsIds;
-      const collectionIndex = collectionIds.indexOf(action.collection_id);
+      let removeLikeArray = nextState.likedCollectionsIds;
+
+      const collectionIndex = removeLikeArray.indexOf(action.collection_id);
       if (collectionIndex > -1) {
-        collectionIds.splice(collectionIndex, 1);
-        nextState.likedCollectionsIds = collectionIds;
+        removeLikeArray.splice(collectionIndex, 1);
+        nextState.likedCollectionsIds = [...removeLikeArray];
       }
+
       return nextState;
     default:
       return state;

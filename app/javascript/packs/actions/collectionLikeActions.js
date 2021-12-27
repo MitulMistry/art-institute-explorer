@@ -22,7 +22,7 @@ export const createCollectionLike = collection_id => dispatch => (
 );
 
 export const deleteCollectionLike = collection_id => dispatch => (
-  APIUtil.deleteCollectionLike(collection_id).then(response => response.json())
+  APIUtil.deleteCollectionLike(collection_id)
     .then(response => (
       dispatch(removeCollectionLike(collection_id))
     ))
