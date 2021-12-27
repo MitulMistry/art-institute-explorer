@@ -33,4 +33,8 @@ class ApplicationController < ActionController::Base
   def render_not_found
     render json: ["Not Found"], status: :not_found
   end
+
+  def render_duplicate
+    render json: ["Duplicate record"], status: :unprocessable_entity
+  end
 end

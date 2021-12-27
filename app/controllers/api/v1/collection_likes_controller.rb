@@ -4,12 +4,19 @@ class Api::V1::CollectionLikesController < ApplicationController
   before_action :authorize_ownership, only: %i[ destroy ]
 
   def create
-    @collection_like = current_user.collection_likes.build(collection_like_params)
+    # Check for duplicate CollectionLike
+    @collection_like = CollectionLike.where(collection_id: collection_like_params["collection_id"], user_id: current_user.id).first
+   
+    if !@collection_like
+      @collection_like = current_user.collection_likes.build(collection_like_params)
 
-    if @collection_like.save
-      render :show, status: :created, location: api_v1_collection_like_url(@collection_like)
+      if @collection_like.save
+        render :show, status: :created, location: api_v1_collection_like_url(@collection_like)
+      else
+        render json: @collection_like.errors, status: :unprocessable_entity
+      end
     else
-      render json: @collection_like.errors, status: :unprocessable_entity
+      render_duplicate
     end
   end
 

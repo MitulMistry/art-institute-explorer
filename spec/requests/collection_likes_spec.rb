@@ -40,6 +40,29 @@ RSpec.describe "/collection_likes", type: :request do
           expect(json["collection"]).to include("must exist")
         end
       end
+
+      context "with duplicate parameters" do
+        before :each do
+          @collection = create(:collection)
+          @user.liked_collections << @collection
+        end
+
+        it "does not create a new CollectionLike" do
+          expect {
+            post api_v1_collection_likes_url, params: { collection_like:
+              attributes_for(:collection_like, user_id: @user.id, collection_id: @collection.id)}
+          }.to change(CollectionLike, :count).by(0)
+        end
+
+        it "responds with an error in JSON format" do
+          post api_v1_collection_likes_url, params: { collection_like:
+            attributes_for(:collection_like, user_id: @user.id, collection_id: @collection.id)}
+          expect(response).to have_http_status(422)
+
+          json = JSON.parse(response.body)
+          expect(json).to include("Duplicate record")
+        end
+      end
     end
   end
 
