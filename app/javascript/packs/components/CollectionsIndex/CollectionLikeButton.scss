@@ -1,10 +1,15 @@
 .btn-interactive-like {
-  @extend .btn-interactive;
+  @extend .btn-interactive-container;
   padding-top: 0.6rem;
 
   .like-count {
     margin-top: .1rem;
     font-family: 'Libre Baskerville', serif;
     font-weight: 500;
+  }
+
+  .like-count-selected {
+    @extend .like-count;
+    color: $app-accent-color;
   }
 }	

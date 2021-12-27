@@ -28,6 +28,7 @@ const sessionReducer = (state = initialState, action) => {
       nextState = Object.assign({}, initialState);
       nextState.id = action.currentUser.id;
       nextState.savedArtworksAicIds = action.currentUser.saved_artworks_aic_ids;
+      nextState.likedCollectionsIds = action.currentUser.liked_collections_ids;
       return nextState;
     case LOGOUT_CURRENT_USER:
       return initialState;

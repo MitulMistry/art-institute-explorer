@@ -35,6 +35,24 @@
 	padding: 0.25rem 0.5rem;
 }
 
-.btn-interactive {
+.btn-interactive-container {
 	color: $app-gray;	
+}
+
+.btn-interactive {
+	cursor: pointer;
+}
+
+.btn-interactive:hover {
+	// cursor: pointer;
+	color: $app-gray-dark;
+}
+
+.btn-interactive-selected {
+	@extend .btn-interactive;
+	color: $app-accent-color;
+}
+
+.btn-interactive-selected:hover {
+	color: $app-accent-color-dark;
 }

@@ -7,7 +7,7 @@ import { deleteCollectionLike } from '../../util/collectionLikeAPIUtil';
 
 const mapStateToProps = (state, ownProps) => ({
   loggedIn: Boolean(state.session.id),
-  likedCollectionIds: state.session.likedCollectionIds,
+  likedCollectionIds: state.session.likedCollectionsIds,
   collection: ownProps.collection
 });
 

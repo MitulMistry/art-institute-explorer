@@ -14,8 +14,8 @@ export const removeCollectionLike = collection_id => ({
   collection_id,
 });
 
-export const createCollectionLike = collectionLike => dispatch => (
-  APIUtil.createCollectionLike(collectionLike).then(response => processResponse(response))
+export const createCollectionLike = collection_id => dispatch => (
+  APIUtil.createCollectionLike(collection_id).then(response => processResponse(response))
     .then(collectionLike => {
       dispatch(receiveCollectionLike(collectionLike));
     })
