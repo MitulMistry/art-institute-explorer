@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArtworkImage } from '../ArtworksIndex/ArtworkImage';
+import ArtworkSaveButtonContainer from '../ArtworksIndex/ArtworkSaveButtonContainer';
 import { LoadingSpinner } from '../elements/LoadingSpinner';
 
 export class ArtworkShow extends React.Component {
@@ -20,6 +21,9 @@ export class ArtworkShow extends React.Component {
             imageBaseUrl={imageBaseUrl}
           />
           <h1>{artworkShow.title}</h1>
+          <ArtworkSaveButtonContainer
+            aic_id={artworkShow.aic_id || artworkShow.id}
+          />      
           <p>Date: {artworkShow.date_display}</p>
           <p>Artist: {artworkShow.artist_display}</p>
           <p>Place of Origin: {artworkShow.place_of_origin}</p>
