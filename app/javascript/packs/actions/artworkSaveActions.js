@@ -14,15 +14,15 @@ export const removeArtworkSave = aic_id => ({
   aic_id,
 });
 
-export const createArtworkSave = artworkSave => dispatch => (
-  APIUtil.createArtworkSave(artworkSave).then(response => processResponse(response))
+export const createArtworkSave = aic_id => dispatch => (
+  APIUtil.createArtworkSave(aic_id).then(response => processResponse(response))
     .then(artworkSave => {
       dispatch(receiveArtworkSave(artworkSave));
     })
 );
 
 export const deleteArtworkSave = aic_id => dispatch => (
-  APIUtil.deleteArtworkSave(aic_id).then(response => response.json())
+  APIUtil.deleteArtworkSave(aic_id)
     .then(response => (
       dispatch(removeArtworkSave(aic_id))
     ))

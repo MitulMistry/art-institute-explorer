@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArtworkImage } from './ArtworkImage';
+import ArtworkSaveButtonContainer from './ArtworkSaveButtonContainer';
 
 export class ArtworkCard extends React.Component {
   render() {
@@ -14,10 +15,19 @@ export class ArtworkCard extends React.Component {
             imageBaseUrl={imageBaseUrl}
           />
         </Link>
-        <h5 className="artwork-card-title">
-          <Link to={`/artworks/${artwork.aic_id || artwork.id}`}>{artwork.title}</Link>
-        </h5>
-        <p className="artwork-card-artist">{artwork.artist_title}</p>
+        <div className="card-info flex-row">
+          <div className="flex-row-left">
+            <h5 className="artwork-card-title">
+              <Link to={`/artworks/${artwork.aic_id || artwork.id}`}>{artwork.title}</Link>
+            </h5>
+            <p className="artwork-card-artist">{artwork.artist_title}</p>
+          </div>
+          <div className="flex-row-right">
+            <ArtworkSaveButtonContainer
+              aic_id={artwork.aic_id || artwork.id}
+            />
+          </div>
+        </div>
       </div>
     );
   }

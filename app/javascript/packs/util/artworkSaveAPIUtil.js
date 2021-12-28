@@ -1,10 +1,10 @@
 import { CSRFRequestHeaders } from "./CSRFTokenUtil";
 
-export const createArtworkSave = artworkSave => (
+export const createArtworkSave = aic_id => (
   fetch('/api/v1/artwork_saves', {
     method: 'POST',
     headers: CSRFRequestHeaders(),
-    body: JSON.stringify(artworkSave)
+    body: JSON.stringify({artwork_save: {aic_id: aic_id}})
   })
 );
 
