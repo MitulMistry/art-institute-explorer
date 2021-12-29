@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArtworkImage } from './ArtworkImage';
 import ArtworkSaveButtonContainer from './ArtworkSaveButtonContainer';
+import AddToCollectionButtonContainer from './AddToCollectionButtonContainer';
 
 export class ArtworkCard extends React.Component {
   render() {
@@ -24,6 +25,9 @@ export class ArtworkCard extends React.Component {
           </div>
           <div className="flex-row-right">
             <ArtworkSaveButtonContainer
+              aic_id={artwork.aic_id || artwork.id}
+            />
+            <AddToCollectionButtonContainer
               aic_id={artwork.aic_id || artwork.id}
             />
           </div>

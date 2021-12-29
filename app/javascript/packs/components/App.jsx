@@ -12,6 +12,7 @@ import UserShowContainer from './UserShow/UserShowContainer';
 import UserEditContainer from './UserEdit/UserEditContainer';
 import ArtworksIndexContainer from './ArtworksIndex/ArtworksIndexContainer';
 import ArtworkShowContainer from './ArtworkShow/ArtworkShowContainer';
+import AddToCollectionContainer from './AddToCollection/AddToCollectionContainer';
 import ArtworksSavedContainer from './ArtworksSaved/ArtworksSavedContainer';
 import ArtworksSearchedContainer from './ArtworksSearched/ArtworksSearchedContainer';
 import CollectionsIndexContainer from './CollectionsIndex/CollectionsIndexContainer';
@@ -44,6 +45,7 @@ const App = () => (
         } />
         <Route path="artworks" element={<ArtworksIndexContainer />} />
         <Route path="artworks/:artworkId" element={<ArtworkShowContainer />} />
+        <Route path="artworks/:artworkId/add" element={<AddToCollectionContainer />} />
         <Route path="artworks/saved" element={
           <ProtectedRoute>
             <ArtworksSavedContainer />

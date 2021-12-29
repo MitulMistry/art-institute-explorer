@@ -1,13 +1,17 @@
 import React from 'react';
 import { ArtworkImage } from '../ArtworksIndex/ArtworkImage';
 import ArtworkSaveButtonContainer from '../ArtworksIndex/ArtworkSaveButtonContainer';
+import AddToCollectionButtonContainer from '../ArtworksIndex/AddToCollectionButtonContainer';
 import { LoadingSpinner } from '../elements/LoadingSpinner';
 
 export class ArtworkShow extends React.Component {
   componentDidMount() {
     // Dispatch Redux action to fetch Artwork via API call
-    const { fetchArtwork, artworkId } = this.props;
-    fetchArtwork(artworkId);
+    const { fetchArtwork, artworkShow, artworkId } = this.props;
+
+    if (!artworkShow || artworkShow.aic_id !== artworkId) {
+      fetchArtwork(artworkId);
+    }
   }
 
   render() {
@@ -21,9 +25,14 @@ export class ArtworkShow extends React.Component {
             imageBaseUrl={imageBaseUrl}
           />
           <h1>{artworkShow.title}</h1>
-          <ArtworkSaveButtonContainer
-            aic_id={artworkShow.aic_id || artworkShow.id}
-          />      
+          <div className="artwork-buttons">
+            <ArtworkSaveButtonContainer
+              aic_id={artworkShow.aic_id || artworkShow.id}
+            />
+            <AddToCollectionButtonContainer
+              aic_id={artworkShow.aic_id || artworkShow.id}
+            />
+          </div>
           <p>Date: {artworkShow.date_display}</p>
           <p>Artist: {artworkShow.artist_display}</p>
           <p>Place of Origin: {artworkShow.place_of_origin}</p>

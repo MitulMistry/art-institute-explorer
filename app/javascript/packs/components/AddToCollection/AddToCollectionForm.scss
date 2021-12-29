@@ -1,21 +1,16 @@
-.artwork-show {
+.add-to-collection-form {
   max-width: 600px;
 
   .artwork-image {
     width: 100%;
-    max-width: 450px;
+    max-width: 350px;
     height: auto;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
   }
 
-  .artwork-buttons {
-    div {
-      display: inline-block;
-    }
-
-    .btn-interactive-save {
-      margin-right: .5rem;
-    }
+  h3.artwork-title {
+    font-weight: 400;
+    margin-top: .5rem;
   }
 
   p {
