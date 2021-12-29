@@ -35,6 +35,7 @@ export class ArtworkSaveButton extends React.Component {
               size="1x"
               className="btn-interactive-selected"
               onClick={this.handleUnsave}
+              title="Save artwork"
             />
           </div>
         );

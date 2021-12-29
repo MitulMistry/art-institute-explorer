@@ -1,4 +1,8 @@
 .btn-interactive-add {
   @extend .btn-interactive-container;
   padding-top: 0.35rem;
+
+  a:hover {
+    color: $app-gray;
+  }
 }	

@@ -17,6 +17,7 @@ export class AddToCollectionButton extends React.Component {
               size="1x"
               className="btn-interactive"
               onClick={this.handleUnlike}
+              title="Add to collection"
             />
           </Link>
         </div>
