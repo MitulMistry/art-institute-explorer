@@ -43,6 +43,9 @@ const artworksReducer = (state = initialState, action) => {
       nextState.artworkShow = action.response.data;
       nextState.artworkShowResponse = action.response;
       delete nextState.artworkShowResponse.data;
+      if (!("config" in action.response)) {
+        nextState.artworkShowResponse.config = initialState.artworkShowResponse.config;
+      }
       return nextState;
     default:
       return state;
