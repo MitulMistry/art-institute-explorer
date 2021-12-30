@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 import { RenderErrors } from '../RenderErrors/RenderErrors';
 import { ArtworkImage } from '../ArtworksIndex/ArtworkImage';
 import { LoadingSpinner } from '../elements/LoadingSpinner';
@@ -73,7 +74,16 @@ export class AddToCollectionForm extends React.Component {
   }
 
   render() {
-    const { artworkShow, aic_id, imageBaseUrl, collections} = this.props;
+    const { redirect, artworkShow, aic_id, imageBaseUrl, collections} = this.props;
+
+    // Redirect if form has been submitted and redirect path has been
+    // set in the Redux store by Collection action.
+    if (this.state.submitted && redirect) {
+      this.setState({submitted: false});
+      return (
+        <Navigate to={redirect} replace={true} />
+      );
+    }
 
     let artwork = null;
     if (artworkShow && artworkShow.id === aic_id && imageBaseUrl) {
@@ -99,23 +109,27 @@ export class AddToCollectionForm extends React.Component {
       form = (
         <div className="form-container add-to-collection-form-container">
           <form onSubmit={this.handleSubmit} className="add-to-collection-form-box">
-          {this.renderErrors()}
-          <div className="add-to-collection-form">
-            <div className="form-group">
-              <label htmlFor="form-collections">Choose Collection</label>              
-              <select name="collections" id="form-collections" size="4" onChange={this.update('id')}>
-                {collections.map((collection, i) =>
-                  <option key={`collection-${i}`}
-                    value={collection.id}>
-                    {collection.title}
-                  </option>
-                )}
-              </select>
-            </div>
+            {this.renderErrors()}
+            <div className="add-to-collection-form">
+              <div className="form-group">
+                <label htmlFor="form-collections">Choose Collection</label>              
+                <select name="collections" id="form-collections" size="4" onChange={this.update('id')}>
+                  {collections.map((collection, i) => {
+                    if (!collection.aic_ids.includes(aic_id)) {
+                      return (
+                        <option key={`collection-${i}`}
+                          value={collection.id}>
+                          {collection.title}
+                        </option>
+                      );
+                    }
+                  })}
+                </select>
+              </div>
 
-            <input className="collection-submit btn-primary" type="submit" value="Submit" />
-          </div>
-        </form>
+              <input className="collection-submit btn-primary" type="submit" value="Submit" />
+            </div>
+          </form>
         </div>
       );
     } else if (collections && collections.length === 0) {
