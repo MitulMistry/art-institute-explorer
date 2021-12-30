@@ -13,10 +13,15 @@ import {
   REMOVE_COLLECTION_LIKE
 } from '../actions/collectionLikeActions';
 
+import {
+  RECEIVE_OWNED_COLLECTIONS
+} from '../actions/collectionActions';
+
 const initialState = {
   id: null,
   savedArtworksAicIds: [],
-  likedCollectionsIds: []
+  likedCollectionsIds: [],
+  ownedCollections: []
 };
 
 const sessionReducer = (state = initialState, action) => {
@@ -70,6 +75,10 @@ const sessionReducer = (state = initialState, action) => {
         nextState.likedCollectionsIds = [...removeLikeArray];
       }
 
+      return nextState;
+    case RECEIVE_OWNED_COLLECTIONS:
+      nextState = Object.assign({}, state);
+      nextState.ownedCollections = action.response;
       return nextState;
     default:
       return state;

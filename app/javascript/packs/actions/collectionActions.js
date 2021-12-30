@@ -4,6 +4,7 @@ import { processResponse } from '../util/APIRequestHelpers';
 
 export const RECEIVE_COLLECTIONS = 'RECEIVE_COLLECTIONS';
 export const RECEIVE_COLLECTION = 'RECEIVE_COLLECTION';
+export const RECEIVE_OWNED_COLLECTIONS = 'RECEIVE_OWNED_COLLECTIONS';
 export const RECEIVE_COLLECTION_ERRORS = 'RECEIVE_COLLECTION_ERRORS';
 export const RESET_COLLECTION_ERRORS = 'RESET_COLLECTION_ERRORS';
 
@@ -14,6 +15,11 @@ export const receiveCollections = response => ({
 
 export const receiveCollection = response => ({
   type: RECEIVE_COLLECTION,
+  response,
+});
+
+export const receiveOwnedCollections = response => ({
+  type: RECEIVE_OWNED_COLLECTIONS,
   response,
 });
 
@@ -37,6 +43,13 @@ export const fetchCollection = id => dispatch => (
   APIUtil.fetchCollection(id).then(response => response.json())
     .then(response => (
       dispatch(receiveCollection(response))
+    ))
+);
+
+export const fetchOwnedCollections = () => dispatch => (
+  APIUtil.fetchOwnedCollections().then(response => response.json())
+    .then(response => (
+      dispatch(receiveOwnedCollections(response))
     ))
 );
 

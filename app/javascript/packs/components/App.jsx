@@ -45,25 +45,29 @@ const App = () => (
         } />
         <Route path="artworks" element={<ArtworksIndexContainer />} />
         <Route path="artworks/:artworkId" element={<ArtworkShowContainer />} />
-        <Route path="artworks/:artworkId/add" element={<AddToCollectionContainer />} />
+        <Route path="artworks/:artworkId/add" element={
+          <ProtectedRoute>
+            <AddToCollectionContainer />
+          </ProtectedRoute>
+        } />
         <Route path="artworks/saved" element={
           <ProtectedRoute>
             <ArtworksSavedContainer />
           </ProtectedRoute>
-          } />
+        } />
         <Route path="artworks/search" element={<ArtworksSearchedContainer />} />
         <Route path="collections" element={<CollectionsIndexContainer />} />
         <Route path="collections/new" element={
           <ProtectedRoute>
             <CollectionsNewContainer />
           </ProtectedRoute>
-          } />
+        } />
         <Route path="collections/:collectionId" element={<CollectionShowContainer />} />
         <Route path="collections/:collectionId/edit" element={
           <ProtectedRoute>
             <CollectionEditContainer />
           </ProtectedRoute>
-          } />
+        } />
       </Routes>
     </div>
   </div>

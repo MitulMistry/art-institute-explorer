@@ -8,6 +8,10 @@ export const fetchCollection = id => (
   fetch(`/api/v1/collections/${id}`)
 );
 
+export const fetchOwnedCollections = () => (
+  fetch('/api/v1/collections/owned')
+);
+
 export const createCollection = collection => (
   fetch('/api/v1/collections', {
     method: 'POST',

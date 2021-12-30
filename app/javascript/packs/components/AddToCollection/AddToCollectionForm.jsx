@@ -22,7 +22,9 @@ export class AddToCollectionForm extends React.Component {
       resetCollectionErrors,
       aic_id,
       artworkShow,
-      fetchArtwork
+      fetchArtwork,
+      collections,
+      fetchOwnedCollections
     } = this.props;
 
     // Clear redirect from store when component mounts
@@ -37,6 +39,10 @@ export class AddToCollectionForm extends React.Component {
 
     if (!artworkShow || artworkShow.aic_id !== aic_id) {
       fetchArtwork(aic_id)
+    }
+
+    if (!collections || collections.length === 0) {
+      fetchOwnedCollections();
     }
   }
 
@@ -59,7 +65,7 @@ export class AddToCollectionForm extends React.Component {
   }
 
   render() {
-    const { artworkShow, aic_id, imageBaseUrl} = this.props;
+    const { artworkShow, aic_id, imageBaseUrl, collections} = this.props;
 
     let artwork = null;
     if (artworkShow && artworkShow.id === aic_id && imageBaseUrl) {
@@ -80,10 +86,26 @@ export class AddToCollectionForm extends React.Component {
       );
     }
 
+    let form = null;
+    if (collections && collections.length > 0) {
+      form = (
+        <div className="add-to-collection-form">
+          <p>Collections</p>
+        </div>
+      );
+    } else {
+      form = (
+        <div className="add-to-collection-form">
+          <LoadingSpinner />
+        </div>
+      );
+    }
+
     return (
       <div className="add-to-collection-form">
         <h1 className="header-ruler">Add to Collection</h1>
         {artwork}
+        {form}
       </div>
     );
   }
