@@ -2,13 +2,14 @@ import React from 'react';
 import { RenderErrors } from '../RenderErrors/RenderErrors';
 import { ArtworkImage } from '../ArtworksIndex/ArtworkImage';
 import { LoadingSpinner } from '../elements/LoadingSpinner';
+import { Link } from 'react-router-dom';
 
 export class AddToCollectionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      collection_id: '',
-      artwork_ids: '',
+      id: '',
+      artwork_aic_ids: '',
       submitted: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,7 +24,6 @@ export class AddToCollectionForm extends React.Component {
       aic_id,
       artworkShow,
       fetchArtwork,
-      collections,
       fetchOwnedCollections
     } = this.props;
 
@@ -37,13 +37,21 @@ export class AddToCollectionForm extends React.Component {
       resetCollectionErrors();
     }
 
-    if (!artworkShow || artworkShow.aic_id !== aic_id) {
-      fetchArtwork(aic_id)
+    if (Number.isInteger(aic_id) && aic_id > 0 && aic_id < 999999) {
+      this.setState({artwork_aic_ids: [aic_id]});
     }
 
-    if (!collections || collections.length === 0) {
-      fetchOwnedCollections();
+    if (!artworkShow || artworkShow.id !== aic_id) {
+      fetchArtwork(aic_id);
     }
+
+    fetchOwnedCollections();
+  }
+
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    });
   }
 
   handleSubmit(e) {
@@ -89,13 +97,36 @@ export class AddToCollectionForm extends React.Component {
     let form = null;
     if (collections && collections.length > 0) {
       form = (
-        <div className="add-to-collection-form">
-          <p>Collections</p>
+        <div className="form-container add-to-collection-form-container">
+          <form onSubmit={this.handleSubmit} className="add-to-collection-form-box">
+          {this.renderErrors()}
+          <div className="add-to-collection-form">
+            <div className="form-group">
+              <label htmlFor="form-collections">Choose Collection</label>              
+              <select name="collections" id="form-collections" size="4" onChange={this.update('id')}>
+                {collections.map((collection, i) =>
+                  <option key={`collection-${i}`}
+                    value={collection.id}>
+                    {collection.title}
+                  </option>
+                )}
+              </select>
+            </div>
+
+            <input className="collection-submit btn-primary" type="submit" value="Submit" />
+          </div>
+        </form>
+        </div>
+      );
+    } else if (collections && collections.length === 0) {
+      form = (
+        <div className="add-to-collection-form-container">
+          <p>You have no collections to add this artwork to. <Link to="/collections/new">Create one first here.</Link></p>
         </div>
       );
     } else {
       form = (
-        <div className="add-to-collection-form">
+        <div className="add-to-collection-form-container">
           <LoadingSpinner />
         </div>
       );

@@ -21,7 +21,7 @@ export const createCollection = collection => (
 );
 
 export const updateCollection = collection => (
-  fetch(`/api/v1/collections/${collection.id}`, {
+  fetch(`/api/v1/collections/${collection.collection.id}`, {
     method: 'PATCH',
     headers: CSRFRequestHeaders(),
     body: JSON.stringify(collection)

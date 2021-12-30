@@ -81,7 +81,7 @@ export class CollectionForm extends React.Component {
     return (
       <div className="form-container collection-form-container">
         {header}
-        <form onSubmit={this.handleSubmit} className="signup-form-box">
+        <form onSubmit={this.handleSubmit} className="new-collection-form-box">
           {this.renderErrors()}
           <div className="auth-form">
 
