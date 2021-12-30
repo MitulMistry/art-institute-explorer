@@ -13,4 +13,8 @@ class Collection < ApplicationRecord
   def like_count
     self.collection_likes.count
   end
+
+  def artworks_aic_ids
+    self.artworks.pluck(:aic_id)
+  end
 end

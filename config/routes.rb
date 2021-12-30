@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       delete '/artwork_saves/aic_id/:id' => 'artwork_saves#destroy_by_aic_id', as: 'artwork_save_by_aic_id'      
       
       get '/collections/liked' => 'collections#liked'
+      get '/collections/owned' => 'collections#owned'
       resources :collections      
       resources :collection_likes, only: [:create, :destroy]
       delete '/collection_likes/collection_id/:id' => 'collection_likes#destroy_by_collection_id', as: 'collection_like_by_collection_id'

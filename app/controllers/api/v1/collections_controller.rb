@@ -1,5 +1,5 @@
 class Api::V1::CollectionsController < ApplicationController
-  before_action :authorized, only: %i[ liked create update destroy ]
+  before_action :authorized, only: %i[ liked owned create update destroy ]
   before_action :set_collection, only: %i[ show update destroy ]
   before_action :authorize_ownership, only: %i[ update destroy ]
 
@@ -10,6 +10,11 @@ class Api::V1::CollectionsController < ApplicationController
   def liked
     @collections = current_user.liked_collections
     render template: "api/v1/collections/index"
+  end
+
+  def owned
+    @collections = current_user.collections
+    render template: "api/v1/collections/owned"
   end
 
   def show

@@ -87,7 +87,7 @@ RSpec.describe "/collections", type: :request do
     end
   end
 
-  shared_examples_for "access to liked Collections" do
+  shared_examples_for "access to liked/owned Collections" do
     describe "GET /liked" do
       it "responds with a JSON formatted list of liked Collections" do
         user2 = create(:user)
@@ -106,12 +106,46 @@ RSpec.describe "/collections", type: :request do
         expect(json.any? { |hash| hash["title"] == collection3.title }).to be true
       end
     end
+
+    describe "GET /owned" do
+      it "responds with a JSON formatted list of owned Collections" do
+        user2 = create(:user)
+        collection1 = create(:collection, user: @user)
+        collection2 = create(:collection, user: @user)
+        collection3 = create(:collection, user: user2)
+        artwork1 = create(:artwork)
+        artwork2 = create(:artwork)
+        artwork3 = create(:artwork)
+
+        collection1.artworks << artwork1
+        collection2.artworks << artwork2
+        collection2.artworks << artwork3
+
+        get api_v1_collections_owned_url
+        expect(response).to be_successful
+
+        json = JSON.parse(response.body)
+        expect(json.none? { |hash| hash["title"] == collection3.title }).to be true
+        expect(json.any? { |hash| hash["title"] == collection1.title }).to be true
+        expect(json.any? { |hash| hash["aic_ids"] == [artwork1.aic_id] }).to be true
+        expect(json.any? { |hash| hash["title"] == collection2.title }).to be true
+        expect(json.any? { |hash| hash["aic_ids"] == [artwork2.aic_id, artwork3.aic_id] ||
+          hash["aic_ids"] == [artwork3.aic_id, artwork2.aic_id]}).to be true
+      end
+    end
   end
 
-  shared_examples_for "no access to liked Collections" do
+  shared_examples_for "no access to liked/owned Collections" do
     describe "GET /liked" do
       it "responds with 401 unauthorized" do
         get api_v1_collections_liked_url
+        expect(response).to have_http_status(401)
+      end
+    end
+
+    describe "GET /owned" do
+      it "responds with 401 unauthorized" do
+        get api_v1_collections_owned_url
         expect(response).to have_http_status(401)
       end
     end
@@ -475,7 +509,7 @@ RSpec.describe "/collections", type: :request do
     end
 
     it_behaves_like "public access to Collections"
-    it_behaves_like "access to liked Collections"
+    it_behaves_like "access to liked/owned Collections"
     it_behaves_like "access to Collection creation"
     it_behaves_like "modification access to owned Collections"
     it_behaves_like "no modification access to non-owned Collections"
@@ -483,7 +517,7 @@ RSpec.describe "/collections", type: :request do
 
   describe "unauthenticated access" do
     it_behaves_like "public access to Collections"
-    it_behaves_like "no access to liked Collections"
+    it_behaves_like "no access to liked/owned Collections"
     it_behaves_like "no creation or modification access to Collections"
   end
 end

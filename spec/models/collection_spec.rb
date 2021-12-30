@@ -38,5 +38,16 @@ RSpec.describe Collection, type: :model do
         expect(collection.like_count).to eq(3)
       end
     end
+
+    context "#artworks_aic_ids" do
+      it "returns an array of aic_ids for the Artworks in a Collection" do
+        collection = create(:collection)
+        artwork1 = create(:artwork)
+        artwork2 = create(:artwork)
+        collection.artworks << artwork1
+        collection.artworks << artwork2
+        expect(collection.artworks_aic_ids).to contain_exactly(artwork1.aic_id, artwork2.aic_id)
+      end
+    end
   end
 end
