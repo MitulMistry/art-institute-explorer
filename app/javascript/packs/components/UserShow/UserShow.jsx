@@ -42,8 +42,10 @@ export class UserShow extends React.Component {
 
       return (
         <div className="user-show">
-          <h1>{userShow.username}</h1>
-          <p>{userShow.bio}</p>
+          <div className="user-show-description">
+            <h1>{userShow.username}</h1>
+            <p>{userShow.bio}</p>
+          </div>
           {userCollections}
           {savedArtworks}
         </div>
