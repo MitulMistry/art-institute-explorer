@@ -11,3 +11,14 @@
     width: 100%;
   }
 }
+
+.masonry-with-columns-small {
+  columns: 6 150px;
+  column-gap: .7rem;
+
+  div.masonry-item {
+    margin: 0 1rem 1rem 0;
+    display: inline-block;
+    width: 100%;
+  }
+}

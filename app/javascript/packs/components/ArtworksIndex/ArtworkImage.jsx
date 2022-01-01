@@ -13,7 +13,7 @@ export class ArtworkImage extends React.Component {
   }
 
   render() {
-    const { artwork, imageBaseUrl } = this.props;
+    const { artwork, imageBaseUrl, value, onClick, active } = this.props;
     const defaultBaseUrl = "https://www.artic.edu/iiif/2/";
     
     let image = null;
@@ -26,27 +26,32 @@ export class ArtworkImage extends React.Component {
         altText = artwork.thumbnail.alt_text;
       }
     } else if ("alt_text" in artwork) {
-      altText = artwork.alt_text
+      altText = artwork.alt_text;
+    }
+
+    // Add CSS class if the image is meant to be selected
+    let className = "artwork-image";
+    if (active) {
+      className += " image-active";
     }
     
     // Check if image is available, otherwise use placeholder.
     if (artwork.image_id) {
       image = (
         <img src={`${imageBaseUrl || defaultBaseUrl}/${artwork.image_id || 0}/full/843,/0/default.jpg`} 
-          alt={altText || "Artwork"} className="artwork-image"
-          onError={this.setPlaceholder} />
+          alt={altText || "Artwork"} className={className}
+          value={value} onClick={onClick} onError={this.setPlaceholder} />
       );
     } else {
       image = (
         <img src={Placeholder_Image} 
-          alt="Placeholder image" className="artwork-image" />
+          alt="Placeholder image" className={className}
+          value={value} onClick={onClick} />
       );
     }
 
     return (
-      <span>
-        {image}
-      </span>
+      image
     );
   }
 }
