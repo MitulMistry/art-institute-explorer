@@ -14,7 +14,7 @@ export class CollectionShow extends React.Component {
   }
 
   render() {
-    const { collectionShow, collectionId, loggedIn} = this.props;
+    const { collectionShow, collectionId, loggedIn, owned} = this.props;
 
     if (collectionShow && collectionShow.id === collectionId) {
 
@@ -45,6 +45,17 @@ export class CollectionShow extends React.Component {
         );
       }
 
+      let modifyButtons = null;
+      if (owned) {
+        modifyButtons = (
+          <p>
+            <Link to="edit">
+              <button className="btn-primary-small">Edit</button>
+            </Link>
+          </p>
+        );
+      }
+
       let commentForm = null;
       if (loggedIn) {
         commentForm = (
@@ -62,6 +73,7 @@ export class CollectionShow extends React.Component {
                 <h1>{collectionShow.title}</h1>
                 <p>By: <Link to={`/users/${collectionShow.user.id}`}>{collectionShow.user.username}</Link></p>
                 <p>{collectionShow.description}</p>
+                {modifyButtons}
               </div>
               <div className="flex-row-right">
                 <div className="collection-show-like-button">

@@ -6,7 +6,8 @@ import { fetchCollection } from '../../actions/collectionActions';
 
 const mapStateToProps = state => ({
   collectionShow: state.entities.collections.collectionShow,
-  loggedIn: Boolean(state.session.id)
+  loggedIn: Boolean(state.session.id),
+  owned: Boolean(state.entities.collections.collectionShow.user.id === state.session.id)
 });
 
 const mapDispatchToProps = dispatch => ({

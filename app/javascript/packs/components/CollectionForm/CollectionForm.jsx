@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { RenderErrors } from '../RenderErrors/RenderErrors';
 import { ArtworkImage } from '../ArtworksIndex/ArtworkImage';
+import { LoadingSpinner } from '../elements/LoadingSpinner';
 
 export class CollectionForm extends React.Component {
   constructor(props) {
@@ -10,14 +11,25 @@ export class CollectionForm extends React.Component {
       title: '',
       description: '',
       artwork_ids: [],
-      submitted: false
+      submitted: false,
+      loaded: false
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.loadCollectionToState = this.loadCollectionToState.bind(this);
     this.updateArtworks = this.updateArtworks.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);    
   }
 
   componentDidMount() {
-    const { redirect, resetRedirect, errors, resetCollectionErrors, formType } = this.props;
+    const {
+      redirect,
+      resetRedirect,
+      errors,
+      resetCollectionErrors,
+      formType,
+      collection,
+      collectionId,
+      fetchCollection } = this.props;
+
     // Clear redirect from store when component mounts
     if (redirect) {
       resetRedirect();
@@ -32,6 +44,26 @@ export class CollectionForm extends React.Component {
     if (formType === "newCollection") {
       this.props.fetchSavedArtworks();
     }
+
+    // Make API call to load Collection to edit if it isn't
+    // already loaded in Redux store
+    if (formType === "editCollection" && collection.id !== collectionId) {
+      fetchCollection(collectionId);
+    }
+  }
+
+  loadCollectionToState() {
+    const { collection } = this.props;
+    const artworkIds = collection.artworks.map(artwork => (
+      artwork.id
+    ));
+
+    this.setState({
+      id: collection.id,
+      title: collection.title,
+      description: collection.description,
+      artwork_ids: artworkIds
+    });
   }
 
   update(field) {
@@ -62,6 +94,7 @@ export class CollectionForm extends React.Component {
     this.setState({submitted: true});
     const collection = Object.assign({}, this.state);
     delete collection.submitted;
+    delete collection.loaded;
     this.props.processForm({"collection": collection});
   }
 
@@ -76,7 +109,7 @@ export class CollectionForm extends React.Component {
   }
 
   render() {
-    const { formType, redirect, savedArtworksArray } = this.props;
+    const { formType, redirect } = this.props;
 
     // Redirect if form has been submitted and redirect path has been
     // set in the Redux store by Collection action.
@@ -85,7 +118,7 @@ export class CollectionForm extends React.Component {
       return (
         <Navigate to={redirect} replace={true} />
       );
-    }    
+    }
 
     let header = null;
     if (formType === "newCollection") {
@@ -103,27 +136,71 @@ export class CollectionForm extends React.Component {
       );
     }
 
-    let savedArtworks = null;
-    if (formType === "newCollection") {
-      savedArtworks = (
-        <div>
-          <h3 className="artworks-title">Saved Artworks</h3>
-          <p className="artworks-description">Select from your previously saved artworks to add to this collection.</p>
-          <div className="artworks-grid">
-            <div className="cards-container masonry-with-columns-small">
-              {savedArtworksArray.map((artwork, i) =>
-                <ArtworkImage
-                  key={`saved-artwork-${i}`}
-                  artwork={artwork}
-                  value={artwork.id}
-                  onClick={this.updateArtworks}
-                  active={this.state.artwork_ids.includes(artwork.id)}
-                />
-              )}
+    let collectionArtworks = null;
+    if (formType === "editCollection") {
+      const { collection, collectionId } = this.props;
+
+      if (collection && collection.id === collectionId && collection.artworks.length > 0) {
+        
+        if (!this.state.loaded) {
+          this.setState({loaded: true});
+          this.loadCollectionToState();
+        }
+        
+        collectionArtworks = (
+          <div>
+            <h3 className="artworks-title">Collection Artworks</h3>
+            <p className="artworks-description">Click to remove currently selected artworks from the collection.</p>
+            <div className="artworks-grid">
+              <div className="cards-container masonry-with-columns-small">
+                {collection.artworks.map((artwork, i) =>
+                  <ArtworkImage
+                    key={`collection-artwork-${i}`}
+                    artwork={artwork}
+                    value={artwork.id}
+                    onClick={this.updateArtworks}
+                    active={this.state.artwork_ids.includes(artwork.id)}
+                  />
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      );
+        );
+      } else {
+        collectionArtworks = (
+          <div>
+            <h3 className="artworks-title">Collection Artworks</h3>
+            <LoadingSpinner />
+          </div>
+        );
+      }
+    }
+
+    let savedArtworks = null;
+    if (formType === "newCollection") {
+      const { savedArtworksArray } = this.props;
+
+      if (savedArtworksArray && savedArtworksArray.length > 0) {
+        savedArtworks = (
+          <div>
+            <h3 className="artworks-title">Saved Artworks</h3>
+            <p className="artworks-description">Select from your previously saved artworks to add to this collection.</p>
+            <div className="artworks-grid">
+              <div className="cards-container masonry-with-columns-small">
+                {savedArtworksArray.map((artwork, i) =>
+                  <ArtworkImage
+                    key={`saved-artwork-${i}`}
+                    artwork={artwork}
+                    value={artwork.id}
+                    onClick={this.updateArtworks}
+                    active={this.state.artwork_ids.includes(artwork.id)}
+                  />
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      }
     }
 
     return (
@@ -152,6 +229,8 @@ export class CollectionForm extends React.Component {
                 id="form-description"
               />
             </div>
+
+            {collectionArtworks}
 
             {savedArtworks}
 
