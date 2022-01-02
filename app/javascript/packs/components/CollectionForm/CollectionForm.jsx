@@ -28,7 +28,8 @@ export class CollectionForm extends React.Component {
       formType,
       collection,
       collectionId,
-      fetchCollection } = this.props;
+      fetchCollection,
+      fetchSavedArtworks } = this.props;
 
     // Clear redirect from store when component mounts
     if (redirect) {
@@ -41,9 +42,7 @@ export class CollectionForm extends React.Component {
     }
 
     // Dispatch Redux action to fetch Artworks via API call
-    if (formType === "newCollection") {
-      this.props.fetchSavedArtworks();
-    }
+    fetchSavedArtworks();
 
     // Make API call to load Collection to edit if it isn't
     // already loaded in Redux store
@@ -62,7 +61,8 @@ export class CollectionForm extends React.Component {
       id: collection.id,
       title: collection.title,
       description: collection.description,
-      artwork_ids: artworkIds
+      artwork_ids: artworkIds,
+      loaded: true
     });
   }
 
@@ -143,7 +143,6 @@ export class CollectionForm extends React.Component {
       if (collection && collection.id === collectionId && collection.artworks.length > 0) {
         
         if (!this.state.loaded) {
-          this.setState({loaded: true});
           this.loadCollectionToState();
         }
         
@@ -177,30 +176,32 @@ export class CollectionForm extends React.Component {
     }
 
     let savedArtworks = null;
-    if (formType === "newCollection") {
-      const { savedArtworksArray } = this.props;
+    const { savedArtworksArray } = this.props;
 
-      if (savedArtworksArray && savedArtworksArray.length > 0) {
-        savedArtworks = (
-          <div>
-            <h3 className="artworks-title">Saved Artworks</h3>
-            <p className="artworks-description">Select from your previously saved artworks to add to this collection.</p>
-            <div className="artworks-grid">
-              <div className="cards-container masonry-with-columns-small">
-                {savedArtworksArray.map((artwork, i) =>
-                  <ArtworkImage
-                    key={`saved-artwork-${i}`}
-                    artwork={artwork}
-                    value={artwork.id}
-                    onClick={this.updateArtworks}
-                    active={this.state.artwork_ids.includes(artwork.id)}
-                  />
-                )}
-              </div>
+    if (savedArtworksArray && savedArtworksArray.length > 0) {
+      savedArtworks = (
+        <div>
+          <h3 className="artworks-title">Saved Artworks</h3>
+          <p className="artworks-description">Select from your previously saved artworks to add to this collection.</p>
+          <div className="artworks-grid">
+            <div className="cards-container masonry-with-columns-small">
+              {savedArtworksArray.map((artwork, i) => {
+                if (formType === "newCollection" || (formType === "editCollection" && !this.props.collection.artworks.some(cArtwork => cArtwork.id === artwork.id))) {
+                  return (
+                    <ArtworkImage
+                      key={`saved-artwork-${i}`}
+                      artwork={artwork}
+                      value={artwork.id}
+                      onClick={this.updateArtworks}
+                      active={this.state.artwork_ids.includes(artwork.id)}
+                    />
+                  );
+                }
+              })}
             </div>
           </div>
-        );
-      }
+        </div>
+      );
     }
 
     return (
