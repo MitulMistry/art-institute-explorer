@@ -23,6 +23,7 @@
 .btn-primary-small {
   @extend .btn-primary;
   padding: .15rem .75rem;
+	margin-right: .5rem;
 }
 
 .btn-primary:hover {

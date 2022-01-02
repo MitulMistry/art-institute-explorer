@@ -74,8 +74,5 @@ export const updateCollection = collection => dispatch => (
 );
 
 export const deleteCollection = id => dispatch => (
-  APIUtil.deleteCollection(id).then(response => response.json())
-    .then(response => (
-      dispatch(receiveCollection(response))
-    ))
+  APIUtil.deleteCollection(id)
 );

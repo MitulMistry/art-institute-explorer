@@ -5,6 +5,7 @@ import { CollectionCommentsGrid } from '../CollectionComment/CollectionCommentsG
 import CollectionCommentNewContainer from '../CollectionCommentNew/CollectionCommentNewContainer';
 import CollectionLikeButtonContainer from '../CollectionsIndex/CollectionLikeButtonContainer';
 import { LoadingSpinner } from '../elements/LoadingSpinner';
+import DeleteCollectionButtonContainer from './DeleteCollectionButtonContainer';
 
 export class CollectionShow extends React.Component {
   componentDidMount() {
@@ -52,6 +53,7 @@ export class CollectionShow extends React.Component {
             <Link to="edit">
               <button className="btn-primary-small">Edit</button>
             </Link>
+            <DeleteCollectionButtonContainer id={collectionId} />
           </p>
         );
       }
