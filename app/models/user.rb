@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true, length: { minimum: 3, maximum: 40 }, format: { with: /\A[a-zA-Z0-9_-]+\Z/ }
   validates :email, presence: true, length: { maximum: 100 }, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :password, presence: true
+  validates :password, presence: true, length: { minimum: 5, maximum: 40 }, if: :password_required?
   validates :bio, length: { maximum: 500 }
 
   validates :avatar, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: { less_than: 1.megabytes }
@@ -25,5 +25,19 @@ class User < ApplicationRecord
   # Return an array of ids from the user's liked Collections
   def liked_collections_ids
     self.liked_collections.pluck(:id)
+  end
+
+  # Set this in controller to manually enforce password validation:
+  # @user.enforce_password_validation
+  def enforce_password_validation
+    @enforce_password_validation = true
+  end
+
+  private
+
+  # Validate password if password is being submitted. Allows updating
+  # user info without having to submit password at same time.
+  def password_required?
+    @enforce_password_validation || password.present?
   end
 end

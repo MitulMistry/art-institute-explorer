@@ -49,6 +49,8 @@ RSpec.describe User, type: :model do
       end
 
       it { should have_secure_password }
+      it { should validate_length_of(:password).is_at_least(5) }
+      it { should validate_length_of(:password).is_at_most(40) }
     end
 
     context "image (avatar) validations" do
