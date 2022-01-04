@@ -8,7 +8,7 @@ RSpec.describe "/sessions", type: :request do
     end
 
     context "with valid password" do
-      it "creates a new Session" do
+      it "creates a new Session and responds with a JSON formatted user" do
         post api_v1_sessions_path, params: {
           email: @user.email,
           password: @password
@@ -17,7 +17,11 @@ RSpec.describe "/sessions", type: :request do
         expect(response).to be_successful
 
         json = JSON.parse(response.body)
+        
+        expect(json["id"]).to eq(@user.id)
         expect(json["username"]).to eq(@user.username)
+        expect(json["email"]).to eq(@user.email)
+        expect(json["bio"]).to eq(@user.bio)
       end
 
       it "responds with a JSON formatted user with saved Artworks aic_ids" do

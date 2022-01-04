@@ -63,7 +63,7 @@ export const logout = () => dispatch => (
 );
 
 export const deleteAccount = id => dispatch => (
-  APIUtil.deleteAccount().then(response => response.json())
+  APIUtil.deleteAccount(id)
   .then(response => (
     dispatch(logoutCurrentUser())
   ))

@@ -2,6 +2,8 @@ import React from 'react';
 import { CollectionsGrid } from '../CollectionsIndex/CollectionsGrid';
 import { ArtworksGrid } from '../ArtworksIndex/ArtworksGrid';
 import { LoadingSpinner } from '../elements/LoadingSpinner';
+import { Link } from 'react-router-dom';
+import DeleteUserButtonContainer from './DeleteUserButtonContainer';
 
 export class UserShow extends React.Component {
   componentDidMount() {
@@ -11,9 +13,21 @@ export class UserShow extends React.Component {
   }
 
   render() {
-    const { userShow, userId } = this.props;
+    const { userShow, userId, owned } = this.props;
 
     if (userShow && userShow.id === userId) {
+
+      let modifyButtons = null;
+      if (owned) {
+        modifyButtons = (
+          <p>
+            <Link to="edit">
+              <button className="btn-primary-small">Edit</button>
+            </Link>
+            <DeleteUserButtonContainer id={userId} />
+          </p>
+        );
+      }
 
       let userCollections = null;
       if (userShow.collections.length > 0) {
@@ -45,6 +59,7 @@ export class UserShow extends React.Component {
           <div className="user-show-description">
             <h1>{userShow.username}</h1>
             <p>{userShow.bio}</p>
+            {modifyButtons}
           </div>
           {userCollections}
           {savedArtworks}

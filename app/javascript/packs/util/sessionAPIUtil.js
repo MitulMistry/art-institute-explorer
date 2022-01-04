@@ -17,7 +17,7 @@ export const signUp = user => (
 );
 
 export const editProfile = user => (
-  fetch(`/api/v1/users/${user.id}`, {
+  fetch(`/api/v1/users/${user.user.id}`, {
     method: 'PATCH',
     headers: CSRFRequestHeaders(),
     body: JSON.stringify(user)

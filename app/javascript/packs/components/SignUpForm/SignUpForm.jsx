@@ -11,8 +11,10 @@ export class SignUpForm extends React.Component {
       password: '',
       password_confirmation: '',
       bio: '',
-      submitted: false
+      submitted: false,
+      loaded: false
     };
+    this.loadUserToState = this.loadUserToState.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
@@ -29,6 +31,18 @@ export class SignUpForm extends React.Component {
     }
   }
 
+  loadUserToState() {
+    const { user } = this.props;
+
+    this.setState({
+      id: user.id,
+      email: user.email,
+      username: user.username,
+      bio: user.bio,
+      loaded: true
+    });
+  }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -40,6 +54,12 @@ export class SignUpForm extends React.Component {
     this.setState({submitted: true});
     const user = Object.assign({}, this.state);
     delete user.submitted;
+    delete user.loaded;
+    
+    if (this.props.formType === "editProfile" && user.password === "") {
+      delete user.password;
+      delete user.password_confirmation;
+    }
     this.props.processForm({"user": user});
   }
 
@@ -70,6 +90,19 @@ export class SignUpForm extends React.Component {
           <h1 className="header-ruler">Edit Account</h1>
         </div>
       );
+    }
+
+    let passwordNotice = null;
+    if (formType === "editProfile") {
+      passwordNotice = (
+        <i> (Leave password blank if you want it unchanged.)</i>
+      );
+      
+      const { user } = this.props;
+
+      if (user && !this.state.loaded) {
+        this.loadUserToState();
+      }
     }
 
     // Redirect if form has been submitted and redirect path has been
@@ -107,8 +140,8 @@ export class SignUpForm extends React.Component {
               />              
             </div>
 
-            <div className="form-group">
-              <label htmlFor="form-password">Password</label>
+            <div className="form-group">              
+              <label htmlFor="form-password">Password{passwordNotice}</label>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
@@ -129,11 +162,12 @@ export class SignUpForm extends React.Component {
 
             <div className="form-group">
               <label htmlFor="form-bio">Bio</label>
-              <input type="textarea"
+              <textarea
                 value={this.state.bio}
                 onChange={this.update('bio')}
                 className="form-input"
                 id="form-bio"
+                rows="3"
               />              
             </div>
 
