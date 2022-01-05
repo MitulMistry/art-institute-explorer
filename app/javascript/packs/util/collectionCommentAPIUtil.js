@@ -9,7 +9,7 @@ export const createCollectionComment = collectionComment => (
 );
 
 export const updateCollectionComment = collectionComment => (
-  fetch(`/api/v1/collection_comments/${collectionComment.id}`, {
+  fetch(`/api/v1/collection_comments/${collectionComment.collection_comment.id}`, {
     method: 'PATCH',
     headers: CSRFRequestHeaders(),
     body: JSON.stringify(collectionComment)

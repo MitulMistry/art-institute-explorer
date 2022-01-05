@@ -37,7 +37,7 @@ export const createCollectionComment = collectionComment => dispatch => (
 );
 
 export const updateCollectionComment = collectionComment => dispatch => (
-  APIUtil.updateCollection(collectionComment).then(response => processResponse(response))
+  APIUtil.updateCollectionComment(collectionComment).then(response => processResponse(response))
     .then(collectionComment => {
       dispatch(receiveCollectionComment(collectionComment));
       dispatch(setRedirect(`/collections/${collectionComment.collection_id}`));

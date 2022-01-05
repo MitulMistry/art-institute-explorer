@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 import { RenderErrors } from '../RenderErrors/RenderErrors';
 
 export class CollectionCommentForm extends React.Component {
@@ -18,7 +19,9 @@ export class CollectionCommentForm extends React.Component {
       resetRedirect,
       errors,
       resetCollectionCommentErrors,
-      collectionId } = this.props;
+      collectionId,
+      formType,
+      comment } = this.props;
 
     // Clear redirect from store when component mounts
     if (redirect) {
@@ -30,7 +33,15 @@ export class CollectionCommentForm extends React.Component {
       resetCollectionCommentErrors();
     }
 
-    this.setState({collection_id: collectionId});
+    if (formType === 'newCollectionComment') {
+      this.setState({collection_id: collectionId});
+    } else if (formType === 'editCollectionComment') {
+      this.setState({
+        collection_id: collectionId,
+        id: comment.id,
+        body: comment.body
+      });
+    }
   }
 
   update(field) {
@@ -50,15 +61,15 @@ export class CollectionCommentForm extends React.Component {
   renderErrors() {
     return(
       <div>
-      <RenderErrors
-        errors={this.props.errors}
-      />
+        <RenderErrors
+          errors={this.props.errors}
+        />
       </div>
     );
   }
 
   render() {
-    const { formType, redirect, errors, resetRedirect } = this.props;
+    const { formType, redirect, errors } = this.props;
     
     let header = null;
     if (formType === "newCollectionComment") {

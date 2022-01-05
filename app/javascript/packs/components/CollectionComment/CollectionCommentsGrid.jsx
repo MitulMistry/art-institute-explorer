@@ -1,5 +1,5 @@
 import React from 'react';
-import { CollectionCommentCard } from './CollectionCommentCard';
+import CollectionCommentCardContainer from './CollectionCommentCardContainer';
 
 export class CollectionCommentsGrid extends React.Component {
   render() {
@@ -10,7 +10,7 @@ export class CollectionCommentsGrid extends React.Component {
         <div className="comments-grid">          
           <div className="comments-container">
             {commentsArray.map((comment, i) =>
-              <CollectionCommentCard
+              <CollectionCommentCardContainer
                 key={i}
                 comment={comment}
               />

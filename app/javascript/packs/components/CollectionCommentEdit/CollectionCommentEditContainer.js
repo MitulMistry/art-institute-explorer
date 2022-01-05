@@ -6,11 +6,11 @@ import { updateCollectionComment } from '../../actions/collectionCommentActions'
 import { resetRedirect } from '../../actions/uiActions';
 import { resetCollectionCommentErrors } from '../../actions/collectionCommentActions';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
   errors: state.errors.collectionCommentErrors,
   formType: 'editCollectionComment',
   collectionId: state.entities.collections.collectionShow.id,
-  collectionComment: null,
+  collectionComment: ownProps.comment,
   redirect: state.ui.redirect
 });
 
