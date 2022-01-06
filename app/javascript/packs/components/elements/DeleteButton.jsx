@@ -17,10 +17,11 @@ export class DeleteButton extends React.Component {
 
   render() {
     // Redirect if button has been submitted
+    const {enableRedirect, redirectPath} = this.props;
     let redirectNav = null;
-    if(this.state.submitted) {      
+    if(enableRedirect && this.state.submitted) {      
       redirectNav = (
-        <Navigate to={"/"} />
+        <Navigate to={redirectPath || "/"} />
       );
     }
 

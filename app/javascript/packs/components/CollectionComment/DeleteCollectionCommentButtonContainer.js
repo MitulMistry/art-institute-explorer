@@ -5,7 +5,8 @@ import { DeleteButton } from '../elements/DeleteButton';
 import { deleteCollectionComment } from '../../actions/collectionCommentActions';
 
 const mapStateToProps = (state, ownProps) => ({
-  id: ownProps.id
+  id: ownProps.id,
+  enableRedirect: false
 });
 
 const mapDispatchToProps = dispatch => ({
