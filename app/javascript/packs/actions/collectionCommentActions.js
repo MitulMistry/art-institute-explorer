@@ -47,8 +47,8 @@ export const updateCollectionComment = collectionComment => dispatch => (
 );
 
 export const deleteCollectionComment = id => dispatch => (
-  APIUtil.deleteCollectionComment(id).then(response => response.json())
+  APIUtil.deleteCollectionComment(id)
     .then(response => (
-      dispatch(setRedirect(`/collections/${collectionComment.collection_id}`))
+      dispatch(removeCollectionComment(id))
     ))
 );

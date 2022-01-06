@@ -15,7 +15,7 @@ export class CollectionShow extends React.Component {
   }
 
   render() {
-    const { collectionShow, collectionId, loggedIn, owned} = this.props;
+    const { collectionShow, collectionId, collectionComments, loggedIn, owned} = this.props;
 
     if (collectionShow && collectionShow.id === collectionId) {
 
@@ -40,7 +40,7 @@ export class CollectionShow extends React.Component {
           <div className ="collection-show-comments">
             <h3>Comments</h3>
             <CollectionCommentsGrid
-              commentsArray={collectionShow.collection_comments}
+              commentsArray={collectionComments}
             />
           </div>
         );

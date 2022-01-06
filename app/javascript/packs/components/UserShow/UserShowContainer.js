@@ -6,7 +6,8 @@ import { fetchUser } from '../../actions/userActions';
 
 const mapStateToProps = state => ({
   userShow: state.entities.users.userShow,
-  owned: Boolean(state.entities.users.userShow.id === state.session.id)
+  owned: Boolean(state.entities.users.userShow &&
+    state.entities.users.userShow.id === state.session.id)
 });
 
 const mapDispatchToProps = dispatch => ({

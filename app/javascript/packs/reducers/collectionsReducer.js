@@ -3,11 +3,6 @@ import {
   RECEIVE_COLLECTION
 } from '../actions/collectionActions';
 
-import {
-  RECEIVE_COLLECTION_COMMENT,
-  REMOVE_COLLECTION_COMMENT
-} from '../actions/collectionCommentActions';
-
 const initialState = {
   collectionsArray: [],
   collectionShow: null
@@ -25,18 +20,6 @@ const collectionsReducer = (state = initialState, action) => {
     case RECEIVE_COLLECTION:
       nextState = Object.assign({}, state);
       nextState.collectionShow = action.response;
-      return nextState;
-    case RECEIVE_COLLECTION_COMMENT:
-      nextState = Object.assign({}, state);
-      nextState.collectionShow.collection_comments.push(action.collectionComment);
-      return nextState;
-    case REMOVE_COLLECTION_COMMENT:
-      nextState = Object.assign({}, state);
-      // Create new array of comments that don't match the id that needs to be removed
-      let commentArray = nextState.collectionShow.collection_comments.filter((comment) => (
-        comment.id !== action.collectionCommentId
-      ));
-      nextState.collectionShow.collection_comments = commentArray;
       return nextState;
     default:
       return state;
