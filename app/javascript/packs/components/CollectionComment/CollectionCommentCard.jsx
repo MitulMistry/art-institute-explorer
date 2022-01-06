@@ -15,9 +15,11 @@ export class CollectionCommentCard extends React.Component {
   }
 
   toggleEdit() {
-    this.setState(prevState => ({
-      editEnabled: !prevState.editEnabled
-    }));
+    if (this.state.editEnabled) {
+      this.setState({editEnabled: false});
+    } else {
+      this.setState({editEnabled: true});
+    }
   }
 
   render() {
@@ -48,6 +50,7 @@ export class CollectionCommentCard extends React.Component {
         <div className="comment-card">
           <CollectionCommentEditContainer
           comment={comment}
+          toggleEdit={this.toggleEdit}
           />
         </div>
       );

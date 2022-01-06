@@ -69,28 +69,30 @@ export class CollectionCommentForm extends React.Component {
   }
 
   render() {
-    const { formType, redirect, errors } = this.props;
+    const { formType, redirect, resetRedirect, errors } = this.props;
     
     let header = null;
-    if (formType === "newCollectionComment") {
+    let label = null;
+    if (formType === 'newCollectionComment') {
       header = (
         <div>
           <h3>New Comment</h3>
         </div>
       );
     } else {
-      header = (
-        <div>
-          <h3>Edit Comment</h3>
-        </div>
-      );
+      label = 'Edit Comment';
     }
 
-    // Redirect if form has been submitted and redirect path has been
-    // set in the Redux store by Collection action.
     if (this.state.submitted && redirect && errors.length === 0) {
-      this.setState({submitted: false, body: ''});
-      resetRedirect();
+      if (formType === 'newCollectionComment') {
+        this.setState({submitted: false, body: ''});
+        resetRedirect();
+      } else if (formType === 'editCollectionComment') {
+        // Toggle edit state in parent component
+        this.setState({submitted: false});
+        resetRedirect();
+        this.props.toggleEdit();
+      }
     }
 
     return (
@@ -101,7 +103,7 @@ export class CollectionCommentForm extends React.Component {
           <div className="comment-form">
 
             <div className="form-group">
-              <label htmlFor="form-body">Comment</label>
+              <label htmlFor="form-body">{label || 'Comment'}</label>
               <textarea
                 value={this.state.body}
                 onChange={this.update('body')}

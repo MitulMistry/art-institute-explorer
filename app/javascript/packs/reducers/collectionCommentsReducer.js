@@ -5,6 +5,7 @@ import {
 
 import {
   RECEIVE_COLLECTION_COMMENT,
+  RECEIVE_UPDATED_COLLECTION_COMMENT,
   REMOVE_COLLECTION_COMMENT
 } from '../actions/collectionCommentActions';
 
@@ -24,9 +25,21 @@ const collectionCommentsReducer = (state = initialState, action) => {
     case RECEIVE_COLLECTION_COMMENT:
       nextState = Object.assign({}, state);
       // Arrays must be copied in order to trigger re-render in Redux Connect
-      const receiveCommentArray = [...nextState.collectionCommentsArray]
+      const receiveCommentArray = [...nextState.collectionCommentsArray];
       receiveCommentArray.push(action.collectionComment);
       nextState.collectionCommentsArray = receiveCommentArray;
+      return nextState;
+    case RECEIVE_UPDATED_COLLECTION_COMMENT:
+      nextState = Object.assign({}, state);
+      const receiveUpdatedCommentArray = [...nextState.collectionCommentsArray];
+      // Find comment to update
+      const receiveUpdatedCommentIndex = receiveUpdatedCommentArray.findIndex(
+        comment => comment.id === action.collectionComment.id
+      );
+      if (receiveUpdatedCommentIndex > -1) {
+        receiveUpdatedCommentArray[receiveUpdatedCommentIndex] = action.collectionComment;
+      }
+      nextState.collectionCommentsArray = receiveUpdatedCommentArray;
       return nextState;
     case REMOVE_COLLECTION_COMMENT:
       nextState = Object.assign({}, state);

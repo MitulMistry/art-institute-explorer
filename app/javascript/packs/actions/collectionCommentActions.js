@@ -3,12 +3,18 @@ import { setRedirect } from './uiActions';
 import { processResponse } from '../util/APIRequestHelpers';
 
 export const RECEIVE_COLLECTION_COMMENT = 'RECEIVE_COLLECTION_COMMENT';
+export const RECEIVE_UPDATED_COLLECTION_COMMENT = 'RECEIVE_UPDATED_COLLECTION_COMMENT';
 export const REMOVE_COLLECTION_COMMENT = 'REMOVE_COLLECTION_COMMENT';
 export const RECEIVE_COLLECTION_COMMENT_ERRORS = 'RECEIVE_COLLECTION_COMMENT_ERRORS';
 export const RESET_COLLECTION_COMMENT_ERRORS = 'RESET_COLLECTION_COMMENT_ERRORS';
 
 export const receiveCollectionComment = collectionComment => ({
   type: RECEIVE_COLLECTION_COMMENT,
+  collectionComment,
+});
+
+export const receiveUpdatedCollectionComment = collectionComment => ({
+  type: RECEIVE_UPDATED_COLLECTION_COMMENT,
   collectionComment,
 });
 
@@ -39,7 +45,7 @@ export const createCollectionComment = collectionComment => dispatch => (
 export const updateCollectionComment = collectionComment => dispatch => (
   APIUtil.updateCollectionComment(collectionComment).then(response => processResponse(response))
     .then(collectionComment => {
-      dispatch(receiveCollectionComment(collectionComment));
+      dispatch(receiveUpdatedCollectionComment(collectionComment));
       dispatch(setRedirect(`/collections/${collectionComment.collection_id}`));
     }).catch(errors => (
       dispatch(receiveCollectionCommentErrors(errors))

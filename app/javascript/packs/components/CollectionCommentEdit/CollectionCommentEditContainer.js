@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
   formType: 'editCollectionComment',
   collectionId: state.entities.collections.collectionShow.id,
   collectionComment: ownProps.comment,
+  toggleEdit: ownProps.toggleEdit,
   redirect: state.ui.redirect
 });
 
