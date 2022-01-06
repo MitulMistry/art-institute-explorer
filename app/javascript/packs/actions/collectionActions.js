@@ -28,7 +28,7 @@ export const receiveCollectionErrors = errors => ({
   errors,
 });
 
-export const resetCollectionErrors = errors => ({
+export const resetCollectionErrors = () => ({
   type: RESET_COLLECTION_ERRORS,
 });
 

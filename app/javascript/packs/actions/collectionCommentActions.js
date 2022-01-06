@@ -28,7 +28,7 @@ export const receiveCollectionCommentErrors = errors => ({
   errors,
 });
 
-export const resetCollectionCommentErrors = errors => ({
+export const resetCollectionCommentErrors = () => ({
   type: RESET_COLLECTION_COMMENT_ERRORS,
 });
 
