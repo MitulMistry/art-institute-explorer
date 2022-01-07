@@ -17,4 +17,8 @@ class Collection < ApplicationRecord
   def artworks_aic_ids
     self.artworks.pluck(:aic_id)
   end
+
+  def ordered_collection_comments
+    self.collection_comments.order(created_at: :desc)
+  end
 end

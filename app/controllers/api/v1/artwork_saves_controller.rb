@@ -5,7 +5,7 @@ class Api::V1::ArtworkSavesController < ApplicationController
 
   def index
     user = current_user
-    @artworks = user.saved_artworks
+    @artworks = user.ordered_saved_artworks.page(params[:page])
   end
 
   def create

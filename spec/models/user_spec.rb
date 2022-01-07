@@ -94,5 +94,72 @@ RSpec.describe User, type: :model do
         expect(ids).to include(collection2.id)
       end
     end
+
+    context "#ordered" do
+      it "returns a list of users (newest first)" do
+        user1 = create(:user)
+        user2 = create(:user)
+        user3 = create(:user)
+        users = User.ordered
+
+        expect(users.length).to eq(3)
+        expect(users[0].id).to eq(user3.id)
+        expect(users[1].id).to eq(user2.id)
+        expect(users[2].id).to eq(user1.id)
+      end
+    end
+
+    context "#ordered_collections" do
+      it "returns a list of the user's owned collections (newest first)" do
+        user = create(:user)
+        collection1 = create(:collection, user_id: user.id)
+        collection2 = create(:collection, user_id: user.id)
+        collection3 = create(:collection, user_id: user.id)
+        collection4 = create(:collection)
+        collections = user.ordered_collections
+
+        expect(collections.length).to eq(3)
+        expect(collections[0].id).to eq(collection3.id)
+        expect(collections[1].id).to eq(collection2.id)
+        expect(collections[2].id).to eq(collection1.id)
+      end
+    end
+
+    context "#ordered_liked_collections" do
+      it "returns a list of the user's liked collections (newest first)" do
+        user = create(:user)
+        collection1 = create(:collection)
+        collection2 = create(:collection)
+        collection3 = create(:collection)
+        collection4 = create(:collection)
+        user.liked_collections << collection1
+        user.liked_collections << collection2
+        user.liked_collections << collection3
+        collections = user.ordered_liked_collections
+
+        expect(collections.length).to eq(3)
+        expect(collections[0].id).to eq(collection3.id)
+        expect(collections[1].id).to eq(collection2.id)
+        expect(collections[2].id).to eq(collection1.id)
+      end
+    end
+
+    context "#ordered_saved_artworks" do
+      it "returns the user's saved Artworks ordered by newest join table (ArtworkSave)" do
+        artwork1 = create(:artwork)
+        artwork2 = create(:artwork)
+        artwork3 = create(:artwork)
+        user = create(:user)
+        user.saved_artworks << artwork2
+        user.saved_artworks << artwork1
+        user.saved_artworks << artwork3
+        artworks = user.ordered_saved_artworks
+
+        expect(artworks.length).to eq(3)
+        expect(artworks[0].id).to eq(artwork3.id)
+        expect(artworks[1].id).to eq(artwork1.id)
+        expect(artworks[2].id).to eq(artwork2.id)
+      end
+    end
   end
 end

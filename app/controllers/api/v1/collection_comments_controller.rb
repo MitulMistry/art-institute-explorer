@@ -5,14 +5,14 @@ class Api::V1::CollectionCommentsController < ApplicationController
   before_action :authorize_ownership, only: %i[ update destroy ]
 
   def index
-    @collection_comments = CollectionComment.all
+    @collection_comments = CollectionComment.ordered.page(params[:page])
   end
 
   def show
   end
 
   def collection
-    @collection_comments = @collection.collection_comments
+    @collection_comments = @collection.ordered_collection_comments.page(params[:page])
     render template: "api/v1/collection_comments/index"
   end
 

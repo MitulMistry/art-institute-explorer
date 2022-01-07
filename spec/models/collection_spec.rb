@@ -49,5 +49,28 @@ RSpec.describe Collection, type: :model do
         expect(collection.artworks_aic_ids).to contain_exactly(artwork1.aic_id, artwork2.aic_id)
       end
     end
+
+    context "#ordered" do
+      it "returns a list of collections (newest first)" do
+        collection1 = create(:collection)
+        collection2 = create(:collection)
+        collection3 = create(:collection)
+        collections = Collection.ordered
+
+        expect(collections.length).to eq(3)
+        expect(collections[0].id).to eq(collection3.id)
+        expect(collections[1].id).to eq(collection2.id)
+        expect(collections[2].id).to eq(collection1.id)
+      end
+    end
+
+    context "#randomized" do
+      it "returns a list of randomized collections" do
+        4.times { create(:collection) }        
+        collections = Collection.randomized(3)
+
+        expect(collections.length).to eq(3)
+      end
+    end
   end
 end
