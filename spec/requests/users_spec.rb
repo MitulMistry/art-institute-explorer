@@ -36,9 +36,9 @@ RSpec.describe "/users", type: :request do
         json = JSON.parse(response.body)
         # Check if any of the user hashes contains the specified username
         # Can also be written: expect(json).to include(include("username" => user1.username))
-        expect(json.any? { |hash| hash["username"] == user1.username }).to be true
-        expect(json.any? { |hash| hash["username"] == user2.username }).to be true
-        expect(json.any? { |hash| hash["username"] == user3.username }).to be true
+        expect(json["users"].any? { |hash| hash["username"] == user1.username }).to be true
+        expect(json["users"].any? { |hash| hash["username"] == user2.username }).to be true
+        expect(json["users"].any? { |hash| hash["username"] == user3.username }).to be true
       end
     end
 

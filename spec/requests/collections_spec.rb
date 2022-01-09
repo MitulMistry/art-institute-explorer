@@ -47,9 +47,9 @@ RSpec.describe "/collections", type: :request do
         json = JSON.parse(response.body)
         # Check if any of the collection hashes contains the specified title
         # Can also be written: expect(json).to include(include("title" => collection1.title))
-        expect(json.any? { |hash| hash["title"] == collection1.title }).to be true
-        expect(json.any? { |hash| hash["title"] == collection2.title }).to be true
-        expect(json.any? { |hash| hash["title"] == collection3.title }).to be true
+        expect(json["collections"].any? { |hash| hash["title"] == collection1.title }).to be true
+        expect(json["collections"].any? { |hash| hash["title"] == collection2.title }).to be true
+        expect(json["collections"].any? { |hash| hash["title"] == collection3.title }).to be true
       end
     end
 
@@ -101,9 +101,9 @@ RSpec.describe "/collections", type: :request do
         expect(response).to be_successful
 
         json = JSON.parse(response.body)
-        expect(json.none? { |hash| hash["title"] == collection1.title }).to be true
-        expect(json.any? { |hash| hash["title"] == collection2.title }).to be true
-        expect(json.any? { |hash| hash["title"] == collection3.title }).to be true
+        expect(json["collections"].none? { |hash| hash["title"] == collection1.title }).to be true
+        expect(json["collections"].any? { |hash| hash["title"] == collection2.title }).to be true
+        expect(json["collections"].any? { |hash| hash["title"] == collection3.title }).to be true
       end
     end
 

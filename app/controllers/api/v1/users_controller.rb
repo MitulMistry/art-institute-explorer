@@ -5,6 +5,7 @@ class Api::V1::UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.ordered.page(params[:page])
+    set_pages(@users)
   end
 
   # GET /users/1.json

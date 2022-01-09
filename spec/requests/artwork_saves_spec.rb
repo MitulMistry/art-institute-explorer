@@ -33,8 +33,8 @@ RSpec.describe "/artwork_saves", type: :request do
 
         json = JSON.parse(response.body)
         expect(json.length).to eq(2)
-        expect(json.any? { |hash| hash["title"] == artwork1.title }).to be true
-        expect(json.any? { |hash| hash["title"] == artwork2.title }).to be true
+        expect(json["artworks"].any? { |hash| hash["title"] == artwork1.title }).to be true
+        expect(json["artworks"].any? { |hash| hash["title"] == artwork2.title }).to be true
       end
     end
 

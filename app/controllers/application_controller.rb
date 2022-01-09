@@ -37,4 +37,13 @@ class ApplicationController < ActionController::Base
   def render_duplicate
     render json: ["Duplicate record"], status: :unprocessable_entity
   end
+
+  # Set an @pages hash using Kaminari that can be rendered in JBuilder
+  # partial: utilities/_page_counts.json.jbuilder
+  def set_pages(collection)
+    @pages = {
+      current_page: collection.current_page,
+      total_pages: collection.total_pages
+    }
+  end
 end

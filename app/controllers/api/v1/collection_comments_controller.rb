@@ -6,6 +6,7 @@ class Api::V1::CollectionCommentsController < ApplicationController
 
   def index
     @collection_comments = CollectionComment.ordered.page(params[:page])
+    set_pages(@collection_comments)
   end
 
   def show
@@ -13,6 +14,7 @@ class Api::V1::CollectionCommentsController < ApplicationController
 
   def collection
     @collection_comments = @collection.ordered_collection_comments.page(params[:page])
+    set_pages(@collection_comments)
     render template: "api/v1/collection_comments/index"
   end
 

@@ -26,9 +26,9 @@ RSpec.describe "/collection_comments", type: :request do
         expect(response).to be_successful
 
         json = JSON.parse(response.body)
-        expect(json.any? { |hash| hash["body"] == collection_comment1.body }).to be true
-        expect(json.any? { |hash| hash["body"] == collection_comment2.body }).to be true
-        expect(json.any? { |hash| hash["body"] == collection_comment3.body }).to be true
+        expect(json["collection_comments"].any? { |hash| hash["body"] == collection_comment1.body }).to be true
+        expect(json["collection_comments"].any? { |hash| hash["body"] == collection_comment2.body }).to be true
+        expect(json["collection_comments"].any? { |hash| hash["body"] == collection_comment3.body }).to be true
       end
     end
 
@@ -56,9 +56,9 @@ RSpec.describe "/collection_comments", type: :request do
         expect(response).to be_successful
 
         json = JSON.parse(response.body)
-        expect(json.length).to eq(2)
-        expect(json.any? { |hash| hash["body"] == collection_comment1.body }).to be true
-        expect(json.any? { |hash| hash["body"] == collection_comment2.body }).to be true
+        expect(json["collection_comments"].length).to eq(2)
+        expect(json["collection_comments"].any? { |hash| hash["body"] == collection_comment1.body }).to be true
+        expect(json["collection_comments"].any? { |hash| hash["body"] == collection_comment2.body }).to be true
       end
     end
   end

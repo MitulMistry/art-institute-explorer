@@ -5,15 +5,17 @@ class Api::V1::CollectionsController < ApplicationController
 
   def index
     @collections = Collection.ordered.page(params[:page])
+    set_pages(@collections)
   end
 
   def liked
     @collections = current_user.ordered_liked_collections.page(params[:page])
+    set_pages(current_user.liked_collections.page(params[:page]))
     render template: "api/v1/collections/index"
   end
 
   def owned
-    @collections = current_user.ordered_collections.page(params[:page])
+    @collections = current_user.ordered_collections
     render template: "api/v1/collections/owned"
   end
 
