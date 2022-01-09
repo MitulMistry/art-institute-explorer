@@ -4,13 +4,14 @@ class Api::V1::CollectionsController < ApplicationController
   before_action :authorize_ownership, only: %i[ update destroy ]
 
   def index
-    @collections = Collection.ordered.page(params[:page])
+    @collections = Collection.ordered.page(params[:page]).per(10)
     set_pages(@collections)
   end
 
   def liked
-    @collections = current_user.ordered_liked_collections.page(params[:page])
-    set_pages(current_user.liked_collections.page(params[:page]))
+    @collections = current_user.ordered_liked_collections.page(params[:page]).per(10)
+    # set_pages(@collections)
+    set_pages(current_user.liked_collections.page(params[:page]).per(10))
     render template: "api/v1/collections/index"
   end
 
