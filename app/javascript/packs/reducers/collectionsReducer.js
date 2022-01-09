@@ -5,6 +5,8 @@ import {
 
 const initialState = {
   collectionsArray: [],
+  collectionsCurrentPage: 1,
+  collectionsTotalPages: 1,
   collectionShow: null
 };
 
@@ -15,7 +17,9 @@ const collectionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_COLLECTIONS:
       nextState = Object.assign({}, state);
-      nextState.collectionsArray = action.response;
+      nextState.collectionsArray = action.response.collections;
+      nextState.collectionsCurrentPage = action.response.pages.current_page;
+      nextState.collectionsTotalPages = action.response.pages.total_pages;
       return nextState;
     case RECEIVE_COLLECTION:
       nextState = Object.assign({}, state);

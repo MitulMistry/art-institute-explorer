@@ -36,6 +36,11 @@
 	padding: 0.25rem 0.5rem;
 }
 
+.btn-primary-small-square {
+	@extend .btn-primary-small;
+	border-radius: .5rem;
+}
+
 .btn-interactive-container {
 	color: $app-gray;	
 }

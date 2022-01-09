@@ -1,7 +1,7 @@
 import { CSRFRequestHeaders } from "./CSRFTokenUtil";
 
-export const fetchCollections = () => (
-  fetch('/api/v1/collections')
+export const fetchCollections = page => (
+  fetch(`/api/v1/collections?page=${page || 1}`)
 );
 
 export const fetchCollection = id => (

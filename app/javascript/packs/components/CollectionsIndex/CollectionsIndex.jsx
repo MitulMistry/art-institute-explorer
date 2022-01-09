@@ -1,5 +1,6 @@
 import React from 'react';
 import { CollectionsGrid } from './CollectionsGrid';
+import CollectionPaginationButtonsContainer from './CollectionPaginationButtonsContainer';
 
 export class CollectionsIndex extends React.Component {
   componentDidMount() {
@@ -17,6 +18,9 @@ export class CollectionsIndex extends React.Component {
         <CollectionsGrid
           collectionsArray={collectionsArray}
         />
+        <div className="flex-center">
+          <CollectionPaginationButtonsContainer />
+        </div>
       </div>
     );
   }

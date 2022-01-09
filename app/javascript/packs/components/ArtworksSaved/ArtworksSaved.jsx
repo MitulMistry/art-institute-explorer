@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArtworksGrid } from '../ArtworksIndex/ArtworksGrid'; 
+import { ArtworksGrid } from '../ArtworksIndex/ArtworksGrid';
+import ArtworksSavedPaginationButtonsContainer from './ArtworksSavedPaginationButtonsContainer';
 
 export class ArtworksSaved extends React.Component {
   componentDidMount() {
@@ -14,10 +15,15 @@ export class ArtworksSaved extends React.Component {
     let artworks = null;
     if (savedArtworksArray && savedArtworksArray.length > 0 ) {
       artworks = (
-        <ArtworksGrid
-          artworksArray={savedArtworksArray}
-          imageBaseUrl={savedArtworksArray[0].image_url_prefix}
-        />
+        <div>
+          <ArtworksGrid
+            artworksArray={savedArtworksArray}
+            imageBaseUrl={savedArtworksArray[0].image_url_prefix}
+          />
+          <div className="flex-center">
+            <ArtworksSavedPaginationButtonsContainer />
+          </div>
+        </div>
       );
     } else {
       artworks = (

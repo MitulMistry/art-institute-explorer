@@ -12,6 +12,8 @@ const initialState = {
     }
   },
   savedArtworksArray: [],
+  savedArtworksCurrentPage: 1,
+  savedArtworksTotalPages: 1,
   artworkShow: null,
   artworkShowResponse: {
     config: {
@@ -36,7 +38,9 @@ const artworksReducer = (state = initialState, action) => {
       return nextState;
     case RECEIVE_SAVED_ARTWORKS:
       nextState = Object.assign({}, state);
-      nextState.savedArtworksArray = action.artworks;
+      nextState.savedArtworksArray = action.response.artworks;
+      nextState.savedArtworksCurrentPage = action.response.pages.current_page;
+      nextState.savedArtworksTotalPages = action.response.pages.total_pages;
       return nextState;
     case RECEIVE_ARTWORK:
       nextState = Object.assign({}, state);

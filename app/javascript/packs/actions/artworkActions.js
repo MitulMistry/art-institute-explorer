@@ -9,9 +9,9 @@ export const receiveArtworks = response => ({
   response,
 });
 
-export const receiveSavedArtworks = artworks => ({
+export const receiveSavedArtworks = response => ({
   type: RECEIVE_SAVED_ARTWORKS,
-  artworks,
+  response,
 });
 
 export const receiveArtwork = response => ({
@@ -26,10 +26,10 @@ export const fetchArtworks = () => dispatch => (
     ))
 );
 
-export const fetchSavedArtworks = () => dispatch => (
-  APIUtil.fetchSavedArtworks().then(response => response.json())
-    .then(artworks => (
-      dispatch(receiveSavedArtworks(artworks))
+export const fetchSavedArtworks = page => dispatch => (
+  APIUtil.fetchSavedArtworks(page).then(response => response.json())
+    .then(response => (
+      dispatch(receiveSavedArtworks(response))
     ))
 );
 

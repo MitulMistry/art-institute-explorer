@@ -32,8 +32,8 @@ export const resetCollectionErrors = () => ({
   type: RESET_COLLECTION_ERRORS,
 });
 
-export const fetchCollections = () => dispatch => (
-  APIUtil.fetchCollections().then(response => response.json())
+export const fetchCollections = page => dispatch => (
+  APIUtil.fetchCollections(page).then(response => response.json())
     .then(response => (
       dispatch(receiveCollections(response))
     ))

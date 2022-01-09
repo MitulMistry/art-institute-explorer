@@ -10,7 +10,9 @@ import {
 } from '../actions/collectionCommentActions';
 
 const initialState = {
-  collectionCommentsArray: []
+  collectionCommentsArray: [],
+  collectionCommentsCurrentPage: 1,
+  collectionCommentsTotalPages: 1
 };
 
 const collectionCommentsReducer = (state = initialState, action) => {

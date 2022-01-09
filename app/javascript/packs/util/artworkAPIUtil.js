@@ -2,8 +2,8 @@ export const fetchArtworks = () => (
   fetch('/api/v1/artworks')
 );
 
-export const fetchSavedArtworks = () => (
-  fetch('/api/v1/artwork_saves')
+export const fetchSavedArtworks = page => (
+  fetch(`/api/v1/artwork_saves?page=${page || 1}`)
 );
 
 export const fetchArtwork = id => (
