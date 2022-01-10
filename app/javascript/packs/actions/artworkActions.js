@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/artworkAPIUtil';
+import { setSearchQuery } from './uiActions';
 
 export const RECEIVE_ARTWORKS = 'RECEIVE_ARTWORKS';
 export const RECEIVE_SAVED_ARTWORKS = 'RECEIVE_SAVED_ARTWORKS';
@@ -19,8 +20,8 @@ export const receiveArtwork = response => ({
   response,
 });
 
-export const fetchArtworks = () => dispatch => (
-  APIUtil.fetchArtworks().then(response => response.json())
+export const fetchArtworks = page => dispatch => (
+  APIUtil.fetchArtworks(page).then(response => response.json())
     .then(response => (
       dispatch(receiveArtworks(response))
     ))
@@ -40,9 +41,10 @@ export const fetchArtwork = id => dispatch => (
     ))
 );
 
-export const searchArtworks = queryString => dispatch => (
-  APIUtil.searchArtworks(queryString).then(response => response.json())
+export const searchArtworks = (queryString, page) => dispatch => {
+  dispatch(setSearchQuery(queryString));
+  APIUtil.searchArtworks(queryString, page).then(response => response.json())
     .then(response => (
       dispatch(receiveArtworks(response))
-    ))
-);
+    ));
+};

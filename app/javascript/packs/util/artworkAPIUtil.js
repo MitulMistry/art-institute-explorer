@@ -1,5 +1,5 @@
-export const fetchArtworks = () => (
-  fetch('/api/v1/artworks')
+export const fetchArtworks = page => (
+  fetch(`/api/v1/artworks?page=${page || 1}`)
 );
 
 export const fetchSavedArtworks = page => (
@@ -10,6 +10,6 @@ export const fetchArtwork = id => (
   fetch(`/api/v1/artworks/${id}`)
 );
 
-export const searchArtworks = queryString => (
-  fetch(`/api/v1/artworks/search?q=${encodeURIComponent(queryString)}`)
+export const searchArtworks = (queryString, page) => (
+  fetch(`/api/v1/artworks/search?q=${encodeURIComponent(queryString)}&page=${page || 1}`)
 );

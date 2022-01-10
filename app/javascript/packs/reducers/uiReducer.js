@@ -1,10 +1,12 @@
 import {
   SET_REDIRECT,
   RESET_REDIRECT,
+  SET_SEARCH_QUERY
 } from '../actions/uiActions';
 
 const initialState = {
-  redirect: null
+  redirect: null,
+  searchQuery: null
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -19,6 +21,10 @@ const uiReducer = (state = initialState, action) => {
     case RESET_REDIRECT:
       nextState = Object.assign({}, state);
       nextState.redirect = initialState.redirect;
+      return nextState;
+    case SET_SEARCH_QUERY:
+      nextState = Object.assign({}, state);
+      nextState.searchQuery = action.searchQuery;
       return nextState;
     default:
       return state;

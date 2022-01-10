@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  processForm: queryString => dispatch(searchArtworks(queryString))
+  processForm: queryString => dispatch(searchArtworks(queryString, 1))
 });
 
 export default connect(

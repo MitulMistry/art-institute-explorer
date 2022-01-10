@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArtworksGrid } from './ArtworksGrid';
+import ArtworksPaginationButtonsContainer from './ArtworksPaginationButtonsContainer';
 
 export class ArtworksIndex extends React.Component {
   componentDidMount() {
@@ -18,6 +19,9 @@ export class ArtworksIndex extends React.Component {
           artworksArray={artworksArray}
           imageBaseUrl={imageBaseUrl}
         />
+        <div className="flex-center">
+          <ArtworksPaginationButtonsContainer />
+        </div>
       </div>
     );
   }

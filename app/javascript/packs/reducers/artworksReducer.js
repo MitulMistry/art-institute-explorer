@@ -11,6 +11,8 @@ const initialState = {
       iiif_url: null
     }
   },
+  artworksArrayCurrentPage: 1,
+  artworksArrayTotalPages: 1,
   savedArtworksArray: [],
   savedArtworksCurrentPage: 1,
   savedArtworksTotalPages: 1,
@@ -32,8 +34,12 @@ const artworksReducer = (state = initialState, action) => {
       nextState.artworksArray = action.response.data;
       nextState.artworksArrayResponse = action.response;
       delete nextState.artworksArrayResponse.data;
-      if (!("config" in action.response)) {
-        nextState.artworksArrayResponse.config = initialState.artworksArrayResponse.config;
+      if (!('config' in action.response)) {
+        nextState.artworksArrayResponse.config = initialState.artworksArrayResponse.config;        
+      }
+      if ('pagination' in action.response) {
+        nextState.artworksArrayCurrentPage = action.response.pagination.current_page;
+        nextState.artworksArrayTotalPages = action.response.pagination.total_pages;
       }
       return nextState;
     case RECEIVE_SAVED_ARTWORKS:
@@ -47,7 +53,7 @@ const artworksReducer = (state = initialState, action) => {
       nextState.artworkShow = action.response.data;
       nextState.artworkShowResponse = action.response;
       delete nextState.artworkShowResponse.data;
-      if (!("config" in action.response)) {
+      if (!('config' in action.response)) {
         nextState.artworkShowResponse.config = initialState.artworkShowResponse.config;
       }
       return nextState;
