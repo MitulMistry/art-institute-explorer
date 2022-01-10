@@ -1,15 +1,16 @@
 class Api::V1::MixedDataController < ApplicationController
   def index
-    @collections = Collection.randomized(6)
+    @collections = Collection.randomized(8)
     @artworks = []
     @artworks_response = {}
 
     begin
-      url = "https://api.artic.edu/api/v1/artworks"
+      url = "https://api.artic.edu/api/v1/artworks/search"
 
       response = Faraday.get(url) do |req|
-        req.params["limit"] = 6
+        req.params["limit"] = 8
         req.params["fields"] = "id,title,artist_title,date_display,image_id,thumbnail"
+        req.params["query[term][is_boosted]"] = true
         req.options.timeout = 8000
       end
 
@@ -20,7 +21,5 @@ class Api::V1::MixedDataController < ApplicationController
     rescue Faraday::TimeoutError
       render_timeout
     end
-
-    # render template: "api/v1/mixed_data/index"
   end
 end

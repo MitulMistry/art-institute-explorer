@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe "/artworks", type: :request do
   shared_examples_for "public access to artworks" do
     describe "GET /index" do
-      it "responds with a JSON formatted list of artworks (10 by default)" do
+      it "responds with a JSON formatted list of artworks (12 by default)" do
         VCR.use_cassette("artworks_index") do
           get api_v1_artworks_url
           expect(response).to be_successful
 
           json = JSON.parse(response.body)
-          expect(json["data"].length).to eq(10)
+          expect(json["data"].length).to eq(12)
         end
       end
     end

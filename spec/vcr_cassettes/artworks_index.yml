@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,date_display,image_id,thumbnail&limit=10
+    uri: https://api.artic.edu/api/v1/artworks/search?fields=id,title,artist_title,date_display,image_id,thumbnail&limit=12&page=1&query%5Bterm%5D%5Bis_boosted%5D=true
     body:
       encoding: US-ASCII
       string: ''
@@ -21,11 +21,11 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '2216'
+      - '4412'
       Connection:
       - keep-alive
       Date:
-      - Wed, 08 Dec 2021 22:19:53 GMT
+      - Mon, 10 Jan 2022 06:30:52 GMT
       Server:
       - Apache/2.4.51 () OpenSSL/1.0.2k-fips
       Cache-Control:
@@ -33,44 +33,68 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Etag:
-      - '"9bb525c5f146911d09eb38d7cdc8bf95-gzip"'
+      - '"ac7785caf630882ba650a8deae1edf8e-gzip"'
       Vary:
       - Accept-Encoding
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 14ebd2119b0260233f69a56e7943bedb.cloudfront.net (CloudFront)
+      - 1.1 3765ff5ab7256fdbff87302f60a6d800.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - ORD50-C1
       X-Amz-Cf-Id:
-      - GBWT4e_zKLtxfTwr04YviOrx353oUPmx_fLAWTHHp2gG35f-Ew_mxA==
+      - Dsnu6Dm7Juf6BlVGnAdv3y4Wuk5Vln1M7S-HEK3BL0smNOH42xo_MA==
     body:
       encoding: ASCII-8BIT
-      string: '{"pagination":{"total":115801,"limit":10,"offset":0,"total_pages":11581,"current_page":1,"next_url":"https:\/\/api.artic.edu\/api\/v1\/artworks?page=2&fields=id%2Ctitle%2Cartist_title%2Cdate_display%2Cimage_id%2Cthumbnail&limit=10"},"data":[{"id":261478,"title":"Static
-        Drift","thumbnail":null,"date_display":"2001","artist_title":"Mwangi Hutter","image_id":null},{"id":261714,"title":"Venus
-        Mount","thumbnail":null,"date_display":"2020","artist_title":"Eileen Quinlan","image_id":null},{"id":25401,"title":"Plate
-        with Isaac Blessing Jacob","thumbnail":{"lqip":"data:image\/gif;base64,R0lGODlhBQAFAPQAAGRbRm1vT2NmYGZ1eaF1JWeLdnqBdp2GTZGCU46AYIiOZ4GAa5SMbYqRfJ2Qd6OQZKiUbrSSYYmZgoyViLKqm6OoqK2qqrCurAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAFAAUAAAUVYDUIzmUEBxExyQJAk4I8VCUVjRUCADs=","width":2250,"height":2250,"alt_text":"A
-        work made of tin-glazed earthenware (maiolica)."},"date_display":"1540\/1545","artist_title":"Urbino
-        Potteries","image_id":"42e3a358-c6f8-5e24-b50d-c68137d6c551"},{"id":25404,"title":"Dish
-        (Coppa Amatoria)","thumbnail":{"lqip":"data:image\/gif;base64,R0lGODlhBQAFAPQAAHJrWFBbbW1xd3JzcJJ4TpeOfbqmeH5\/gICCgYOEiIeKi5GPi5eUipmWj56clZ2elpSWmKejlaykkaunnZyiqKOoqqaoq6urq8PCtgAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAFAAUAAAUVIFUAxwURxpAsASM0yoMhThVJkxUCADs=","width":2250,"height":2250,"alt_text":"A
-        work made of tin-glazed earthenware (maiolica)."},"date_display":"1530\/45","artist_title":null,"image_id":"2e9f6cc4-307a-32e9-b75e-7e4bdb870eab"},{"id":25407,"title":"Plate
-        with Moses Striking the Rock","thumbnail":{"lqip":"data:image\/gif;base64,R0lGODlhBgAFAPQAAERDRE1LTF1dW1diT1xoT1dgV1tgVmlsV2VjZmVkZHJ1Y3Jwc3RycXJyeHZ1eoJ+WYR\/a46HYoiIZ4uEbpKIZJmLYJiMZo6JdJCPfnp6gIOChIODioiIiZGQkgAAAAAAACH5BAAAAAAALAAAAAAGAAUAAAUYICAURhIgBzEoCxNJD6U5kFVNW8NdWJeFADs=","width":2795,"height":2250,"alt_text":"A
-        work made of tin-glazed earthenware (maiolica)."},"date_display":"c. 1545","artist_title":"Urbino
-        Potteries","image_id":"0a074862-9e3c-46da-7b0c-2c4cfd443e4f"},{"id":25426,"title":"Beaker","thumbnail":{"lqip":"data:image\/gif;base64,R0lGODlhAwAFAPMAAIF5cpSXlpeYlpebmqObm6Olo6Wmo9PRz9HS1Obm4\/X19fb29fb29vn5+QAAAAAAACH5BAAAAAAALAAAAAADAAUAAAQLcIhQgEHksKTaahEAOw==","width":1468,"height":2250,"alt_text":"A
-        work made of colorless glass and enamel."},"date_display":"1573","artist_title":null,"image_id":"b3fbe519-975a-69bd-bb2e-f7fe01bd4b3c"},{"id":25432,"title":"Standing
-        Bowl","thumbnail":{"lqip":"data:image\/gif;base64,R0lGODlhBwAFAPUAAKqkm6ylnLapmLWqmqerq6uurqytrbyxoKyxsq2xsrK3uLS4uLa6u7i7u8u1msy3ncq4o87Et9TLwNTW19na3OPe2OLf2ujl4u\/u7O\/u7fDw8PLx8PLy8vX19fX29\/b29vf4+fj4+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAHAAUAAAYhQEJi0WAoEIaA4DAAFCiSB8QRmXBAl4rFo\/mENphMqBMEADs=","width":3000,"height":2119,"alt_text":"A
-        work made of colorless glass with enamel and gilding."},"date_display":"1490\/1500","artist_title":null,"image_id":"1a92a361-398f-3d0a-491f-0cb9cbc4df4e"},{"id":25434,"title":"Lovers
-        in a Garden","thumbnail":{"lqip":"data:image\/gif;base64,R0lGODlhBQAFAPQAAAYDAgMCBAoJCQ0MCjonElM4CFM7Fl4+Fk44IEk5KFE7KGpLHVZFN1xKOWlSKHtdP3tgNn5iOHtfQYpqOIt2Qpt1QpR3V6eJYayNYgAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAFAAUAAAUV4MA8imBcWIUc0EI5iSVNBNBERRACADs=","width":2263,"height":2250,"alt_text":"A
-        work made of glass, vitreous paint, and silver stain."},"date_display":"1520\/30","artist_title":null,"image_id":"a4b31ca9-addf-8437-f550-877d68a0b986"},{"id":25437,"title":"Mordechai
-        Overhears the Conspiracy from the Story of Esther","thumbnail":{"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAAG1fPltRRmNZSWVeWWtgRm5lV2liWmtkX29oX397e4d8XYF7b4F6c4N+doWAeZuTepqXjqGdiaKhnq2tpwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAURYHJM0hBEUPMQxqIAgoMUTAgAOw==","width":1685,"height":2250,"alt_text":"A
-        work made of glass, paint, silver stain, lead."},"date_display":"c. 1525","artist_title":"Pieter
-        Cornelisz","image_id":"a2e1f6f7-986d-f1fa-c872-4d60630697f2"},{"id":25440,"title":"The
-        Birth and Naming of Saint John the Baptist","thumbnail":{"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAAFA4H0UwKFxGOVlKOmZRNmFXQGhTRGZZQ2pYR25cS3FiSH9nTHRoSnJqTXpoT35uVX10WIBwT4l5VoRyXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAURYGAciDBByeI0D0AUQyQxSggAOw==","width":1648,"height":2250,"alt_text":"A
-        work made of glass, vitreous paint, and silver stain."},"date_display":"c.
-        1525","artist_title":null,"image_id":"4f64a6ae-406d-6fa7-dee6-88a00cd7b5a7"}],"info":{"license_text":"The
-        data in this response is licensed under a Creative Commons Zero (CC0) 1.0
-        designation and the Terms and Conditions of artic.edu.","license_links":["https:\/\/creativecommons.org\/publicdomain\/zero\/1.0\/","https:\/\/www.artic.edu\/terms"],"version":"1.2"},"config":{"iiif_url":"https:\/\/www.artic.edu\/iiif\/2","website_url":"http:\/\/www.artic.edu"}}
+      string: '{"preference":null,"pagination":{"total":423,"limit":12,"offset":0,"total_pages":36,"current_page":1},"data":[{"_score":34008.34,"thumbnail":{"alt_text":"Abstract
+        painting composed of small vertical dabs of multiple shades of blue with a
+        small area of similar strokes of red, orange, and yellow in the upper right.","width":5376,"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAABw\/Zhg\/aBRBaBZBahRCaxxBahxEahNIchZJcR9LdB9OdiZIZSBEbShLbjxRZyBPeipRcSpReUpWaitXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAURoMJIDhJAywAcAlEkxhNNTQgAOw==","height":6112},"date_display":"1972","artist_title":"Alma
+        Thomas","id":129884,"image_id":"e966799b-97ee-1cc6-bd2f-a94b4b8bb8f9","title":"Starry
+        Night and the Astronauts"},{"_score":17004.17,"thumbnail":{"alt_text":"Painting
+        of bedroom, blue walls, green window, tan bed, red bedding.","width":2867,"lqip":"data:image\/gif;base64,R0lGODlhBgAFAPQAAHhwV3N+bnh\/aXR8dJtsG6VsAJx4IIp8PIx0QYZ2SoZ\/bIx+b3CGboiAQoKAVoWAVpiLYZqNYIiAcoeIc5SNdJeJfJiKfXyCgneAkXmLp3eFqomMgIWJmZOerAAAAAAAACH5BAAAAAAALAAAAAAGAAUAAAUYoMYEXJdhgwBF1wM4RIE01HYYiVJZk7SEADs=","height":2250},"date_display":"1889","artist_title":"Vincent
+        van Gogh","id":28560,"image_id":"25c31d8d-21a4-9ea1-1d73-6a2eca4dda7e","title":"The
+        Bedroom"},{"_score":11336.113,"thumbnail":{"alt_text":"Dark stone sculpture
+        of Buddha sitting cross-legged, hands in lap, eyes closed.","width":5085,"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAAFdNQ1xSR1BQUVhXVVpYVllaWllaW25jWWljXXFnXWNiYWVjYWxmYGhoaIN6coR8dIiEgYmFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAURoEAMQoEwRnMkjQIEC\/Q4UQgAOw==","height":6356},"date_display":"Chola
+        period, about 12th century","artist_title":null,"id":21023,"image_id":"0675f9a9-1a7b-c90a-3bb6-7f7be2afb678","title":"Buddha
+        Shakyamuni Seated in Meditation (Dhyanamudra)"},{"_score":8502.085,"thumbnail":{"alt_text":"Painting
+        of three black youths gardening, residential towers loom in the background.","width":10256,"lqip":"data:image\/gif;base64,R0lGODlhBgAFAPQAAFJEOV9cVXRJQmBVUnNiQ2ltVmJiWWlrXGd6Zm9zanBzbnpwbHZ7cJF\/YY6MfZV\/gJaMjJGbiZWYj56Wl5KglZuUoKObo62go6yto7emqb+0ucW+s8q\/tODo3QAAAAAAACH5BAAAAAAALAAAAAAGAAUAAAUYYGVpE5cJVycRjbFgDEJFx1AAwaMkG+SEADs=","height":8754},"date_display":"1994","artist_title":"Kerry
+        James Marshall","id":137125,"image_id":"d94d0e3d-5d89-ce07-ee0f-7fa6d8def8ab","title":"Many
+        Mansions"},{"_score":3400.834,"thumbnail":{"alt_text":"Abstract painting of
+        several various-colored and overlapping rings and circles, looser brushstrokes
+        drape across the circles like winding thread.","width":5467,"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAAD4uK1MvI1k+OlhANWRCOmdIQmlKRnRPT21lVWllWmlgXnhgW3JlZXZxaIBmWJd8c6CFbZWdl7WTgKywrAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAUR4PQ4EnM0kAEMiBAUyUIoUQgAOw==","height":6765},"date_display":"1964","artist_title":"Tanaka
+        Atsuko","id":229393,"image_id":"7690dd6e-05ed-773c-a80e-e7cc4eb879cc","title":"Untitled"},{"_score":2834.0283,"thumbnail":{"alt_text":"Life-size
+        painting of an urban scene in Paris. A man in a top hat holding an umbrella
+        and a woman in a long fashionable dark dress walk arm in arm toward the viewer
+        as other city dwellers with umbrellas walk in various directions across cobblestone
+        roads and sidewalks.","width":9987,"lqip":"data:image\/gif;base64,R0lGODlhBwAFAPUAACYtLiQwNDs9Pjw\/QEFFSUVJTlFGRlhPT11iYmdgZ2xjaGpra2xqcWlvdmtzeHp6dH5+e4GDfXh+hJKLhZWTi4aMlZKVk5OWk5eXkpSanJ6emqSglbOrn6Glpq+spbe0q8G7sMTAtMjFuQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAHAAUAAAYhQA7oIwpNFBrLpVNhJBoZiaNwMEA8GARhEHhQNpGFABAEADs=","height":7755},"date_display":"1877","artist_title":"Gustave
+        Caillebotte","id":20684,"image_id":"f8fd76e9-c396-5678-36ed-6a348c904d27","title":"Paris
+        Street; Rainy Day"},{"_score":2429.1672,"thumbnail":{"alt_text":"Large painting
+        of people in a crowded park, brushstrokes are dots.","width":3000,"lqip":"data:image\/gif;base64,R0lGODlhCAAFAPUAAD1LPkZKPUhKRU9NSU1XR09USlNUS1FQTldfT1BPX1ZWVVNeUlJQW19bWV5iSFtoU1xoVGVoVGVmZWpkY3BrY3JuZGtyYXpyZoR9ZHyGaI6Ib5WLbo6SaZiUb4+EcIyEdpGKf56QeqScd5iUjZmXjJaanpyhoqSloQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAIAAUAAAYlwBMnY4kgDIOSiQT6aBqTUWgj8mAYlc6F4nhAEgeJogBYEASBIAA7","height":1999},"date_display":"1884\/86","artist_title":"Georges
+        Seurat","id":27992,"image_id":"4eddcf49-3efd-d993-fb1a-75d7e7d5b5a1","title":"A
+        Sunday on La Grande Jatte \u2014 1884"},{"_score":2125.5212,"thumbnail":{"alt_text":"Painting
+        of an Indigenous woman native to Mexico bent and seated on a brown floor,
+        using red thread to create a geometric design on a backstrap loom. Earth tones
+        dominate, while a dresser in the background and the bottom portion of the
+        woman''s white dress are a deep blue.","width":3000,"lqip":"data:image\/gif;base64,R0lGODlhCAAFAPUAADRNUy1QXT9abGNqT39yUnV4V3x5X1lZY01jeWpze3Nye3h+f5Z2VpV9XKB+WJGHWZCEXaWMU6OMVKGIXbOMVK6WVbmRV6KIZ7KNZW9+jI+OgpGWkJydkKuWhKSjj6qonL+3pLvBuczEqs3Hu+HFrNTRwOPl3enw4wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAIAAUAAAYlwAxCEDpxNKaE4vApgTqjB2TSuGBIIoqlIjEsNh4HgxApBACDIAA7","height":1805},"date_display":"1936","artist_title":"Diego
+        Rivera","id":151363,"image_id":"718aaa92-ac48-2c17-2832-b034827bc45f","title":"Weaving"},{"_score":1259.5681,"thumbnail":{"alt_text":"Abstract
+        painting composed of a central tangle of vibrant colors\u2014purple, pink,
+        orange, green, red\u2014on a mostly gray background, subtly divided into rectangular
+        areas.","width":7326,"lqip":"data:image\/gif;base64,R0lGODlhBQAFAPQAAG1TSnJbWo1saox7cpt+dIiBepSBfZ6NfZOKgJWLh52blKyWh7Ceiammm6+on7SplbOqm7evnLWvormxp7+3pr63qMC0qcO9rcK+sQAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAFAAUAAAUVIFZNDkRd0WMdQgAMibEQjFIgjRQCADs=","height":7344},"date_display":"1955","artist_title":"Joan
+        Mitchell","id":86385,"image_id":"f7f9615d-2c2b-6b23-47b2-cd6cdc846504","title":"City
+        Landscape"},{"_score":1133.6113,"thumbnail":{"alt_text":"Large plaque of stone
+        carved with animal and geometric hieroglyphs.","width":1743,"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAACgiHzIrJDMvLDw1L01IQFZUTmZjWm5nXWVpaHFvaH54boF8bYeBcouEdoKEgYGFhIOMj52UhaOdjrSunwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAUR4BAAwhE1hDJJRsIsBfQ4SAgAOw==","height":2250},"date_display":"1503","artist_title":"Aztec
+        (Mexica)","id":75644,"image_id":"ea8c5d62-6ce8-88e8-feb1-e0053cf534c5","title":"Coronation
+        Stone of Motecuhzoma II (Stone of the Five Suns)"},{"_score":1030.5558,"thumbnail":{"alt_text":"Painting
+        of a crowded bar scene where African American people dance and drink together,
+        some sitting at the bar, some at small tables, and many on the dance floor.","width":8216,"lqip":"data:image\/gif;base64,R0lGODlhBwAFAPUAABcVHB4aIB0cJzoaLD8ZMCsiLjAgJzEgLi8rND4tPFYZNEEhMk4nM0YoPlgmOlEuP0czPDspRE82TFI3Q180QlwzRFo9TV08T1g+UGIyQnE9VltCU1tHXmFHUWNKXmFBZHtLY4NUYodVbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAHAAUAAAYhwIllc9GARImOR4LhVAAICIPyMBQOi0yoIRgQFI5PJBAEADs=","height":6172},"date_display":"1943","artist_title":"Archibald
+        John Motley Jr.","id":117266,"image_id":"ae5c4d0f-5ff0-1e5d-172c-a7c4e973d4e1","title":"Nightlife"},{"_score":944.6761,"thumbnail":{"alt_text":"An
+        abstract steel sculpture of welded metal parts suggesting a human figure with
+        long, thin legs and a bulkier shoulder area.","width":6790,"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAAHh2cX99eIaEgJGQjZybmaOioKalo6mpqa2sq62trLS0tLS0tbW1tbi5ubq6uru7u729vr+\/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAUR4EMMDSQAkWMUj5IgyxEMTAgAOw==","height":9060},"date_display":"1958","artist_title":"Richard
+        Hunt","id":8633,"image_id":"62f2ca7a-8c22-bb7e-9e3d-7453652a3350","title":"Hero
+        Construction"}],"info":{"license_text":"The data in this response is licensed
+        under a Creative Commons Zero (CC0) 1.0 designation and the Terms and Conditions
+        of artic.edu.","license_links":["https:\/\/creativecommons.org\/publicdomain\/zero\/1.0\/","https:\/\/www.artic.edu\/terms"],"version":"1.2"}}
 
         '
-  recorded_at: Wed, 08 Dec 2021 22:19:53 GMT
+  recorded_at: Mon, 10 Jan 2022 06:30:52 GMT
 recorded_with: VCR 6.0.0

@@ -21,6 +21,9 @@ const homePageReducer = (state = initialState, action) => {
       nextState = Object.assign({}, state);
       nextState.artworksArray = action.response.artworks;
       nextState.artworksArrayResponse = action.response.artworks_response;
+      if (!('config' in nextState.artworksArrayResponse)) {
+        nextState.artworksArrayResponse.config = initialState.artworksArrayResponse.config;
+      }
       nextState.collectionsArray = action.response.collections;
       return nextState;
     default:
