@@ -50,9 +50,19 @@ export class PaginationButtons extends React.Component {
       );
     }
 
+    let text = null;
+    if (totalPages > 1) {
+      text = (
+        <span className="pagination-text">
+          {currentPage} of {totalPages}
+        </span>
+      );
+    }
+
     return (
       <span>        
         {previousButton}
+        {text}
         {nextButton}
       </span>
     );
