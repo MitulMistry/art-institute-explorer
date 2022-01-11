@@ -1,7 +1,10 @@
 import {
   RECEIVE_ARTWORKS,
   RECEIVE_SAVED_ARTWORKS,
-  RECEIVE_ARTWORK
+  RECEIVE_ARTWORK,
+  RESET_ARTWORKS,
+  RESET_SAVED_ARTWORKS,
+  RESET_ARTWORK
 } from '../actions/artworkActions';
 
 const initialState = {
@@ -42,11 +45,20 @@ const artworksReducer = (state = initialState, action) => {
         nextState.artworksArrayTotalPages = action.response.pagination.total_pages;
       }
       return nextState;
+    case RESET_ARTWORKS:
+      nextState = Object.assign({}, state);
+      nextState.artworksArray = initialState.artworksArray;
+      nextState.artworksArrayResponse = initialState.artworksArrayResponse;
+      return nextState;
     case RECEIVE_SAVED_ARTWORKS:
       nextState = Object.assign({}, state);
       nextState.savedArtworksArray = action.response.artworks;
       nextState.savedArtworksCurrentPage = action.response.pages.current_page;
       nextState.savedArtworksTotalPages = action.response.pages.total_pages;
+      return nextState;
+    case RESET_SAVED_ARTWORKS:
+      nextState = Object.assign({}, state);
+      nextState.savedArtworksArray = initialState.savedArtworksArray;
       return nextState;
     case RECEIVE_ARTWORK:
       nextState = Object.assign({}, state);
@@ -56,6 +68,11 @@ const artworksReducer = (state = initialState, action) => {
       if (!('config' in action.response)) {
         nextState.artworkShowResponse.config = initialState.artworkShowResponse.config;
       }
+      return nextState;
+    case RESET_ARTWORK:
+      nextState = Object.assign({}, state);
+      nextState.artworkShow = initialState.artworkShow;
+      nextState.artworkShowResponse = initialState.artworkShowResponse;
       return nextState;
     default:
       return state;

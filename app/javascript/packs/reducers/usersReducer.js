@@ -5,6 +5,8 @@ import {
 import {
   RECEIVE_USERS,
   RECEIVE_USER,
+  RESET_USERS,
+  RESET_USER
 } from '../actions/userActions';
 
 const initialState = {
@@ -37,9 +39,17 @@ const usersReducer = (state = initialState, action) => {
       nextState = Object.assign({}, state);
       nextState.usersArray = action.response;
       return nextState;
+    case RESET_USERS:
+      nextState = Object.assign({}, state);
+      nextState.usersArray = initialState.usersArray;
+      return nextState;
     case RECEIVE_USER:
       nextState = Object.assign({}, state);
       nextState.userShow = action.response;
+      return nextState;
+    case RESET_USER:
+      nextState = Object.assign({}, state);
+      nextState.userShow = initialState.userShow;
       return nextState;
     default:
       return state;

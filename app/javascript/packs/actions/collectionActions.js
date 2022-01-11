@@ -7,6 +7,8 @@ export const RECEIVE_COLLECTION = 'RECEIVE_COLLECTION';
 export const RECEIVE_OWNED_COLLECTIONS = 'RECEIVE_OWNED_COLLECTIONS';
 export const RECEIVE_COLLECTION_ERRORS = 'RECEIVE_COLLECTION_ERRORS';
 export const RESET_COLLECTION_ERRORS = 'RESET_COLLECTION_ERRORS';
+export const RESET_COLLECTIONS = 'RESET_COLLECTIONS';
+export const RESET_COLLECTION = 'RESET_COLLECTION';
 
 export const receiveCollections = response => ({
   type: RECEIVE_COLLECTIONS,
@@ -32,19 +34,29 @@ export const resetCollectionErrors = () => ({
   type: RESET_COLLECTION_ERRORS,
 });
 
-export const fetchCollections = page => dispatch => (
+export const resetCollections = () => ({
+  type: RESET_COLLECTIONS,
+});
+
+export const resetCollection = () => ({
+  type: RESET_COLLECTION,
+});
+
+export const fetchCollections = page => dispatch => {
+  dispatch(resetCollections());
   APIUtil.fetchCollections(page).then(response => response.json())
     .then(response => (
       dispatch(receiveCollections(response))
-    ))
-);
+    ));
+};
 
-export const fetchCollection = id => dispatch => (
+export const fetchCollection = id => dispatch => {
+  dispatch(resetCollection());
   APIUtil.fetchCollection(id).then(response => response.json())
     .then(response => (
       dispatch(receiveCollection(response))
-    ))
-);
+    ));
+};
 
 export const fetchOwnedCollections = () => dispatch => (
   APIUtil.fetchOwnedCollections().then(response => response.json())
