@@ -1,9 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { ArtworkImage } from '../ArtworksIndex/ArtworkImage';
 import CollectionLikeButtonContainer from './CollectionLikeButtonContainer';
 
 export class CollectionCard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageLoaded: false
+    };
+
+    this.setImageLoaded = this.setImageLoaded.bind(this);
+  }
+
+  setImageLoaded() {
+    this.setState({imageLoaded: true});
+  }
+
   render() {
     const { collection } = this.props;
 
@@ -16,6 +30,7 @@ export class CollectionCard extends React.Component {
           <ArtworkImage
             artwork={collection.artworks[0]}
             imageBaseUrl={collection.artworks[0].image_url_prefix}
+            setImageLoaded={this.setImageLoaded}
           />
         </Link>
       )
@@ -25,6 +40,7 @@ export class CollectionCard extends React.Component {
         <Link to={`/collections/${collection.id}`}>
           <ArtworkImage
             artwork={emptyArtwork}
+            setImageLoaded={this.setImageLoaded}
           />
         </Link>
       )
@@ -40,7 +56,10 @@ export class CollectionCard extends React.Component {
     }
 
     return (
-      <div className="collection-card masonry-item">
+      <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: this.state.imageLoaded ? 1 : 0 }}
+      className="collection-card masonry-item">
         {image}
         <div className="card-info flex-row">
           <div className="flex-row-left">
@@ -55,7 +74,7 @@ export class CollectionCard extends React.Component {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 }

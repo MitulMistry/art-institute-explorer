@@ -13,7 +13,7 @@ export class ArtworkImage extends React.Component {
   }
 
   render() {
-    const { artwork, imageBaseUrl, value, onClick, active } = this.props;
+    const { artwork, imageBaseUrl, value, onClick, active, setImageLoaded } = this.props;
     const defaultBaseUrl = "https://www.artic.edu/iiif/2/";
     
     let image = null;
@@ -39,13 +39,13 @@ export class ArtworkImage extends React.Component {
     if (artwork.image_id) {
       image = (
         <img src={`${imageBaseUrl || defaultBaseUrl}/${artwork.image_id || 0}/full/843,/0/default.jpg`} 
-          alt={altText || "Artwork"} className={className}
+          alt={altText || "Artwork"} className={className} onLoad={setImageLoaded}
           value={value} onClick={onClick} onError={this.setPlaceholder} />
       );
     } else {
       image = (
         <img src={Placeholder_Image} 
-          alt="Placeholder image" className={className}
+          alt="Placeholder image" className={className} onLoad={setImageLoaded}
           value={value} onClick={onClick} />
       );
     }
