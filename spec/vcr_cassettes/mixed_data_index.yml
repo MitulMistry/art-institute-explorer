@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.artic.edu/api/v1/artworks/search?fields=id,title,artist_title,date_display,image_id,thumbnail&limit=8&query%5Bterm%5D%5Bis_boosted%5D=true
+    uri: https://api.artic.edu/api/v1/artworks/search?fields=id,title,artist_title,date_display,image_id,thumbnail&limit=8&page=1&query%5Bterm%5D%5Bis_boosted%5D=true
     body:
       encoding: US-ASCII
       string: ''
@@ -21,11 +21,11 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '3113'
+      - '3112'
       Connection:
       - keep-alive
       Date:
-      - Mon, 10 Jan 2022 06:33:30 GMT
+      - Fri, 14 Jan 2022 01:27:33 GMT
       Server:
       - Apache/2.4.51 () OpenSSL/1.0.2k-fips
       Cache-Control:
@@ -33,45 +33,45 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Etag:
-      - '"0a32b32b75edd07dcf7f8a0e08e0eabf-gzip"'
+      - '"a7597a3461e6b95b62cf6461e04c0e19-gzip"'
       Vary:
       - Accept-Encoding
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 0e83b80efeab12740919b182d0829e30.cloudfront.net (CloudFront)
+      - 1.1 1c908fa5b5c23de2b0b5e7ebdf8a7f2c.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - ORD53-C3
+      - ORD50-C1
       X-Amz-Cf-Id:
-      - qwNnL_jyroPJpdIAZpMDOd9-xaPxJ1Nmna2Co7I0c5mA62KcXrISxQ==
+      - 48GnGfTMSfLH8Yk3TNgInjSkJVpvtNjLfoOj5d94kJUS_v8KV6aCKA==
     body:
       encoding: ASCII-8BIT
-      string: '{"preference":null,"pagination":{"total":423,"limit":8,"offset":0,"total_pages":53,"current_page":1},"data":[{"_score":34400.266,"thumbnail":{"alt_text":"Abstract
+      string: '{"preference":null,"pagination":{"total":423,"limit":8,"offset":0,"total_pages":53,"current_page":1},"data":[{"_score":33885.477,"thumbnail":{"alt_text":"Abstract
         painting composed of small vertical dabs of multiple shades of blue with a
         small area of similar strokes of red, orange, and yellow in the upper right.","width":5376,"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAABw\/Zhg\/aBRBaBZBahRCaxxBahxEahNIchZJcR9LdB9OdiZIZSBEbShLbjxRZyBPeipRcSpReUpWaitXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAURoMJIDhJAywAcAlEkxhNNTQgAOw==","height":6112},"date_display":"1972","artist_title":"Alma
         Thomas","id":129884,"image_id":"e966799b-97ee-1cc6-bd2f-a94b4b8bb8f9","title":"Starry
-        Night and the Astronauts"},{"_score":17200.133,"thumbnail":{"alt_text":"Painting
+        Night and the Astronauts"},{"_score":16942.738,"thumbnail":{"alt_text":"Painting
         of bedroom, blue walls, green window, tan bed, red bedding.","width":2867,"lqip":"data:image\/gif;base64,R0lGODlhBgAFAPQAAHhwV3N+bnh\/aXR8dJtsG6VsAJx4IIp8PIx0QYZ2SoZ\/bIx+b3CGboiAQoKAVoWAVpiLYZqNYIiAcoeIc5SNdJeJfJiKfXyCgneAkXmLp3eFqomMgIWJmZOerAAAAAAAACH5BAAAAAAALAAAAAAGAAUAAAUYoMYEXJdhgwBF1wM4RIE01HYYiVJZk7SEADs=","height":2250},"date_display":"1889","artist_title":"Vincent
         van Gogh","id":28560,"image_id":"25c31d8d-21a4-9ea1-1d73-6a2eca4dda7e","title":"The
-        Bedroom"},{"_score":11466.755,"thumbnail":{"alt_text":"Dark stone sculpture
+        Bedroom"},{"_score":11295.159,"thumbnail":{"alt_text":"Dark stone sculpture
         of Buddha sitting cross-legged, hands in lap, eyes closed.","width":5085,"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAAFdNQ1xSR1BQUVhXVVpYVllaWllaW25jWWljXXFnXWNiYWVjYWxmYGhoaIN6coR8dIiEgYmFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAURoEAMQoEwRnMkjQIEC\/Q4UQgAOw==","height":6356},"date_display":"Chola
         period, about 12th century","artist_title":null,"id":21023,"image_id":"0675f9a9-1a7b-c90a-3bb6-7f7be2afb678","title":"Buddha
-        Shakyamuni Seated in Meditation (Dhyanamudra)"},{"_score":8600.066,"thumbnail":{"alt_text":"Painting
+        Shakyamuni Seated in Meditation (Dhyanamudra)"},{"_score":8471.369,"thumbnail":{"alt_text":"Painting
         of three black youths gardening, residential towers loom in the background.","width":10256,"lqip":"data:image\/gif;base64,R0lGODlhBgAFAPQAAFJEOV9cVXRJQmBVUnNiQ2ltVmJiWWlrXGd6Zm9zanBzbnpwbHZ7cJF\/YY6MfZV\/gJaMjJGbiZWYj56Wl5KglZuUoKObo62go6yto7emqb+0ucW+s8q\/tODo3QAAAAAAACH5BAAAAAAALAAAAAAGAAUAAAUYYGVpE5cJVycRjbFgDEJFx1AAwaMkG+SEADs=","height":8754},"date_display":"1994","artist_title":"Kerry
         James Marshall","id":137125,"image_id":"d94d0e3d-5d89-ce07-ee0f-7fa6d8def8ab","title":"Many
-        Mansions"},{"_score":3440.0266,"thumbnail":{"alt_text":"Abstract painting
+        Mansions"},{"_score":3388.5476,"thumbnail":{"alt_text":"Abstract painting
         of several various-colored and overlapping rings and circles, looser brushstrokes
         drape across the circles like winding thread.","width":5467,"lqip":"data:image\/gif;base64,R0lGODlhBAAFAPQAAD4uK1MvI1k+OlhANWRCOmdIQmlKRnRPT21lVWllWmlgXnhgW3JlZXZxaIBmWJd8c6CFbZWdl7WTgKywrAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAUR4PQ4EnM0kAEMiBAUyUIoUQgAOw==","height":6765},"date_display":"1964","artist_title":"Tanaka
-        Atsuko","id":229393,"image_id":"7690dd6e-05ed-773c-a80e-e7cc4eb879cc","title":"Untitled"},{"_score":2866.6887,"thumbnail":{"alt_text":"Life-size
+        Atsuko","id":229393,"image_id":"7690dd6e-05ed-773c-a80e-e7cc4eb879cc","title":"Untitled"},{"_score":2823.7898,"thumbnail":{"alt_text":"Life-size
         painting of an urban scene in Paris. A man in a top hat holding an umbrella
         and a woman in a long fashionable dark dress walk arm in arm toward the viewer
         as other city dwellers with umbrellas walk in various directions across cobblestone
         roads and sidewalks.","width":9987,"lqip":"data:image\/gif;base64,R0lGODlhBwAFAPUAACYtLiQwNDs9Pjw\/QEFFSUVJTlFGRlhPT11iYmdgZ2xjaGpra2xqcWlvdmtzeHp6dH5+e4GDfXh+hJKLhZWTi4aMlZKVk5OWk5eXkpSanJ6emqSglbOrn6Glpq+spbe0q8G7sMTAtMjFuQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAHAAUAAAYhQA7oIwpNFBrLpVNhJBoZiaNwMEA8GARhEHhQNpGFABAEADs=","height":7755},"date_display":"1877","artist_title":"Gustave
         Caillebotte","id":20684,"image_id":"f8fd76e9-c396-5678-36ed-6a348c904d27","title":"Paris
-        Street; Rainy Day"},{"_score":2457.1619,"thumbnail":{"alt_text":"Large painting
+        Street; Rainy Day"},{"_score":2420.391,"thumbnail":{"alt_text":"Large painting
         of people in a crowded park, brushstrokes are dots.","width":3000,"lqip":"data:image\/gif;base64,R0lGODlhCAAFAPUAAD1LPkZKPUhKRU9NSU1XR09USlNUS1FQTldfT1BPX1ZWVVNeUlJQW19bWV5iSFtoU1xoVGVoVGVmZWpkY3BrY3JuZGtyYXpyZoR9ZHyGaI6Ib5WLbo6SaZiUb4+EcIyEdpGKf56QeqScd5iUjZmXjJaanpyhoqSloQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAIAAUAAAYlwBMnY4kgDIOSiQT6aBqTUWgj8mAYlc6F4nhAEgeJogBYEASBIAA7","height":1999},"date_display":"1884\/86","artist_title":"Georges
         Seurat","id":27992,"image_id":"4eddcf49-3efd-d993-fb1a-75d7e7d5b5a1","title":"A
-        Sunday on La Grande Jatte \u2014 1884"},{"_score":2150.0166,"thumbnail":{"alt_text":"Painting
+        Sunday on La Grande Jatte \u2014 1884"},{"_score":2117.8423,"thumbnail":{"alt_text":"Painting
         of an Indigenous woman native to Mexico bent and seated on a brown floor,
         using red thread to create a geometric design on a backstrap loom. Earth tones
         dominate, while a dresser in the background and the bottom portion of the
@@ -81,5 +81,5 @@ http_interactions:
         designation and the Terms and Conditions of artic.edu.","license_links":["https:\/\/creativecommons.org\/publicdomain\/zero\/1.0\/","https:\/\/www.artic.edu\/terms"],"version":"1.2"}}
 
         '
-  recorded_at: Mon, 10 Jan 2022 06:33:30 GMT
+  recorded_at: Fri, 14 Jan 2022 01:27:33 GMT
 recorded_with: VCR 6.0.0

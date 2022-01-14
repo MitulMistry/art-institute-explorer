@@ -8,7 +8,7 @@ RSpec.describe "/mixed_data", type: :request do
           collection1 = create(:collection)
           collection2 = create(:collection)
 
-          get api_v1_mixed_data_url
+          get api_v1_mixed_data_url(artpage: 1)
           expect(response).to be_successful
 
           json = JSON.parse(response.body)

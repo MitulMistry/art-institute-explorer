@@ -11,6 +11,7 @@ class Api::V1::MixedDataController < ApplicationController
         req.params["limit"] = 8
         req.params["fields"] = "id,title,artist_title,date_display,image_id,thumbnail"
         req.params["query[term][is_boosted]"] = true
+        req.params["page"] = params[:artpage] || rand(1..10)
         req.options.timeout = 8000
       end
 
