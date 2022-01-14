@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import SearchBarContainer from './SearchBarContainer';
 import AuthLinksContainer from './AuthLinksContainer';
 
+import AICLogo from 'images/aic_logo.svg';
+
 export class NavBar extends React.Component {
   render() {
     const { loggedIn } = this.props;
@@ -30,7 +32,11 @@ export class NavBar extends React.Component {
       <header className="header">
         <nav className="header-nav clearfix">
         <div>
-          <h1 className="header-nav-logo"><Link to="/">AIC Explorer</Link></h1>
+          <span className="header-nav-logo">
+            <Link to="/">
+              <img src={AICLogo} className="header-nav-logo-img" alt="logo" />
+            </Link>
+          </span>
           <div className="header-nav-list clearfix">
           {links}
           <SearchBarContainer />

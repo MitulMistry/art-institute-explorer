@@ -37,9 +37,17 @@
   float: left;
 }
 
+.header-nav-logo {
+  max-width: 190px;
+}
+
 .header-nav-logo > a {
   font-size: 1.7rem;
   padding-top: 5px;
+}
+
+.header-nav-logo-img {
+  @extend .img-responsive;  
 }
 
 // .header-nav-logo > a:hover {
