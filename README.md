@@ -17,7 +17,7 @@ The application relies on the external API to provide data including images for 
 * **Examine Users** - Get more information about a particular user and their saved artworks and created collections through their show page.
 
 ## Application Info
-The application uses an MVC (Model, View, Controller) paradigm using the Rails back end. Instead of Rails templates, it uses [Jbuilder][jbuilder] templates to serialize data from the model layer and respond with JSON that can be consumed ascynchronously by the front end. Authentication is handled using [BCrypt][bcrypt] for Ruby.
+The application uses an MVC (Model, View, Controller) paradigm using the Rails back end. Instead of Rails templates, it uses [Jbuilder][jbuilder] templates to serialize data from the model layer and respond with JSON that can be consumed ascynchronously by the front end. Authentication is handled using [BCrypt][bcrypt] for Ruby. External API requests are handled by the [Faraday][faraday] gem.
 
 [React][react] is used to create a single-page, responsive, JavaScript based front end. [Redux][redux] is used to keep a central store for the application's state and store data received from the back end. [React Router][react-router] is used for front end routing, [Redux Thunk][redux-thunk] is used to assist in Redux actions and API calls, and [Framer Motion][framer-motion] is used for animations. [Font Awesome][font-awesome] is used for icons and buttons.
 
@@ -66,7 +66,7 @@ Create the database with `bundle exec rails db:create` and run migrations with `
 
 To run the application in development mode after installation, run `bundle exec rails s`.
 
-Front end dependencies are managed by [Yarn][yarn] with the [package.json][package.json] file, so you must have Yarn installed. Dependencies are built by [Webpack][webpack] via the [Webpacker gem][webpacker] gem. Custom JavaScript code for React/Redux is located in the [`app/javascript/packs`][js-directory] directory where front end assets are imported.
+Front end dependencies are managed by [Yarn][yarn] with the [package.json][package.json] file, so you must have Yarn installed. Dependencies are built by [Webpack][webpack] via the [Webpacker][webpacker] gem. Custom JavaScript code for React/Redux is located in the [`app/javascript/packs`][js-directory] directory where front end assets are imported.
 
 ## Testing
 The back end test suite is developed using [RSpec][rspec] via the [rspec-rails gem][rspec-rails] with [shoulda-matchers][shoulda-matchers]. Model factories are set up with [FactoryBot][factory-bot]. Since the application is dependant on an external API, the test suite utilizes [VCR][vcr] to record and replay responses for tests.
@@ -86,6 +86,7 @@ This project is open source under the terms of the [MIT License][mit].
 [bundler]: http://bundler.io/
 [jbuilder]: https://github.com/rails/jbuilder
 [bcrypt]: https://github.com/bcrypt-ruby/bcrypt-ruby
+[faraday]: https://lostisland.github.io/faraday/
 [react-router]: https://reactrouter.com/
 [redux-thunk]: https://github.com/reduxjs/redux-thunk
 [framer-motion]: https://www.framer.com/motion/

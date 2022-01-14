@@ -1,5 +1,5 @@
 import React from 'react';
-import Placeholder_Image from 'images/No-Image-Placeholder.png';
+import PlaceholderImage from 'images/No-Image-Placeholder.png';
 
 export class ArtworkImage extends React.Component {
   constructor(props) {
@@ -8,7 +8,7 @@ export class ArtworkImage extends React.Component {
   }
 
   setPlaceholder(e) {
-    e.target.src = Placeholder_Image;
+    e.target.src = PlaceholderImage;
     e.target.alt = 'Placeholder image';
   }
 
@@ -44,7 +44,7 @@ export class ArtworkImage extends React.Component {
       );
     } else {
       image = (
-        <img src={Placeholder_Image} 
+        <img src={PlaceholderImage} 
           alt="Placeholder image" className={className} onLoad={setImageLoaded}
           value={value} onClick={onClick} />
       );

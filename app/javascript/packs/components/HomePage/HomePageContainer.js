@@ -7,7 +7,8 @@ import { fetchMixedDataIndex } from '../../actions/mixedDataActions';
 const mapStateToProps = state => ({
   collectionsArray: state.entities.homePage.collectionsArray,
   artworksArray: state.entities.homePage.artworksArray,
-  imageBaseUrl: state.entities.homePage.artworksArrayResponse.config.iiif_url
+  imageBaseUrl: state.entities.homePage.artworksArrayResponse.config.iiif_url,
+  loggedIn: Boolean(state.session.id)
 });
 
 const mapDispatchToProps = dispatch => ({

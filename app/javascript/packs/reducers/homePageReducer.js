@@ -1,5 +1,6 @@
 import {
-  RECEIVE_MIXED_DATA_INDEX
+  RECEIVE_MIXED_DATA_INDEX,
+  RESET_MIXED_DATA_INDEX
 } from '../actions/mixedDataActions';
 
 const initialState = {
@@ -25,6 +26,12 @@ const homePageReducer = (state = initialState, action) => {
         nextState.artworksArrayResponse.config = initialState.artworksArrayResponse.config;
       }
       nextState.collectionsArray = action.response.collections;
+      return nextState;
+    case RESET_MIXED_DATA_INDEX:
+      nextState = Object.assign({}, state);
+      nextState.artworksArray = initialState.artworksArray;
+      nextState.artworksArrayResponse = initialState.artworksArrayResponse;
+      nextState.collectionsArray = initialState.collectionsArray;
       return nextState;
     default:
       return state;

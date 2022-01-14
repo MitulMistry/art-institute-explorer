@@ -76,6 +76,10 @@ h5 {
   border-bottom: 2px solid #d6d6d6;
 }
 
+.title {
+  font-size: 2.1rem;
+}
+
 a {
   -webkit-transition: color .1s linear;
   -moz-transition: color .1s linear;
@@ -97,4 +101,9 @@ a:hover {
 
 .content > p {
   padding: 1rem 0;
+}
+
+.img-responsive {
+  width: 100%;
+  height: auto;
 }

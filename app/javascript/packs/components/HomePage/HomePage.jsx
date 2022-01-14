@@ -1,6 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { CollectionsGrid } from '../CollectionsIndex/CollectionsGrid';
-import { ArtworksGrid } from '../ArtworksIndex/ArtworksGrid'; 
+import { ArtworksGrid } from '../ArtworksIndex/ArtworksGrid';
+
+import SplashImage from 'images/aic_splash_01.jpg';
 
 export class HomePage extends React.Component {
   componentDidMount() {
@@ -10,15 +13,29 @@ export class HomePage extends React.Component {
   }
 
   render() {
-    const { artworksArray, collectionsArray, imageBaseUrl } = this.props;
+    const { loggedIn, artworksArray, collectionsArray, imageBaseUrl } = this.props;
     
+    let signupButton = null;
+
+    if (!loggedIn) {
+      signupButton = (
+        <div className="signup-btn">
+          <Link to="/signup">
+            <button className="btn-primary">Sign Up</button>
+          </Link>
+        </div>
+      );
+    }
+
     return (
       <div className="home-page">
-        <h1 className="header-ruler">AIC Explorer</h1>
+        <h1 className="header-ruler title">AIC Explorer</h1>
+        <img src={SplashImage} className="img-responsive img-splash" alt="splash image" />
         <p>
           Explore thousands of artworks from the Art Institute of Chicago (AIC).
           Save your favorite artworks to your profile and create custom collections to share.
         </p>
+        {signupButton}
 
         <div className="artworks">
           <h1 className="header-ruler">Artworks</h1>
