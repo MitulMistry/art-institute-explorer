@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.2'
+ruby '3.0.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem 'rails', '~> 6.1', '>= 6.1.6'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 1.1'
+gem 'pg', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -30,19 +30,19 @@ gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.4.4', require: false
 
 # Use Faraday to make external API requests
-gem 'faraday', '~> 1.8'
+gem 'faraday', '~> 2.3'
 # Use Kaminari For pagination
-gem 'kaminari', '~> 1.2', '>= 1.2.1'
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
 # Use Faker to generate example data
-gem 'faker', '~> 2.19'
+gem 'faker', '~> 2.21'
 # Add validations for Active Storage images
-gem 'active_storage_validations', '~> 0.9.5'
+gem 'active_storage_validations', '~> 0.9.8'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Use RSpec for testing
-  gem 'rspec-rails', '~> 5.0', '>= 5.0.2'
+  gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
   # Include REXML as RSpec dependency for Ruby 3+
   gem 'rexml', '~> 3.2', '>= 3.2.5'
   # Use Factory Bot to generate model instances for tests
@@ -50,7 +50,7 @@ group :development, :test do
   # Use WebMock to intercept external API calls in tests
   gem 'webmock', '~> 3.14'
   # Use VCR to record and reuse external API calls in tests with WebMock
-  gem 'vcr', '~> 6.0'
+  gem 'vcr', '~> 6.1'
 end
 
 group :development do
@@ -76,7 +76,7 @@ end
 
 group :test do
   # Use one-line matchers for RSpec testing
-  gem 'shoulda-matchers', '~> 5.0'
+  gem 'shoulda-matchers', '~> 5.1'
   # Clean databases for testing
   gem 'database_cleaner-active_record', '~> 2.0', '>= 2.0.1'
   # Bring back assigns and assert_template for controller testing
