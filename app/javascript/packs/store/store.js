@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from '@redux-devtools/extension';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
@@ -9,7 +9,9 @@ const configureStore = (preloadedState = {}) => {
   const store = createStore(
     rootReducer,
     preloadedState,
-    composeWithDevTools(applyMiddleware(thunk, logger))
+    composeWithDevTools(
+      applyMiddleware(thunk, logger)
+    )
   );
 
   // When changes occur to the store, load data from the store into the
