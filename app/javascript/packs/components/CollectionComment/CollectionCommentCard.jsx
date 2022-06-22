@@ -38,7 +38,7 @@ export class CollectionCommentCard extends React.Component {
     if (!this.state.editEnabled) {
       return (
         <div className="comment-card">
-          <p className="title">
+          <p className="subtitle">
             <Link to={`/users/${comment.user_id}`}>{comment.username}</Link><span className="date-time"> - {formatDateTime(comment.created_at)}</span>
           </p>
           <p className="body">{comment.body}</p>
@@ -54,8 +54,6 @@ export class CollectionCommentCard extends React.Component {
           />
         </div>
       );
-    }
-
-    
+    }    
   }
 }
