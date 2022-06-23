@@ -33,7 +33,7 @@ class Artwork < ApplicationRecord
   # If it does not, it creates a new Artwork with the aic_id using an external API call.
   # It returns an array of found or created Artworks.
   def self.find_or_create_by_aic_ids(aic_ids_array)
-    return nil if aic_ids_array.count > 6
+    return nil if aic_ids_array.count > 10
 
     filtered_ids = aic_ids_array.select { |id| id.is_a?(Integer) && id > 0 && id <= 999999 }
 
