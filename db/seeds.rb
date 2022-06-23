@@ -67,13 +67,16 @@ ActiveRecord::Base.transaction do
     user = User.order("RANDOM()").first
     artwork = Artwork.order("RANDOM()").first
 
-    unless (user.saved_artworks.include?(artwork))      
+    dummy_collection = []
+
+    if user.saved_artworks.include?(artwork)     
+      # Add the item to a collection if it's a duplicate, because otherwise
+      # order("RANDOM()") keeps selecting the same item and gets stuck in infinite loop
+      dummy_collection << artwork
+    else
+      user.saved_artworks << artwork
       count -= 1
     end
-
-    # Add the artwork anyway, even if it's a duplicate, because otherwise
-    # order("RANDOM()") keeps selecting the same item and gets stuck in infinite loop
-    user.saved_artworks << artwork
   end
 end
 
@@ -97,9 +100,15 @@ ActiveRecord::Base.transaction do
     user = User.order("RANDOM()").first
     collection = Collection.order("RANDOM()").first
 
-    unless collection.user == user
-      user.liked_collections << collection
+    dummy_collection = []
+
+    if collection.user == user
+      # Add the item to a collection if it's a duplicate, because otherwise
+      # order("RANDOM()") keeps selecting the same item and gets stuck in infinite loop
+      dummy_collection << collection
+    else
+      user.liked_collections << collection  
       count -= 1
-    end
+    end    
   end
 end
