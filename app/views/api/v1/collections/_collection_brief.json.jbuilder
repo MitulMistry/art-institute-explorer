@@ -5,7 +5,7 @@ json.user do
   json.username local_collection.user.username
 end
 
-json.artworks local_collection.artworks.first(3)
+json.artworks local_collection.ordered_first_artworks(3)
 
 json.like_count local_collection.like_count
 

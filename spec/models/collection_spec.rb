@@ -72,5 +72,54 @@ RSpec.describe Collection, type: :model do
         expect(collections.length).to eq(3)
       end
     end
+
+    context "#ordered_first_artworks" do
+      before :each do
+        @collection = create(:collection)
+        @artwork1 = create(:artwork)
+        @artwork2 = create(:artwork)
+        @artwork3 = create(:artwork)
+        @artwork4 = create(:artwork)
+        @collection.artworks << @artwork1
+        @collection.artworks << @artwork2
+        @collection.artworks << @artwork3
+        @collection.artworks << @artwork4
+      end
+
+      it "returns a list of artworks (oldest added first) with specified count" do        
+        artworks = @collection.ordered_first_artworks(3)
+
+        expect(artworks.length).to eq(3)
+        expect(artworks[0].id).to eq(@artwork1.id)
+        expect(artworks[1].id).to eq(@artwork2.id)
+        expect(artworks[2].id).to eq(@artwork3.id)
+      end
+
+      it "returns a list of all artworks (oldest added first) with no specified count" do        
+        artworks = @collection.ordered_first_artworks()
+
+        expect(artworks.length).to eq(4)
+        expect(artworks[0].id).to eq(@artwork1.id)
+        expect(artworks[1].id).to eq(@artwork2.id)
+        expect(artworks[2].id).to eq(@artwork3.id)
+        expect(artworks[3].id).to eq(@artwork4.id)
+      end
+    end
+
+    context "#ordered_collection_comments" do
+      it "returns a list of collection comments (newest first)" do
+        collection = create(:collection)
+        comment1 = create(:collection_comment, collection_id: collection.id)
+        comment2 = create(:collection_comment, collection_id: collection.id)
+        comment3 = create(:collection_comment, collection_id: collection.id)
+
+        comments = collection.ordered_collection_comments
+
+        expect(comments.length).to eq(3)
+        expect(comments[0].id).to eq(comment3.id)
+        expect(comments[1].id).to eq(comment2.id)
+        expect(comments[2].id).to eq(comment1.id)
+      end
+    end
   end
 end

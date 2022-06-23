@@ -5,6 +5,8 @@ json.user do
   json.username local_collection.user.username
 end
 
+json.artworks local_collection.ordered_first_artworks()
+
 json.collection_comments local_collection.collection_comments do |collection_comment|
   json.id collection_comment.id
   json.user_id collection_comment.user_id
