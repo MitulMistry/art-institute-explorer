@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.4'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1', '>= 6.1.6'
@@ -28,6 +28,9 @@ gem 'aws-sdk-s3', require: false
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+
+# Add to fix error for Ruby 3.1
+gem 'net-smtp', require: false
 
 # Use Faraday to make external API requests
 gem 'faraday', '~> 2.3'
