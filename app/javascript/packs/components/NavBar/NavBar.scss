@@ -1,5 +1,11 @@
+// Include map functionality for Sass: map.get()
+@use "sass:map";
+
 @import "../../styles/variables.scss";
 @import "../../styles/defaults.scss";
+
+$lg: map.get($grid-breakpoints, lg);
+$md: map.get($grid-breakpoints, md);
 
 .header {  
   font-size: 1.2rem;
@@ -38,10 +44,11 @@
 
 .header-nav-logo {
   float: left;
-}
-
-.header-nav-logo {
   max-width: 190px;
+
+  // @media (max-width: $lg) {
+  //   display: none;
+  // }
 }
 
 .header-nav-logo > a {
@@ -57,7 +64,9 @@
 // }
 
 .header-nav-list {
-  float: right;
+  // @media (min-width: $lg) {
+    float: right;
+  // }
 }
 
 .header-nav-list > ul {
@@ -70,8 +79,24 @@
 }
 
 .header-nav-list > ul > li > a {
-  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.auth-links > li:last-of-type > a {
+  margin-right: 0;
 }
 
 // .header-nav-list > li > a:hover {
+// }
+
+// #nav-toggle {
+//   @media (min-width: $lg) {
+//     display: none;
+//   }
+// }
+
+// .nav-show {
+//   @media (max-width: $lg) {
+
+//   }
 // }

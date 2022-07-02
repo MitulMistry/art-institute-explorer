@@ -1,3 +1,6 @@
+// Include map functionality for Sass: map.get()
+@use "sass:map";
+
 @import "../../styles/variables.scss";
 
 .search-bar {
@@ -5,11 +8,12 @@
 
   .btn-primary-small-submit {
     margin-left: .3rem;
+    margin-right: 1rem;
     padding: 5px 10px;
   }
 
   input {
-    margin-left: 1rem;
+    margin-right: .3rem;    
     font-family: 'Karla', sans-serif;
     font-size: .9rem;
     border-radius: 1.5rem;

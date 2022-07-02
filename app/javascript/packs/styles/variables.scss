@@ -7,3 +7,12 @@ $app-hover-color: #a8002a;
 $app-accent-color: #cd204b;
 $app-accent-color-dark: #a5183b;
 $app-error-color: #d3093c;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
