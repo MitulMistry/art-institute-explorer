@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1', '>= 6.1.6'
+gem 'rails', '~> 6.1', '>= 6.1.6.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.4'
 # Use Puma as the app server
@@ -36,11 +36,11 @@ gem 'net-imap', require: false
 gem 'net-pop', require: false
 
 # Use Faraday to make external API requests
-gem 'faraday', '~> 2.3'
+gem 'faraday', '~> 2.5', '>= 2.5.2'
 # Use Kaminari For pagination
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 # Use Faker to generate example data
-gem 'faker', '~> 2.21'
+gem 'faker', '~> 2.23'
 # Add validations for Active Storage images
 gem 'active_storage_validations', '~> 0.9.8'
 
