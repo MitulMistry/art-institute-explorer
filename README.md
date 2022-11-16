@@ -6,7 +6,7 @@
 AIC Explorer is a web application to explore and save artworks from the [Art Institute of Chicago][aic] and use them to create custom collections. It's built with a [Ruby on Rails][rails] back end to make API calls and store data, and a [React][react]/[Redux][redux] front end to provide an API interface. 
 
 ## Demo App
-You can see a demo version of this application deployed to Heroku here: https://art-institute-explorer.herokuapp.com/
+You can see a demo version of this application deployed to [Railway][railway] here: https://art-institute-explorer.up.railway.app/
 
 ## Functionality
 AIC Explorer leverages the [Art Institute of Chicago API][aic-public-api], a comprehensive API that makes data on all of the museum's artworks publically accessible (with documentation available [here][aic-api-documentation], along with its [GitHub page][aic-api-github]). Using this API, the application allows users to browse and search through the museum's artworks, save artworks to their account, and use artworks to create collections which can then be shared and commented upon by other users.
@@ -90,6 +90,7 @@ This project is open source under the terms of the [MIT License][mit].
 [rails]: http://rubyonrails.org/
 [react]: https://reactjs.org/
 [redux]: https://redux.js.org/
+[railway]: https://railway.app/
 [bundler]: http://bundler.io/
 [jbuilder]: https://github.com/rails/jbuilder
 [bcrypt]: https://github.com/bcrypt-ruby/bcrypt-ruby
