@@ -62,23 +62,40 @@ puts "Creating saved artworks..."
 
 ActiveRecord::Base.transaction do
   count = 50
+  userCount = User.count
+  artworkCount = Artwork.count
 
   while count > 0
-    user = User.order("RANDOM()").first
-    artwork = Artwork.order("RANDOM()").first
+    user = User.offset(rand(userCount)).first
+    artwork = Artwork.offset(rand(artworkCount)).first
 
-    dummy_collection = []
-
-    if user.saved_artworks.include?(artwork)     
-      # Add the item to a collection if it's a duplicate, because otherwise
-      # order("RANDOM()") keeps selecting the same item and gets stuck in infinite loop
-      dummy_collection << artwork
-    else
+    if !(user.saved_artworks.include?(artwork))
       user.saved_artworks << artwork
       count -= 1
     end
   end
 end
+
+# This code keeps getting stuck in infinite loops for duplicate entries
+# ActiveRecord::Base.transaction do
+#   count = 50
+
+#   while count > 0
+#     user = User.order("RANDOM()").first
+#     artwork = Artwork.order("RANDOM()").first
+
+#     dummy_collection = []
+
+#     if user.saved_artworks.include?(artwork)     
+#       # Add the item to a collection if it's a duplicate, because otherwise
+#       # order("RANDOM()") keeps selecting the same item and gets stuck in infinite loop
+#       dummy_collection << artwork
+#     else
+#       user.saved_artworks << artwork
+#       count -= 1
+#     end
+#   end
+# end
 
 puts "Creating collection comments..."
 
@@ -95,20 +112,36 @@ puts "Creating liked collections..."
 
 ActiveRecord::Base.transaction do
   count = 40
+  userCount = User.count
+  collectionCount = Collection.count
 
   while count > 0
-    user = User.order("RANDOM()").first
-    collection = Collection.order("RANDOM()").first
+    user = User.offset(rand(userCount)).first
+    collection = Collection.offset(rand(collectionCount)).first
 
-    dummy_collection = []
-
-    if collection.user == user
-      # Add the item to a collection if it's a duplicate, because otherwise
-      # order("RANDOM()") keeps selecting the same item and gets stuck in infinite loop
-      dummy_collection << collection
-    else
+    if collection.user != user
       user.liked_collections << collection  
       count -= 1
     end    
   end
 end
+
+# ActiveRecord::Base.transaction do
+#   count = 40
+
+#   while count > 0
+#     user = User.order("RANDOM()").first
+#     collection = Collection.order("RANDOM()").first
+
+#     dummy_collection = []
+
+#     if collection.user == user
+#       # Add the item to a collection if it's a duplicate, because otherwise
+#       # order("RANDOM()") keeps selecting the same item and gets stuck in infinite loop
+#       dummy_collection << collection
+#     else
+#       user.liked_collections << collection  
+#       count -= 1
+#     end    
+#   end
+# end
