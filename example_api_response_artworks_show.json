@@ -1,0 +1,249 @@
+{
+  "data": {
+    "id": 59774,
+    "api_model": "artworks",
+    "api_link": "https://api.artic.edu/api/v1/artworks/59774",
+    "is_boosted": false,
+    "title": "Weeping Woman",
+    "alt_titles": null,
+    "thumbnail": {
+      "lqip": "data:image/gif;base64,R0lGODlhAwAFAPMAAEZCPUZEP0lEP1RPSlVQSVdSS1dTTFlVTlpWUGtlXWtmXmxmXnh1bH96cIR/dQAAACH5BAAAAAAALAAAAAADAAUAAAQLEAxylGDOrIZKSBEAOw==",
+      "width": 1426,
+      "height": 2250,
+      "alt_text": "A work made of black and white chalk, with brush and stumping, brush and black and grey wash, and traces of graphite, over a brush and brown ink underdrawing on ivory wove paper."
+    },
+    "main_reference_number": "1947.23",
+    "has_not_been_viewed_much": false,
+    "boost_rank": null,
+    "date_start": 1883,
+    "date_end": 1883,
+    "date_display": "1883",
+    "date_qualifier_title": "",
+    "date_qualifier_id": null,
+    "artist_display": "Vincent van Gogh\nDutch, 1853-1890",
+    "place_of_origin": "Netherlands",
+    "dimensions": "50.2 × 31.4 cm (19 13/16 × 12 3/8 in.)",
+    "medium_display": "Black and white chalk, with brush and stumping, brush and black and grey wash, and traces of graphite, over a brush and brown ink underdrawing on ivory wove paper",
+    "inscriptions": "Inscribed verso, lower left: \"24966\"",
+    "credit_line": "Gift of Mrs. G. T. Langhorne and the Mary Kirk Waller Fund in memory of Tiffany Blake and Anonymous Fund",
+    "catalogue_display": null,
+    "publication_history": "J. B. de la Faille, L’Oeuvre de Vincent van Gogh, Catalogue Raisonné (Paris, 1928), p. 56, no. 1069 (ill.).\n\nWalter Vanbeseslaere, De Hollandsche Periode (1880-1885) in het Werk van Vincent van Gogh (Antwerp, 1937), pp. 105, 207, and 410.\n\nIra Moskowitz, Great Drawings of All Time (New York, 1962), no. 623 (ill.)\n\nJ. B. de la Faille, The Works of Vincent van Gogh: His Paintings and Drawings (Amsterdam, 1970), p. 392, no. 1069 (ill.).\n\nJ. B. de la Faille, Vincent van Gogh: The Complete Drawings (San Francisco, 1992), no. 1069 (ill.).\n\nJan Hulsker, The New Complete Van Gogh: Paintings, Drawings, Sketches (Amsterdam, 1996), p. 80, no. 325 (ill.).\n\nThomas W. Gaehtgens and Julietta Scharf, \"Die Sammlung Otto Gerstenberg in Berlin,\" in Die Moderne und Ihre Sammler: Französische Kunst in Deutschem Privatbesitz vom Kaiserreich zur Weimarer Reublik (Berlin, 2001), p. 181.\n\nBelinda Thomson, Van Gogh (Chicago, 2001), pp. 21,  88, and 106, pl. 1.\n\nAnne Leonard, The Tragic Muse: Art and Emotion, 1700-1900 (Chicago, Smart Museum of Art, 2011), fig. 15, p. 27.\n\nJulietta Scharf and Hanna Strzoda, Die Historische Sammlung Otto Gerstenberg (Ostfildern: Hatje Cantz, 2012), II:74, no. 440 (ill.).",
+    "exhibition_history": "Birmingham, Ala., Birmingham Museum of Art, \"Exhibition of French Drawings (Le Fin du Siècle),\" October 5–November 1, 1952, no cat.\n\nNew York, Wildenstein and Company, \"Paintings by Van Gogh,\" 1955, cat. 89.\n\nNew York, Wildenstein and Company, \"Master Drawings from The Art Institute of Chicago,\" October 17-November 30, 1963, n.p., cat. 130, pl. XLIV, as \"Despair.\"\n\nThe Art Institute of Chicago, \"A Quarter Century of Collecting: Drawings Given to The Art Institute of Chicago, 1944-1970 by Margaret Day Blake,\" April 28-June 7, 1970, n.p., cat. 39 (ill.), as \"Mourning Woman.\"\n\nUrbana-Champaign, Ill., Krannert Art Museum, University of Illinois at Urbana-Champaign, Drawings from the Collections of The Art Institute of Chicago, April 23–May 14, 1972.\n\nOtterlo, The Netherlands, Rijksmuseum Kröller-Müller, \"Vincent van Gogh,\" March 30-July 29, 1990, cat. 40, as Woman Sitting on a Basket, with Head in Hands, cat. by Johannes van der Wolk, Ronald Pickvance, and E. B. F. Pey.\n\nVienna, Bank Austria Kunstforum, Van Gogh und die Haager Schule (The Early Van Gogh and the Hague School), Feb. 28–May 27, 1996, cat. 33.\n\nThe Art Institute of Chicago, \"Becoming Edvard Munch: Influence, Anxiety and Myth\", February 14-April 26, 2009, pp. 16-17 fig. 8, cat. by Jay A. Clarke",
+    "provenance_text": "V. Obach & Co., London; to Galerie Heinemann, Munich, Dec. 23, 1910 [Galerie Heinemann sale card (inv. 10765)]; sold to Otto Gerstenberg (1848-1935), Berlin, Aug. 14, 1911, for 835 francs [Galerie Heinemann sale card (inv. 10765) and Gaehtgens and Scharf 2001]; by descent to his daughter, Margarethe Scharf (1889–1961), Berlin [Scharf and Strzoda, 2012].  Sold by the Buchholz Gallery, New York, to the Art Institute, 1947.",
+    "publishing_verification_level": "Web Cataloged",
+    "internal_department_id": 3,
+    "fiscal_year": null,
+    "fiscal_year_deaccession": null,
+    "is_public_domain": true,
+    "is_zoomable": true,
+    "max_zoom_window_size": -1,
+    "copyright_notice": null,
+    "has_multimedia_resources": false,
+    "has_educational_resources": false,
+    "has_advanced_imaging": false,
+    "colorfulness": 11.3226,
+    "color": {
+      "h": 37,
+      "l": 50,
+      "s": 8,
+      "percentage": 0.051730750363453114,
+      "population": 580
+    },
+    "latitude": null,
+    "longitude": null,
+    "latlon": null,
+    "is_on_view": false,
+    "on_loan_display": null,
+    "gallery_title": null,
+    "gallery_id": null,
+    "artwork_type_title": "Drawing and Watercolor",
+    "artwork_type_id": 14,
+    "department_title": "Prints and Drawings",
+    "department_id": "PC-13",
+    "artist_id": 40610,
+    "artist_title": "Vincent van Gogh",
+    "alt_artist_ids": [
+      
+    ],
+    "artist_ids": [
+      40610
+    ],
+    "artist_titles": [
+      "Vincent van Gogh"
+    ],
+    "category_ids": [
+      "PC-13"
+    ],
+    "category_titles": [
+      "Prints and Drawings"
+    ],
+    "term_titles": [
+      "chalk",
+      "stumping",
+      "paper (fiber product)",
+      "black chalk",
+      "chalk",
+      "inorganic material",
+      "white chalk",
+      "chalk sticks",
+      "black wash",
+      "wash",
+      "coating (material)",
+      "paint",
+      "drawing techniques",
+      "drawings (visual works)",
+      "prints and drawing"
+    ],
+    "style_id": null,
+    "style_title": null,
+    "alt_style_ids": [
+      
+    ],
+    "style_ids": [
+      
+    ],
+    "style_titles": [
+      
+    ],
+    "classification_id": "TM-209",
+    "classification_title": "chalk",
+    "alt_classification_ids": [
+      "TM-5",
+      "TM-4"
+    ],
+    "classification_ids": [
+      "TM-209",
+      "TM-5",
+      "TM-4"
+    ],
+    "classification_titles": [
+      "chalk",
+      "drawings (visual works)",
+      "prints and drawing"
+    ],
+    "subject_id": null,
+    "alt_subject_ids": [
+      
+    ],
+    "subject_ids": [
+      
+    ],
+    "subject_titles": [
+      
+    ],
+    "material_id": "TM-2982",
+    "alt_material_ids": [
+      "TM-2414",
+      "TM-3782",
+      "TM-2600",
+      "TM-2416",
+      "TM-2413",
+      "TM-2485",
+      "TM-2399",
+      "TM-3238",
+      "TM-2577"
+    ],
+    "material_ids": [
+      "TM-2982",
+      "TM-2414",
+      "TM-3782",
+      "TM-2600",
+      "TM-2416",
+      "TM-2413",
+      "TM-2485",
+      "TM-2399",
+      "TM-3238",
+      "TM-2577"
+    ],
+    "material_titles": [
+      "paper (fiber product)",
+      "black chalk",
+      "chalk",
+      "inorganic material",
+      "white chalk",
+      "chalk sticks",
+      "black wash",
+      "wash",
+      "coating (material)",
+      "paint"
+    ],
+    "technique_id": "TM-3854",
+    "alt_technique_ids": [
+      "TM-3968"
+    ],
+    "technique_ids": [
+      "TM-3854",
+      "TM-3968"
+    ],
+    "technique_titles": [
+      "stumping",
+      "drawing techniques"
+    ],
+    "theme_titles": [
+      
+    ],
+    "image_id": "2568106f-ae26-8932-906b-0c9b3be0cc51",
+    "alt_image_ids": [
+      
+    ],
+    "document_ids": [
+      
+    ],
+    "sound_ids": [
+      
+    ],
+    "video_ids": [
+      
+    ],
+    "text_ids": [
+      
+    ],
+    "section_ids": [
+      
+    ],
+    "section_titles": [
+      
+    ],
+    "site_ids": [
+      
+    ],
+    "suggest_autocomplete_all": [
+      {
+        "input": [
+          "1947.23"
+        ],
+        "contexts": {
+          "groupings": [
+            "accession"
+          ]
+        }
+      },
+      {
+        "input": [
+          "Weeping Woman"
+        ],
+        "weight": 6964,
+        "contexts": {
+          "groupings": [
+            "title"
+          ]
+        }
+      }
+    ],
+    "source_updated_at": "2022-09-21T19:18:57-05:00",
+    "updated_at": "2022-12-13T23:15:08-06:00",
+    "timestamp": "2022-12-14T22:25:06-06:00"
+  },
+  "info": {
+    "license_text": "The data in this response is licensed under a Creative Commons Zero (CC0) 1.0 designation and the Terms and Conditions of artic.edu.",
+    "license_links": [
+      "https://creativecommons.org/publicdomain/zero/1.0/",
+      "https://www.artic.edu/terms"
+    ],
+    "version": "1.6"
+  },
+  "config": {
+    "iiif_url": "https://www.artic.edu/iiif/2",
+    "website_url": "http://www.artic.edu"
+  }
+}

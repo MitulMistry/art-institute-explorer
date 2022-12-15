@@ -1,0 +1,192 @@
+{
+  "preference": null,
+  "pagination": {
+    "total": 423,
+    "limit": 12,
+    "offset": 0,
+    "total_pages": 36,
+    "current_page": 1
+  },
+  "data": [
+    {
+      "_score": 32112.514,
+      "thumbnail": {
+        "alt_text": "Abstract painting composed of small vertical dabs of multiple shades of blue with a small area of similar strokes of red, orange, and yellow in the upper right.",
+        "width": 5376,
+        "lqip": "data:image/gif;base64,R0lGODlhBAAFAPQAABw/Zhg/aBRBaBZBahRCaxxBahxEahNIchZJcR9LdB9OdiZIZSBEbShLbjxRZyBPeipRcSpReUpWaitXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAURoMJIDhJAywAcAlEkxhNNTQgAOw==",
+        "height": 6112
+      },
+      "date_display": "1972",
+      "artist_title": "Alma Thomas",
+      "id": 129884,
+      "image_id": "e966799b-97ee-1cc6-bd2f-a94b4b8bb8f9",
+      "title": "Starry Night and the Astronauts"
+    },
+    {
+      "_score": 16056.257,
+      "thumbnail": {
+        "alt_text": "Painting of bedroom, blue walls, green window, tan bed, red bedding.",
+        "width": null,
+        "lqip": "data:image/gif;base64,R0lGODlhBgAFAPQAAHhwV3N+bnh/aXR8dJtsG6VsAJx4IIp8PIx0QYZ2SoZ/bIx+b3CGboiAQoKAVoWAVpiLYZqNYIiAcoeIc5SNdJeJfJiKfXyCgneAkXmLp3eFqomMgIWJmZOerAAAAAAAACH5BAAAAAAALAAAAAAGAAUAAAUYoMYEXJdhgwBF1wM4RIE01HYYiVJZk7SEADs=",
+        "height": null
+      },
+      "date_display": "1889",
+      "artist_title": "Vincent van Gogh",
+      "id": 28560,
+      "image_id": "25c31d8d-21a4-9ea1-1d73-6a2eca4dda7e",
+      "title": "The Bedroom"
+    },
+    {
+      "_score": 10704.171,
+      "thumbnail": {
+        "alt_text": "Dark stone sculpture of Buddha sitting cross-legged, hands in lap, eyes closed.",
+        "width": 5085,
+        "lqip": "data:image/gif;base64,R0lGODlhBAAFAPQAAFdNQ1xSR1BQUVhXVVpYVllaWllaW25jWWljXXFnXWNiYWVjYWxmYGhoaIN6coR8dIiEgYmFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAURoEAMQoEwRnMkjQIEC/Q4UQgAOw==",
+        "height": 6356
+      },
+      "date_display": "Chola period (c. 855-1279), about 12th century",
+      "artist_title": null,
+      "id": 21023,
+      "image_id": "0675f9a9-1a7b-c90a-3bb6-7f7be2afb678",
+      "title": "Buddha Shakyamuni Seated in Meditation (Dhyanamudra)"
+    },
+    {
+      "_score": 8028.1284,
+      "thumbnail": {
+        "alt_text": "Painting of three black youths gardening, residential towers loom in the background.",
+        "width": 10256,
+        "lqip": "data:image/gif;base64,R0lGODlhBgAFAPQAAFJEOV9cVXRJQmBVUnNiQ2ltVmJiWWlrXGd6Zm9zanBzbnpwbHZ7cJF/YY6MfZV/gJaMjJGbiZWYj56Wl5KglZuUoKObo62go6yto7emqb+0ucW+s8q/tODo3QAAAAAAACH5BAAAAAAALAAAAAAGAAUAAAUYYGVpE5cJVycRjbFgDEJFx1AAwaMkG+SEADs=",
+        "height": 8754
+      },
+      "date_display": "1994",
+      "artist_title": "Kerry James Marshall",
+      "id": 137125,
+      "image_id": "d94d0e3d-5d89-ce07-ee0f-7fa6d8def8ab",
+      "title": "Many Mansions"
+    },
+    {
+      "_score": 3211.2515,
+      "thumbnail": {
+        "alt_text": "Abstract painting of several various-colored and overlapping rings and circles, looser brushstrokes drape across the circles like winding thread.",
+        "width": 5467,
+        "lqip": "data:image/gif;base64,R0lGODlhBAAFAPQAAD4uK1MvI1k+OlhANWRCOmdIQmlKRnRPT21lVWllWmlgXnhgW3JlZXZxaIBmWJd8c6CFbZWdl7WTgKywrAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAUR4PQ4EnM0kAEMiBAUyUIoUQgAOw==",
+        "height": 6765
+      },
+      "date_display": "1964",
+      "artist_title": "Tanaka Atsuko",
+      "id": 229393,
+      "image_id": "7690dd6e-05ed-773c-a80e-e7cc4eb879cc",
+      "title": "Untitled"
+    },
+    {
+      "_score": 2676.0427,
+      "thumbnail": {
+        "alt_text": "Life-size painting of an urban scene in Paris. A man in a top hat holding an umbrella and a woman in a long fashionable dark dress walk arm in arm toward the viewer as other city dwellers with umbrellas walk in various directions across cobblestone roads and sidewalks.",
+        "width": 9987,
+        "lqip": "data:image/gif;base64,R0lGODlhBwAFAPUAACYtLiQwNDs9Pjw/QEFFSUVJTlFGRlhPT11iYmdgZ2xjaGpra2xqcWlvdmtzeHp6dH5+e4GDfXh+hJKLhZWTi4aMlZKVk5OWk5eXkpSanJ6emqSglbOrn6Glpq+spbe0q8G7sMTAtMjFuQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAHAAUAAAYhQA7oIwpNFBrLpVNhJBoZiaNwMEA8GARhEHhQNpGFABAEADs=",
+        "height": 7755
+      },
+      "date_display": "1877",
+      "artist_title": "Gustave Caillebotte",
+      "id": 20684,
+      "image_id": "f8fd76e9-c396-5678-36ed-6a348c904d27",
+      "title": "Paris Street; Rainy Day"
+    },
+    {
+      "_score": 2293.751,
+      "thumbnail": {
+        "alt_text": "Large painting of people in a crowded park, brushstrokes are dots.",
+        "width": 9310,
+        "lqip": "data:image/gif;base64,R0lGODlhCAAFAPUAAE1WUFVTU1NWUFZYVllbVlpaW1tcWF1cXVxiWl1jWl9mX2NmVWVnXF9eZlxdaGZkYmpmZWRtYGZuY2htZGpsanBsZXVwZXB5Znp+ZXJwaYSAaYiBaYqIbIeAdI2DcYqFcI+FcoiCd5iRcouJgIyKhoyNi4mMjo2RkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAIAAUAAAYlwBLmMmEkCAHTaRTqfB4QEmgj8mgaGY6lsohIHAXKwQBQIAaCIAA7",
+        "height": 6237
+      },
+      "date_display": "1884/86",
+      "artist_title": "Georges Seurat",
+      "id": 27992,
+      "image_id": "2d484387-2509-5e8e-2c43-22f9981972eb",
+      "title": "A Sunday on La Grande Jatte — 1884"
+    },
+    {
+      "_score": 2007.0321,
+      "thumbnail": {
+        "alt_text": "Painting of an Indigenous woman native to Mexico bent and seated on a brown floor, using red thread to create a geometric design on a backstrap loom. Earth tones dominate, while a dresser in the background and the bottom portion of the woman's white dress are a deep blue.",
+        "width": 9578,
+        "lqip": "data:image/gif;base64,R0lGODlhCAAFAPUAAG9vW05ealFcYlljbWZgZX17ZWFpdm1vcnlzdXN4fYN2W412WYx1WoZ+XIR8Z5B8YZqAVpqIXZ6LX6SKXaGQX4mBYpaDYpuFapGNfqSJaIeCgJ2Zip2ZjqaUgKeijqmhk7mvnLi3q8G4n8G6rNC5osnEstPTxt3ezQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAIAAUAAAYlwIRhEDptMKYDgvApgTqjRsXyuGRIIsiEEnFoOJ4FQyEpBASAIAA7",
+        "height": 5692
+      },
+      "date_display": "1936",
+      "artist_title": "Diego Rivera",
+      "id": 151363,
+      "image_id": "96e26f4f-c578-b14c-2714-2a565f19e0d0",
+      "title": "Weaving"
+    },
+    {
+      "_score": 1189.3524,
+      "thumbnail": {
+        "alt_text": "Abstract painting composed of a central tangle of vibrant colors—purple, pink, orange, green, red—on a mostly gray background, subtly divided into rectangular areas.",
+        "width": 7326,
+        "lqip": "data:image/gif;base64,R0lGODlhBQAFAPQAAG1TSnJbWo1saox7cpt+dIiBepSBfZ6NfZOKgJWLh52blKyWh7Ceiammm6+on7SplbOqm7evnLWvormxp7+3pr63qMC0qcO9rcK+sQAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAFAAUAAAUVIFZNDkRd0WMdQgAMibEQjFIgjRQCADs=",
+        "height": 7344
+      },
+      "date_display": "1955",
+      "artist_title": "Joan Mitchell",
+      "id": 86385,
+      "image_id": "f7f9615d-2c2b-6b23-47b2-cd6cdc846504",
+      "title": "City Landscape"
+    },
+    {
+      "_score": 1070.4171,
+      "thumbnail": {
+        "alt_text": "Large plaque of stone carved with animal and geometric hieroglyphs.",
+        "width": 1743,
+        "lqip": "data:image/gif;base64,R0lGODlhBAAFAPQAACgiHzIrJDMvLDw1L01IQFZUTmZjWm5nXWVpaHFvaH54boF8bYeBcouEdoKEgYGFhIOMj52UhaOdjrSunwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAUR4BAAwhE1hDJJRsIsBfQ4SAgAOw==",
+        "height": 2250
+      },
+      "date_display": "1503",
+      "artist_title": "Aztec (Mexica)",
+      "id": 75644,
+      "image_id": "ea8c5d62-6ce8-88e8-feb1-e0053cf534c5",
+      "title": "Coronation Stone of Motecuhzoma II (Stone of the Five Suns)"
+    },
+    {
+      "_score": 973.10645,
+      "thumbnail": {
+        "alt_text": "Painting of a crowded bar scene where African American people dance and drink together, some sitting at the bar, some at small tables, and many on the dance floor.",
+        "width": 12755,
+        "lqip": "data:image/gif;base64,R0lGODlhBwAFAPUAABgSGSUdIi4dIiQfKCseKDAeKTgcKD8fLi0mLTUlLj8hLT4nLUUkK0AsMkQoNkMsNEUtN0krNUMuO1UiMlYrN1AvOUUwOUs0P085PlIwN1c0P1oxOkEsQFE8R1E+TGhET2NEW3ZPVXRPWwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAHAAUAAAYhwMXDAtF8RAlMR3LxVACIBiMTERAKik3IMTAcJhQQJxAEADs=",
+        "height": 9498
+      },
+      "date_display": "1943",
+      "artist_title": "Archibald John Motley Jr.",
+      "id": 117266,
+      "image_id": "ec19d5f1-ae0f-5186-d421-4a53dca5fb90",
+      "title": "Nightlife"
+    },
+    {
+      "_score": 892.0143,
+      "thumbnail": {
+        "alt_text": "An abstract steel sculpture of welded metal parts suggesting a human figure with long, thin legs and a bulkier shoulder area.",
+        "width": 6790,
+        "lqip": "data:image/gif;base64,R0lGODlhBAAFAPQAAHh2cX99eIaEgJGQjZybmaOioKalo6mpqa2sq62trLS0tLS0tbW1tbi5ubq6uru7u729vr+/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAEAAUAAAUR4EMMDSQAkWMUj5IgyxEMTAgAOw==",
+        "height": 9060
+      },
+      "date_display": "1958",
+      "artist_title": "Richard Hunt",
+      "id": 8633,
+      "image_id": "62f2ca7a-8c22-bb7e-9e3d-7453652a3350",
+      "title": "Hero Construction"
+    }
+  ],
+  "info": {
+    "license_text": "The data in this response is licensed under a Creative Commons Zero (CC0) 1.0 designation and the Terms and Conditions of artic.edu.",
+    "license_links": [
+      "https://creativecommons.org/publicdomain/zero/1.0/",
+      "https://www.artic.edu/terms"
+    ],
+    "version": "1.6"
+  },
+  "config": {
+    "iiif_url": "https://www.artic.edu/iiif/2",
+    "website_url": "http://www.artic.edu"
+  }
+}
