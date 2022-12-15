@@ -65,7 +65,7 @@ All front end files are stored under [`/app/javascript/packs`](/app/javascript/p
 [`/styles`](/app/javascript/packs/styles) - Default [Sass][sass] stylesheets are kept here, while the stylesheets for individual React components are stored in their respective component directories. All stylesheets have to be loaded into Webpacker using the [manifest file](/app/javascript/packs/styles/application.scss).
 
 ## Install Instructions
-To build the application, install back end dependencies from the [Gemfile][gemfile] via [Bundler][bundler] by running `bundle install`. [Ruby][ruby] version 3.0.2 was used to develop the application and is specified in the [Gemfile][gemfile] as well as the [.ruby-version][ruby-version-file] file.
+To build the application, install back end dependencies from the [Gemfile][gemfile] via [Bundler][bundler] by running `bundle install`. [Ruby][ruby] version 3.1.2 was used to develop the application and is specified in the [Gemfile][gemfile] as well as the [.ruby-version][ruby-version-file] file.
 
 Since the application uses [PostgreSQL][postgresql], you need to have it installed locally on your machine with a user that has table creation privileges. You can get further instructions [here][postgres-local-setup].
 
@@ -73,7 +73,7 @@ Create the database with `bundle exec rails db:create` and run migrations with `
 
 To run the application in development mode after installation, run `bundle exec rails s`.
 
-Front end dependencies are managed by [Yarn][yarn] with the [package.json][package.json] file, so you must have Yarn installed. Dependencies are built by [Webpack][webpack] via the [Webpacker][webpacker] gem. Custom JavaScript code for React/Redux is located in the [`app/javascript/packs`][js-directory] directory where front end assets are imported.
+Front end dependencies are managed by [Yarn][yarn] with the [package.json][package.json] file, so you must have Yarn installed. Dependencies are built by [Webpack][webpack] via the [Webpacker][webpacker] gem. Run `yarn install` to install front end dependencies. Custom JavaScript code for React/Redux is located in the [`app/javascript/packs`][js-directory] directory where front end assets are imported.
 
 ## Testing
 The back end test suite is developed using [RSpec][rspec] via the [rspec-rails gem][rspec-rails] with [shoulda-matchers][shoulda-matchers]. Model factories are set up with [FactoryBot][factory-bot]. Since the application is dependant on an external API, the test suite utilizes [VCR][vcr] to record and replay responses for tests.
