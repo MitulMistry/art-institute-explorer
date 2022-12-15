@@ -65,7 +65,7 @@ All front end files are stored under [`/app/javascript/packs`](/app/javascript/p
 [`/styles`](/app/javascript/packs/styles) - Default [Sass][sass] stylesheets are kept here, while the stylesheets for individual React components are stored in their respective component directories. All stylesheets have to be loaded into Webpacker using the [manifest file](/app/javascript/packs/styles/application.scss).
 
 ## Install Instructions
-To build the application, install back end dependencies from the [Gemfile][gemfile] via [Bundler][bundler] by running `bundle install`. [Ruby][ruby] version 3.1.2 was used to develop the application and is specified in the [Gemfile][gemfile] as well as the [.ruby-version][ruby-version-file] file.
+To build the application, install back end dependencies from the [Gemfile][gemfile] via [Bundler][bundler] by running `bundle install`. [Ruby][ruby] version 3.1.3 was used to develop the application and is specified in the [Gemfile][gemfile] as well as the [.ruby-version][ruby-version-file] file.
 
 Since the application uses [PostgreSQL][postgresql], you need to have it installed locally on your machine with a user that has table creation privileges. You can get further instructions [here][postgres-local-setup].
 
