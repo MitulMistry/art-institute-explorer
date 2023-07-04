@@ -14,7 +14,7 @@
     "@rails/actioncable": "^6.1.7",
     "@rails/activestorage": "^6.1.7",
     "@rails/ujs": "^6.1.7",
-    "@rails/webpacker": "^5.4.4",
+    "@rails/webpacker": "5.4.4",
     "@redux-devtools/extension": "^3.2.3",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "framer-motion": "4.1.17",
@@ -30,7 +30,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^3.11.3"
+    "webpack-dev-server": "^3"
   },
   "packageManager": "yarn@3.3.0"
 }
